@@ -18,5 +18,15 @@
         <version>3.2.3</version>
       </plugin>
     </plugins>
+    
   </build>
+  <dependencies>
+  <dependency>
+  	<groupId>org.json</groupId>		
+  	<artifactId>json</artifactId>		
+  	<version>20210307</version>	
+  </dependency>
+  
+  
+  </dependencies>
 </project>
