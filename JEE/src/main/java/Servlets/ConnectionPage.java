@@ -8,16 +8,16 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 /**
- * Servlet implementation class ConenctionPage
+ * Servlet implementation class ConnectionPage
  */
-@WebServlet("/ConectionPage")
-public class ConectionPage extends HttpServlet {
+@WebServlet("/ConnectionPage")
+public class ConnectionPage extends HttpServlet {
 	private static final long serialVersionUID = 1L;
        
     /**
      * @see HttpServlet#HttpServlet()
      */
-    public ConectionPage() {
+    public ConnectionPage() {
         super();
         // TODO Auto-generated constructor stub
     }
@@ -27,7 +27,7 @@ public class ConectionPage extends HttpServlet {
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		// TODO Auto-generated method stub
-		response.getWriter().append("Served at: ").append(request.getContextPath());
+		request.getRequestDispatcher("/WEB-INF/JSP/ConnectionPage.jsp").forward(request,response);
 	}
 
 	/**

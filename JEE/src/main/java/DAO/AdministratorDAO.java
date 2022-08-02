@@ -115,7 +115,7 @@ public class AdministratorDAO implements DAO<Administrator> {
 		paramsPost.add("matricule", String.valueOf(matricule));
 		paramsPost.add("password", password);
 		String responseJSON=resource
-				.path("administrator")
+				.path("Administrator")
 				.header("key",key)
 				.accept(MediaType.APPLICATION_JSON)
 				.get(String.class);

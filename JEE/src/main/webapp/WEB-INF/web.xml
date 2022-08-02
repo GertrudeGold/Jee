@@ -22,21 +22,21 @@
 
   
   <servlet>
-	  <servlet-name>ConectionPage</servlet-name>
-	  <servlet-class>Servlets.ConectionPage</servlet-class>
+      <servlet-name>ConnectionPage</servlet-name>
+      <servlet-class>Servlets.ConnectionPage</servlet-class>
   </servlet>
   <servlet-mapping>
-	  <servlet-name>ConectionPage</servlet-name>
-	  <url-pattern>/ConectionPage</url-pattern>
+      <servlet-name>ConnectionPage</servlet-name>
+      <url-pattern>/Connection-Page</url-pattern>
   </servlet-mapping>
-  
+
     <servlet>
-	  <servlet-name>Authentication</servlet-name>
-	  <servlet-class>Servlets.Authentication</servlet-class>
+      <servlet-name>Authentication</servlet-name>
+      <servlet-class>Servlets.Authentication</servlet-class>
   </servlet>
   <servlet-mapping>
-	  <servlet-name>Authentication</servlet-name>
-	  <url-pattern>/Authentication</url-pattern>
+      <servlet-name>Authentication</servlet-name>
+      <url-pattern>/Authentification</url-pattern>
   </servlet-mapping>
   
 
