@@ -90,7 +90,7 @@ public class Authentication extends HttpServlet {
 		matricule=request.getParameter("matricule");
 		pwd=request.getParameter("password");
 		
-		Staff staff = Staff.login(matricule, pwd);
+		/*Staff staff = Staff.login(matricule, pwd);
 		if(staff != null) {
 			
 			HttpSession session=request.getSession();
@@ -102,7 +102,7 @@ public class Authentication extends HttpServlet {
 				session.setAttribute("apiKey", apiKey);
 				context.setAttribute("ConnectedStaff", staff);
 
-		}
+		}*/
 		doGet(request, response);
 	}
 
