@@ -77,7 +77,7 @@ public class AdministratorDAO implements DAO<Administrator> {
 				System.out.println(e.getMessage());
 			}
 		}
-		return null;
+		return administrator;
 	}
 	
 	

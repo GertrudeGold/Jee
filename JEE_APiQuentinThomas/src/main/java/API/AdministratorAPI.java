@@ -27,14 +27,14 @@ Administrator administrator = null;
 public Response login(
 		@FormParam("matricule") String matricule, 
 		@FormParam("password") String password) {
-	String responseJSON;
+	
     administrator= (Administrator) Staff.login(matricule, password);
 	if(administrator != null) {
-		responseJSON="{\"connected\":\"true\"}";
+		
 		String apiKey=getApiKey();
 		return Response.status(Status.OK)
 				.header("api-key", apiKey)
-				.entity(responseJSON).build();
+				.entity(administrator).build();
 	}else {
 		error=Error.USER_AUTHENTICATION_FAILED;
 		error.setDescription("Invalid data for the login, verify your login and password");

@@ -9,6 +9,7 @@
     <welcome-file>default.htm</welcome-file>
     <welcome-file>default.jsp</welcome-file>
   </welcome-file-list>
+
   <context-param>
   	<param-name>apiUrl</param-name>
   	<param-value>http://localhost:8080/JEE_APIQuentinThomas</param-value>
@@ -18,4 +19,25 @@
     <env-entry-type>java.lang.String</env-entry-type>
     <env-entry-value>http://localhost:8080/JEE_APIQuentinThomas</env-entry-value> 
  </env-entry>
+
+  
+  <servlet>
+	  <servlet-name>ConectionPage</servlet-name>
+	  <servlet-class>Servlets.ConectionPage</servlet-class>
+  </servlet>
+  <servlet-mapping>
+	  <servlet-name>ConectionPage</servlet-name>
+	  <url-pattern>/ConectionPage</url-pattern>
+  </servlet-mapping>
+  
+    <servlet>
+	  <servlet-name>Authentication</servlet-name>
+	  <servlet-class>Servlets.Authentication</servlet-class>
+  </servlet>
+  <servlet-mapping>
+	  <servlet-name>Authentication</servlet-name>
+	  <url-pattern>/Authentication</url-pattern>
+  </servlet-mapping>
+  
+
 </web-app>
