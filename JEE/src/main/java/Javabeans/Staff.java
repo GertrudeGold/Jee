@@ -18,27 +18,35 @@ public abstract class Staff implements Serializable {
 		this.matricule = matricule;
 		this.id=id;
 	}
-public Staff() {}
-public String getFirstname() {
-	return firstname;
-}
-public void setFirstname(String firstname) {
-	this.firstname = firstname;
-}
-public String getLastname() {
-	return lastname;
-}
-public void setLastname(String lastname) {
-	this.lastname = lastname;
-}
-public String getMatricule() {
-	return matricule;
-}
-public void setMatricule(String matricule) {
-	this.matricule = matricule;
-}
-public int getId() {
-	return id;
-};
+	
+	public Staff() {}
+	
+	public String getFirstname() {
+		return firstname;
+	}
+	
+	public void setFirstname(String firstname) {
+		this.firstname = firstname;
+	}
+	
+	public String getLastname() {
+		return lastname;
+	}
+	
+	public void setLastname(String lastname) {
+		this.lastname = lastname;
+	}
+	
+	public String getMatricule() {
+		return matricule;
+	}
+	
+	public void setMatricule(String matricule) {
+		this.matricule = matricule;
+	}
+	
+	public int getId() {
+		return id;
+	};
 
 }
