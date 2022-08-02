@@ -26,6 +26,11 @@
   	<artifactId>json</artifactId>		
   	<version>20210307</version>	
   </dependency>
+  <dependency>
+  	<groupId>com.sun.jersey</groupId>
+  	<artifactId>jersey-client</artifactId>		
+  	<version>1.19.4</version>	
+  	</dependency>
   
   
   </dependencies>

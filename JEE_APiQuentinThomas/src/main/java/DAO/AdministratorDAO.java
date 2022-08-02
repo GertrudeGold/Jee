@@ -50,31 +50,31 @@ public class AdministratorDAO implements DAO<Administrator> {
 		// TODO Auto-generated method stub
 		return null;
 	}
-//	public  boolean login(int matricule,String password) {
-//		Connection conn=DatabaseConnection.getConnection();
-//		try {
-//			PreparedStatement preparedStatement = conn.prepareStatement("SELECT * FROM Administrator WHERE =?");
-//			preparedStatement.setInt(1, matricule);
-//			ResultSet resultSet=preparedStatement.executeQuery();
-//			if(resultSet.next()) {
-//				if(password.equals(resultSet.getString("worker_password"))) {
-//					return true;
-//				}
-//			}
-//	
-//		} catch (Exception e) {
-//			System.out.println(e.getMessage());
-//		}
-//		finally {
-//			try {
-//				
-//				conn.close();
-//			}catch (SQLException e) {
-//				System.out.println(e.getMessage());
-//			}
-//		}
-//		return false;
-//	}
+	public  Administrator login(String matricule,String password) {
+		Administrator administrator = null;
+		Connection conn=ConnectionDatabase.getConnection();
+		try {
+			PreparedStatement preparedStatement = conn.prepareStatement("select * from (Staff s inner join Administrator a on s.staff_id = a.staff_id) where s.staff_matricule=? and s.staff_password= ?;");
+			preparedStatement.setString(1, matricule);
+			preparedStatement.setString(2, password);
+			ResultSet resultSet=preparedStatement.executeQuery();
+			if(resultSet.next()) {
+				return administrator;
+			}
+	
+		} catch (Exception e) {
+			System.out.println(e.getMessage());
+		}
+		finally {
+			try {
+				
+				conn.close();
+			}catch (SQLException e) {
+				System.out.println(e.getMessage());
+			}
+		}
+		return null;
+	}
 	
 	
 	
