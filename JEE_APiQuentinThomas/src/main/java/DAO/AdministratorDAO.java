@@ -59,6 +59,10 @@ public class AdministratorDAO implements DAO<Administrator> {
 			preparedStatement.setString(2, password);
 			ResultSet resultSet=preparedStatement.executeQuery();
 			if(resultSet.next()) {
+				String name =  resultSet.getString("staff_lastname");
+				String firstname= resultSet.getString("staff_lastname");
+				int id= resultSet.getInt("staff_id");								
+				administrator = new Administrator(name,firstname,matricule,id);				
 				return administrator;
 			}
 	

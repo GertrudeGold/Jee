@@ -29,7 +29,7 @@ public Response login(
 		@FormParam("password") String password) {
 	String responseJSON;
     administrator= (Administrator) Staff.login(matricule, password);
-	if(success) {
+	if(administrator != null) {
 		responseJSON="{\"connected\":\"true\"}";
 		String apiKey=getApiKey();
 		return Response.status(Status.OK)
