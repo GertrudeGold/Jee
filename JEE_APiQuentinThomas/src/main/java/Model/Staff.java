@@ -2,6 +2,9 @@ package Model;
 
 import java.io.Serializable;
 
+import DAO.AdministratorDAO;
+
+
 public abstract class Staff implements Serializable {
 	/**
 	 * 
@@ -40,5 +43,26 @@ public void setMatricule(String matricule) {
 public int getId() {
 	return id;
 };
+public static Staff login(String matricule,String pwd) {
+	
+	 String res = "";
+     res = matricule.substring(0,2);
+	if(res.equals("ad")) {
+		 AdministratorDAO AdministratorDAO=new AdministratorDAO();
+		 Administrator administrator =AdministratorDAO.login(matricule, pwd);
+		 return administrator;
+	}
+//	if(matricule>=30000 && matricule<40000) {
+//		LeaderDAO leaderDAO=new LeaderDAO();
+//		success=leaderDAO.login(matricule, pwd);
+//	}
+//	if(matricule>=40000 && matricule<50000) {
+//		EmployeeDAO employeeDAO=new EmployeeDAO();
+//		success=employeeDAO.login(matricule,pwd);
+//	}
+	
+	return null;
+	
+}
 
 }

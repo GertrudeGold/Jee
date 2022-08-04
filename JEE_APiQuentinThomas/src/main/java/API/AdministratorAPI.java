@@ -9,6 +9,8 @@ import javax.ws.rs.core.Response;
 import javax.ws.rs.core.Response.Status;
 
 import DAO.AdministratorDAO;
+import Model.Administrator;
+import Model.Staff;
 import Other.Error;
 
 
@@ -17,21 +19,22 @@ public class AdministratorAPI extends BaseAPI{
 private AdministratorDAO administratorDAO = new AdministratorDAO();
 private Error error = null;
 boolean success = false;
+Administrator administrator = null;
 
 @POST
 @Path("/login")
 @Produces(MediaType.APPLICATION_JSON)
 public Response login(
-		@FormParam("serialNumber") int matricule, 
-		@FormParam("pwd") String password) {
-	String responseJSON;
-	//boolean success= User.login(matricule, password);
-	if(success) {
-		responseJSON="{\"connected\":\"true\"}";
+		@FormParam("matricule") String matricule, 
+		@FormParam("password") String password) {
+	
+    administrator= (Administrator) Staff.login(matricule, password);
+	if(administrator != null) {
+		
 		String apiKey=getApiKey();
 		return Response.status(Status.OK)
 				.header("api-key", apiKey)
-				.entity(responseJSON).build();
+				.entity(administrator).build();
 	}else {
 		error=Error.USER_AUTHENTICATION_FAILED;
 		error.setDescription("Invalid data for the login, verify your login and password");

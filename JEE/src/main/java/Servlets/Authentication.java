@@ -54,23 +54,24 @@ public class Authentication extends HttpServlet {
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 				
 		HttpSession session = request.getSession(false);
-		if(session!=null && !session.isNew()){
+		if(session!=null){
 			Staff staff = (Staff)session.getAttribute("ConnectedStaff");
 			if(staff !=null && staff.getMatricule() != null) {
 				if(staff instanceof Policeman) {
-					response.sendRedirect("Policeman");
+					response.sendRedirect("HomePoliceman");
 					return;
 				}
 				if(staff instanceof BrigadeChief) {
-					response.sendRedirect("BrigadeChief");
+					response.sendRedirect("HomeBrigadeChief");
 					return;
 				}
 				if(staff instanceof Collector) {
-					response.sendRedirect("Collector");
+					response.sendRedirect("HomeCollector");
 					return;
 				}
 				if(staff instanceof Administrator) {
-					response.sendRedirect("Administrator");
+					//response.sendRedirect("AddAccount");
+					request.getRequestDispatcher("/WEB-INF/JSP/AddAccount.jsp").forward(request,response);
 					return;
 				}
 			}			
@@ -90,7 +91,7 @@ public class Authentication extends HttpServlet {
 		matricule=request.getParameter("matricule");
 		pwd=request.getParameter("password");
 		
-		/*Staff staff = Staff.login(matricule, pwd);
+		Staff staff = Staff.login(matricule, pwd);
 		if(staff != null) {
 			
 			HttpSession session=request.getSession();
@@ -102,7 +103,7 @@ public class Authentication extends HttpServlet {
 				session.setAttribute("apiKey", apiKey);
 				context.setAttribute("ConnectedStaff", staff);
 
-		}*/
+		}
 		doGet(request, response);
 	}
 

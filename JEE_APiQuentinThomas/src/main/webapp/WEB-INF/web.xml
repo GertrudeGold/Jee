@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<web-app xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns="http://xmlns.jcp.org/xml/ns/javaee" xsi:schemaLocation="http://xmlns.jcp.org/xml/ns/javaee http://xmlns.jcp.org/xml/ns/javaee/web-app_4_0.xsd" version="4.0">
+  <display-name>JEE_APiQuentinThomas</display-name>
+  <welcome-file-list>
+    <welcome-file>index.html</welcome-file>
+    <welcome-file>index.htm</welcome-file>
+    <welcome-file>index.jsp</welcome-file>
+    <welcome-file>default.html</welcome-file>
+    <welcome-file>default.htm</welcome-file>
+    <welcome-file>default.jsp</welcome-file>
+  </welcome-file-list>
+   <env-entry> 
+    <env-entry-name>connectionString</env-entry-name>
+    <env-entry-type>java.lang.String</env-entry-type>
+    <env-entry-value>jdbc:oracle:thin:@//193.190.64.10:1522/XEPDB1</env-entry-value> 
+ </env-entry>
+ <env-entry> 
+    <env-entry-name>dbUser</env-entry-name>
+    <env-entry-type>java.lang.String</env-entry-type>
+    <env-entry-value>student03_03</env-entry-value> 
+ </env-entry>
+ <env-entry> 
+    <env-entry-name>dbPasswordd</env-entry-name>
+    <env-entry-type>java.lang.String</env-entry-type>
+    <env-entry-value>thomas@XE_CHAR</env-entry-value> 
+ </env-entry>
+ <env-entry> 
+    <env-entry-name>apiKey</env-entry-name>
+    <env-entry-type>java.lang.String</env-entry-type>
+    <env-entry-value>206633fa-c6f1-40de-b16f-03f57794b05b</env-entry-value> 
+ </env-entry>
+  <env-entry> 
+    <env-entry-name>baseURI</env-entry-name>
+    <env-entry-type>java.lang.String</env-entry-type>
+    <env-entry-value>/JEE_APIQuentinThomas/</env-entry-value> 
+ </env-entry>
+</web-app>

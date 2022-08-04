@@ -9,44 +9,44 @@
     <welcome-file>default.htm</welcome-file>
     <welcome-file>default.jsp</welcome-file>
   </welcome-file-list>
+
+  <context-param>
+  	<param-name>apiUrl</param-name>
+  	<param-value>http://localhost:8080/JEE_APIQuentinThomas</param-value>
+  </context-param>
+  <env-entry> 
+    <env-entry-name>apiUrl</env-entry-name>
+    <env-entry-type>java.lang.String</env-entry-type>
+    <env-entry-value>http://localhost:8080/JEE_APIQuentinThomas</env-entry-value> 
+ </env-entry>
+
   
   <servlet>
-	  <servlet-name>ConnectionPage</servlet-name>
-	  <servlet-class>Servlets.ConnectionPage</servlet-class>
+      <servlet-name>ConnectionPage</servlet-name>
+      <servlet-class>Servlets.ConnectionPage</servlet-class>
   </servlet>
   <servlet-mapping>
 	  <servlet-name>ConnectionPage</servlet-name>
 	  <url-pattern>/Connection-Page</url-pattern>
   </servlet-mapping>
-  
+
     <servlet>
-	  <servlet-name>Authentication</servlet-name>
-	  <servlet-class>Servlets.Authentication</servlet-class>
+      <servlet-name>Authentication</servlet-name>
+      <servlet-class>Servlets.Authentication</servlet-class>
   </servlet>
   <servlet-mapping>
 	  <servlet-name>Authentication</servlet-name>
 	  <url-pattern>/Authentification</url-pattern>
   </servlet-mapping>
   
-  <filter>
-		<filter-name>AuthenticationFilter</filter-name>
-		<filter-class>Filters.AuthenticationFilter</filter-class>
-	</filter>
-	<filter>
-		<filter-name>AdministratorFilter</filter-name>
-		<filter-class>Filters.AdministratorFilter</filter-class>
-	</filter>
-		<filter>
-		<filter-name>CollectorFilter</filter-name>
-		<filter-class>Filters.CollectorFilter</filter-class>
-	</filter>
-	<filter>
-		<filter-name>BrigaChiefFilter</filter-name>
-		<filter-class>Filters.BrigaChiefFilter</filter-class>
-	</filter>
-	<filter>
-		<filter-name>PolicemanFilter</filter-name>
-		<filter-class>Filters.PolicemanFilter</filter-class>
-	</filter>
+  <servlet>
+      <servlet-name>AddAccount</servlet-name>
+      <servlet-class>Servlets.AddAccount</servlet-class>
+  </servlet>
+  <servlet-mapping>
+	  <servlet-name>AddAccount</servlet-name>
+	  <url-pattern>/Add-Account</url-pattern>
+  </servlet-mapping>
   
+
 </web-app>
