@@ -12,10 +12,10 @@
 	<table border="1" cellspacing="0" cellpadding="5">
 	<tr>
 		<td> Matricule : </td>
-		<td><input type="text" name="matricule" id="matricule" value=""size="20" required></td>
+		<td><input type="text" name="matricule" value=""size="20" required></td>
 	<tr>
 		<td> Password : </td>
-		<td><input type="password" name="password"id="password" value="" size="20" required></td>
+		<td><input type="password" name="password" value="" size="20" required></td>
 	</tr>
 	<tr>
 		<td colspan="2" align="center"><input type="submit" name="submit" id="submit" value="Submit"></td>
