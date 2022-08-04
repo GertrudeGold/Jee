@@ -1,6 +1,8 @@
 package API;
 
 import javax.ws.rs.FormParam;
+import javax.ws.rs.GET;
+import javax.ws.rs.HeaderParam;
 import javax.ws.rs.POST;
 import javax.ws.rs.Path;
 import javax.ws.rs.Produces;
@@ -13,13 +15,23 @@ import Model.Administrator;
 import Model.Staff;
 import Other.Error;
 
-
-@Path("/Administrator")
+@Path("/administrator")
 public class AdministratorAPI extends BaseAPI{
 private AdministratorDAO administratorDAO = new AdministratorDAO();
 private Error error = null;
 boolean success = false;
 Administrator administrator = null;
+
+
+
+@GET
+@Produces(MediaType.APPLICATION_JSON)
+@Path("/bidon")
+public Response bidon() {
+	String test = "test ";
+	return Response.status(Status.OK).entity(test).build();
+}
+
 
 @POST
 @Path("/login")
@@ -27,15 +39,18 @@ Administrator administrator = null;
 public Response login(
 		@FormParam("matricule") String matricule, 
 		@FormParam("password") String password) {
-	
+	System.out.println(matricule);
+	System.out.println(password);
+	System.out.println("ici8");
     administrator= (Administrator) Staff.login(matricule, password);
 	if(administrator != null) {
-		
+		System.out.println("ici5");
 		String apiKey=getApiKey();
 		return Response.status(Status.OK)
 				.header("api-key", apiKey)
 				.entity(administrator).build();
 	}else {
+		System.out.println("ici4");
 		error=Error.USER_AUTHENTICATION_FAILED;
 		error.setDescription("Invalid data for the login, verify your login and password");
 		return Response.status(Status.OK).entity(error.getJSON()).build();

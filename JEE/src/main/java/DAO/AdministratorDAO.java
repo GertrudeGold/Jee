@@ -27,6 +27,7 @@ import Javabeans.Administrator;
 
 
 
+
 public class AdministratorDAO implements DAO<Administrator> {
 	private WebResource resource;
 	private static  String apiUrl;
@@ -109,24 +110,41 @@ public class AdministratorDAO implements DAO<Administrator> {
 //		return administrator;
 //	}
 	public Administrator login(String matricule,String password) {
-		Administrator administrator=null;
+		System.out.println("ici10");
 		String key=getApiKey();
+		int status;
 		MultivaluedMap<String,String> paramsPost=new MultivaluedMapImpl();
-		paramsPost.add("matricule", String.valueOf(matricule));
+		paramsPost.add("matricule", matricule);
 		paramsPost.add("password", password);
-		String responseJSON=resource
-				.path("Administrator")
-				.header("key",key)
+		ClientResponse responseJSON=resource
+				.path("administrator")
+				.path("login")
 				.accept(MediaType.APPLICATION_JSON)
-				.get(String.class);
-	
-		ObjectMapper mapper=new ObjectMapper();
-		try {
-			return administrator=(Administrator) mapper.readValue(responseJSON, Administrator.class);
-		} catch (Exception e) {
-			return null;
+				.post(ClientResponse.class,paramsPost);
+		
+		Administrator administrator=null;
+		status = responseJSON.getStatus();
+		if(status==200) {
+			String response=responseJSON.getEntity(String.class);
+			
+			MultivaluedMap<String, String> headers;
+			headers=responseJSON.getHeaders();
+			List<String> apiKey=headers.get("api-key");
+			saveApiKey(apiKey.get(0));
+			System.out.println("ici1");
+			ObjectMapper mapper=new ObjectMapper();
+			try {
+				System.out.println("ici2");
+				return administrator=(Administrator) mapper.readValue(response, Administrator.class);
+			} catch (Exception e) {
+				System.out.println("ici3");
+				return null;
+			}
+			
 		}
 		
+		
+		return null;
 	
 	}
 	

@@ -12,14 +12,14 @@ public class Administrator extends Staff {
 	public Administrator() {
 		// TODO Auto-generated constructor stub
 	}
-	public static boolean login(int matricule,String pwd) {
-		boolean success=false;
+	public static Administrator login(String matricule,String pwd) {
+		
 		
 			 AdministratorDAO AdministratorDAO=new AdministratorDAO();
-			 //success=AdministratorDAO.login(matricule, pwd);
+			Administrator admin =  AdministratorDAO.login(matricule, pwd);
 		
 		
-		return success;
+		return admin;
 		
 	}
 }

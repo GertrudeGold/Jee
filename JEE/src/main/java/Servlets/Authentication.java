@@ -54,8 +54,9 @@ public class Authentication extends HttpServlet {
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 				
 		HttpSession session = request.getSession(false);
-		if(session!=null && !session.isNew()){
-			Staff staff = (Staff)session.getAttribute("ConnectedStaff");
+		if(session!=null){
+			Staff staff = (Staff) session.getAttribute("ConnectedStaff");
+			System.out.println("ici6");
 			if(staff !=null && staff.getMatricule() != null) {
 				if(staff instanceof Policeman) {
 					response.sendRedirect("Policeman");
@@ -70,7 +71,8 @@ public class Authentication extends HttpServlet {
 					return;
 				}
 				if(staff instanceof Administrator) {
-					response.sendRedirect("Administrator");
+					System.out.println("ici7");
+					request.getRequestDispatcher("/WEB-INF/JSP/AddAccount.jsp").forward(request,response);
 					return;
 				}
 			}			
@@ -90,9 +92,10 @@ public class Authentication extends HttpServlet {
 		matricule=request.getParameter("matricule");
 		pwd=request.getParameter("password");
 		
-		Staff staff = Staff.login(matricule, pwd);
+		Object staff = Staff.login(matricule, pwd);
 		if(staff != null) {
-			
+		if(staff instanceof Policeman) {
+			Policeman policeman = (Policeman) staff;
 			HttpSession session=request.getSession();
 			if(!session.isNew()) {
 				session.invalidate();
@@ -100,7 +103,47 @@ public class Authentication extends HttpServlet {
 				}
 				
 				session.setAttribute("apiKey", apiKey);
-				context.setAttribute("ConnectedStaff", staff);
+				session.setAttribute("ConnectedStaff", policeman);
+		}
+		if(staff instanceof BrigadeChief) {
+			
+			BrigadeChief brigadeChief = (BrigadeChief) staff;
+			HttpSession session=request.getSession();
+			if(!session.isNew()) {
+				session.invalidate();
+				session=request.getSession();
+				}
+				
+				session.setAttribute("apiKey", apiKey);
+				session.setAttribute("ConnectedStaff", brigadeChief);
+		}
+		if(staff instanceof Collector) {
+			
+			Collector collector = (Collector) staff;
+			HttpSession session=request.getSession();
+			if(!session.isNew()) {
+				session.invalidate();
+				session=request.getSession();
+				}
+				
+				session.setAttribute("apiKey", apiKey);
+				session.setAttribute("ConnectedStaff", collector);
+		}
+		if(staff instanceof Administrator) {
+			
+			Administrator administrator = (Administrator) staff;
+			HttpSession session=request.getSession();
+			if(!session.isNew()) {
+				session.invalidate();
+				session=request.getSession();
+				}
+				
+				session.setAttribute("apiKey", apiKey);
+				session.setAttribute("ConnectedStaff", administrator);
+		}
+		
+			
+			
 
 		}
 		doGet(request, response);
