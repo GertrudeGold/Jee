@@ -4,6 +4,7 @@
 <head>
 <meta charset="ISO-8859-1">
 <title>Add Account</title>
+<script type="text/javascript" src="${pageContext.request.contextPath}/js/main.js"></script>
 </head>
 <body>
 <h1>Create account</h1>
@@ -12,22 +13,16 @@
 	<tr>
 		<td>Account type</td>
 		<td>
-		<select name="type">
+		<select name="type" id="Selectedvalue" onChange='AddAccountSelected();' >
 			<option value="Administrator">Administrator</option>
 			<option value="BrigadeChief">Brigade chief</option>
 			<option value="Collector">Collector</option>
 			<option value="Policeman">Policeman</option>
 		</select>
-		<% 
-		String type = request.getParameter("type");
-		if(type != null && type == "Policeman")
-		{%>
-			<tr>
+			<tr style="display: none" id="ChiefIdInput">
 			<td>Chief Id</td>
 			<td><input type="text" name="ChiefId" value="" size="20"></td>
 			</tr>
-		<%}
-		%>
 	<tr>
 		<td>Lastname</td>
 		<td><input type="text" name="lastname" value="" size="20" required></td>
