@@ -3,6 +3,10 @@ package Javabeans;
 import java.io.Serializable;
 
 import DAO.AdministratorDAO;
+import DAO.BrigadeChiefDAO;
+import DAO.CollectorDAO;
+import DAO.PolicemanDAO;
+
 
 
 public abstract class Staff implements Serializable {
@@ -55,19 +59,26 @@ public abstract class Staff implements Serializable {
 		
 		 String res = "";
 	     res = matricule.substring(0,2);
-		if(res.equals("ad")) {
-			 AdministratorDAO AdministratorDAO=new AdministratorDAO();
-			 Administrator administrator =AdministratorDAO.login(matricule, pwd);
+	     if(res.equals("ad")) {
+			 AdministratorDAO administratorDAO=new AdministratorDAO();
+			 Administrator administrator =administratorDAO.login(matricule, pwd);
 			 return administrator;
 		}
-//		if(matricule>=30000 && matricule<40000) {
-//			LeaderDAO leaderDAO=new LeaderDAO();
-//			success=leaderDAO.login(matricule, pwd);
-//		}
-//		if(matricule>=40000 && matricule<50000) {
-//			EmployeeDAO employeeDAO=new EmployeeDAO();
-//			success=employeeDAO.login(matricule,pwd);
-//		}
+		if(res.equals("pm")) {
+			 PolicemanDAO PolicemanDAO=new PolicemanDAO();
+			 Policeman policemanDAO =PolicemanDAO.login(matricule, pwd);
+			 return policemanDAO;
+		}
+		if(res.equals("bc")) {
+			 BrigadeChiefDAO brigadeChiefDAO=new BrigadeChiefDAO();
+			 BrigadeChief brigadeChief =brigadeChiefDAO.login(matricule, pwd);
+			 return brigadeChief;
+		}
+		if(res.equals("co")) {
+			 CollectorDAO collectorDAO=new CollectorDAO();
+			 Collector collector =collectorDAO.login(matricule, pwd);
+			 return collector;
+		}
 		
 		return null;
 		

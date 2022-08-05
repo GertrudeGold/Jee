@@ -26,8 +26,8 @@
       <servlet-class>Servlets.ConnectionPage</servlet-class>
   </servlet>
   <servlet-mapping>
-      <servlet-name>ConnectionPage</servlet-name>
-      <url-pattern>/Connection-Page</url-pattern>
+	  <servlet-name>ConnectionPage</servlet-name>
+	  <url-pattern>/Connection-Page</url-pattern>
   </servlet-mapping>
 
     <servlet>
@@ -35,8 +35,17 @@
       <servlet-class>Servlets.Authentication</servlet-class>
   </servlet>
   <servlet-mapping>
-      <servlet-name>Authentication</servlet-name>
-      <url-pattern>/Authentification</url-pattern>
+	  <servlet-name>Authentication</servlet-name>
+	  <url-pattern>/Authentification</url-pattern>
+  </servlet-mapping>
+  
+  <servlet>
+      <servlet-name>AddAccount</servlet-name>
+      <servlet-class>Servlets.AddAccount</servlet-class>
+  </servlet>
+  <servlet-mapping>
+	  <servlet-name>AddAccount</servlet-name>
+	  <url-pattern>/Add-Account</url-pattern>
   </servlet-mapping>
   
 

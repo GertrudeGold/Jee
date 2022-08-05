@@ -1,6 +1,10 @@
 package Model;
 
 import java.io.Serializable;
+import java.util.ArrayList;
+
+import DAO.VehicleDAO;
+import DAO.ViolationDAO;
 
 public class Violation implements Serializable{
 
@@ -28,5 +32,14 @@ public class Violation implements Serializable{
 	public double getPrice() {
 		return price;
 	}
-	
+	public static ArrayList<Violation>GetViolationsOfAFine(int id) {
+		
+		
+		ViolationDAO violationDAO=new ViolationDAO();
+		ArrayList<Violation> violations =  violationDAO.GetViolationsToAFine(id);
+
+
+	return violations;
+
+	}
 }

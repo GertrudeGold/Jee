@@ -2,6 +2,9 @@ package Model;
 
 import java.io.Serializable;
 
+import DAO.PolicemanDAO;
+import DAO.VehicleDAO;
+
 public class Vehicle implements Serializable {
 /**
 	 * 
@@ -14,6 +17,10 @@ public Vehicle(String type, int id) {
 	this.type = type;
 	this.id = id;
 }
+public Vehicle() {
+	super();
+	
+}
 public String getType() {
 	return type;
 }
@@ -25,5 +32,15 @@ public int getId() {
 }
 public void setId(int id) {
 	this.id = id;
+}
+public Vehicle find(int id) {
+	
+	
+	VehicleDAO vehicleDAO=new VehicleDAO();
+	Vehicle vehicle =  vehicleDAO.find(id);
+
+
+return vehicle;
+
 }
 }

@@ -1,7 +1,12 @@
 package Model;
 
 import java.io.Serializable;
+import java.util.ArrayList;
 import java.util.Date;
+
+import DAO.FineDAO;
+import DAO.ViolationDAO;
+
 
 public class Fine implements Serializable {
 /**
@@ -16,8 +21,10 @@ private String gultyFirstName;
 private String gultyLastName;
 private String comment;
 private Policeman policeman;
+private int validation; 
+private ArrayList<Violation> violations;
 public Fine(int id, Vehicle typeVehicle, Plate plate, Date date, String gultyFirstName, String gultyLastName,
-		String comment, Policeman policeman) {
+		String comment, Policeman policeman,int validation,ArrayList<Violation> violations) {
 	super();
 	this.id = id;
 	this.typeVehicle = typeVehicle;
@@ -27,10 +34,18 @@ public Fine(int id, Vehicle typeVehicle, Plate plate, Date date, String gultyFir
 	this.gultyLastName = gultyLastName;
 	this.comment = comment;
 	this.policeman = policeman;
+	this.validation=validation;
+	this.violations=violations;
 }
 public Fine() {}
 public int getId() {
 	return id;
+}
+public int getValidation() {
+	return validation;
+}
+public ArrayList<Violation> getViolations() {
+	return violations;
 }
 public Vehicle getTypeVehicle() {
 	return typeVehicle;
@@ -53,6 +68,15 @@ public String getComment() {
 public Policeman getPoliceman() {
 	return policeman;
 }
+public static ArrayList<Fine>Findall() {
+	
+	
+	FineDAO fineDAO=new FineDAO();
+	ArrayList<Fine> fines =  fineDAO.findAll();
 
+
+return fines;
+
+}
 
 }

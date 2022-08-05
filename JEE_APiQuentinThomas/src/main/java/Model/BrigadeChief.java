@@ -2,13 +2,17 @@ package Model;
 
 import java.util.ArrayList;
 
+
+import DAO.BrigadeChiefDAO;
+
 public class BrigadeChief extends Staff {
 private ArrayList<Policeman> policemans;
+private ArrayList<Fine>fines;
 	public BrigadeChief(String firstname, String lastname, String matricule,int id) {
 		super(firstname, lastname, matricule,id);
 		// TODO Auto-generated constructor stub
 	}
-	public BrigadeChief(String firstname, String lastname, String matricule,int id,ArrayList<Policeman> policemans) {
+	public BrigadeChief(String firstname, String lastname, String matricule,int id,ArrayList<Policeman> policemans,ArrayList<Fine>fines) {
 		super(firstname, lastname, matricule,id);
 		// TODO Auto-generated constructor stub
 	}
@@ -17,4 +21,24 @@ private ArrayList<Policeman> policemans;
 		// TODO Auto-generated constructor stub
 	}
 
+	public static BrigadeChief login(String matricule,String pwd) {
+		
+		
+		BrigadeChiefDAO brigadeChiefDAO=new BrigadeChiefDAO();
+		BrigadeChief brigadeChief =  brigadeChiefDAO.login(matricule, pwd);
+	
+	
+	return brigadeChief;
+	
+}
+public  BrigadeChief find(int id) {
+		
+		
+		BrigadeChiefDAO brigadeChiefDAO=new BrigadeChiefDAO();
+		BrigadeChief brigadeChief =  brigadeChiefDAO.find(id);
+	
+	
+	return brigadeChief;
+	
+}
 }

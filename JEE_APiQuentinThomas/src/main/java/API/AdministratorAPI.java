@@ -41,16 +41,16 @@ public Response login(
 		@FormParam("password") String password) {
 	System.out.println(matricule);
 	System.out.println(password);
-	System.out.println("ici8");
+	
     administrator= (Administrator) Staff.login(matricule, password);
 	if(administrator != null) {
-		System.out.println("ici5");
+
 		String apiKey=getApiKey();
 		return Response.status(Status.OK)
 				.header("api-key", apiKey)
 				.entity(administrator).build();
 	}else {
-		System.out.println("ici4");
+		
 		error=Error.USER_AUTHENTICATION_FAILED;
 		error.setDescription("Invalid data for the login, verify your login and password");
 		return Response.status(Status.OK).entity(error.getJSON()).build();

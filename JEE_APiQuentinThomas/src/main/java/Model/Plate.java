@@ -2,6 +2,9 @@ package Model;
 
 import java.io.Serializable;
 
+import DAO.PlateDAO;
+import DAO.VehicleDAO;
+
 public class Plate implements Serializable{
 /**
 	 * 
@@ -13,6 +16,9 @@ public Plate(int id, String plateinformation) {
 	super();
 	this.id = id;
 	this.plateinformation = plateinformation;
+}
+public Plate() {
+	
 }
 public int getId() {
 	return id;
@@ -26,5 +32,14 @@ public String getPlateinformation() {
 public void setPlateinformation(String plateinformation) {
 	this.plateinformation = plateinformation;
 }
+public Plate find(int id) {
+	
+	
+	PlateDAO plateDAO=new PlateDAO();
+	Plate plate =  plateDAO.find(id);
 
+
+return plate;
+
+}
 }
