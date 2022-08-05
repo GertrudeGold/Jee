@@ -19,13 +19,14 @@ public class PolicemanDAO implements DAO<Policeman>{
 		boolean success=false;
 		CallableStatement callableStatement = null;
 		try {
-			String sql="{call insert_staff(?,?,?,?,?)}";
+			String sql="{call insert_staff(?,?,?,?,?,?)}";
 			callableStatement = conn.prepareCall(sql);
 			callableStatement.setString(1, obj.getFirstname());
 			callableStatement.setString(2, obj.getLastname());
 			callableStatement.setString(3, obj.getMatricule());
 			callableStatement.setString(4, obj.getPassword());
-			callableStatement.registerOutParameter(5, java.sql.Types.NUMERIC);
+			callableStatement.setInt(5, 1);
+			callableStatement.registerOutParameter(6, java.sql.Types.NUMERIC);
 			callableStatement.executeUpdate();
 			success = true;
 			return success;

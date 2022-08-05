@@ -33,9 +33,9 @@ public class CollectorAPI  extends BaseAPI{
 
 		String apiKey=getApiKey();
 		if(key.equals(apiKey)) {
-			BrigadeChief brigadeChief = new BrigadeChief(lastname,firstname,matricule,password);
+			Collector collector = new Collector(lastname,firstname,matricule,password);
 				
-						boolean success = brigadeChief.insert(brigadeChief);
+						boolean success = collector.insert(collector);
 						String responseJSON;
 						if(success) {
 							String baseURI=getBaseUri();

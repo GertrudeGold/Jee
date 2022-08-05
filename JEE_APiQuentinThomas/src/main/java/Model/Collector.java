@@ -19,6 +19,7 @@ ArrayList<Fine> fines;
 	public Collector(String firstname, String lastname, String matricule,int id,ArrayList<Fine> fines) {
 		super(firstname, lastname, matricule,id);
 		// TODO Auto-generated constructor stub
+		this.fines=fines;
 	}
 
 	public Collector() {

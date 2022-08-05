@@ -29,14 +29,17 @@ public class PolicemanAPI extends BaseAPI{
 			@FormParam("staff_firstname") String firstname,
 			@FormParam("staff_matricule") String matricule,
 			@FormParam("staff_password") String password,
+			@FormParam("chef_id") int idchief,
 			@HeaderParam("key") String key) 
 	{
 
 		String apiKey=getApiKey();
 		if(key.equals(apiKey)) {
-			BrigadeChief brigadeChief = new BrigadeChief(lastname,firstname,matricule,password);
+			BrigadeChief brigadeChief = new BrigadeChief();
+			brigadeChief=brigadeChief.find(idchief);
+			Policeman policeman = new Policeman(lastname,firstname,matricule,password,brigadeChief);
 				
-						boolean success = brigadeChief.insert(brigadeChief);
+						boolean success = policeman.insert(policeman);
 						String responseJSON;
 						if(success) {
 							String baseURI=getBaseUri();

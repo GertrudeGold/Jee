@@ -35,7 +35,7 @@ public class AdministratorDAO implements DAO<Administrator> {
 			return success;
 		}
 		catch(SQLException e) {
-			System.out.println("Erreur SQL update brigadechiefDAO " + e.getMessage() + e.toString() );
+			System.out.println("Erreur SQL update administrateurDAO " + e.getMessage() + e.toString() );
 			return success;
 		}
 		finally {

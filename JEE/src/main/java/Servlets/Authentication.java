@@ -59,20 +59,37 @@ public class Authentication extends HttpServlet {
 			System.out.println("ici6");
 			if(staff !=null && staff.getMatricule() != null) {
 				if(staff instanceof Policeman) {
+
 					response.sendRedirect("Policeman");
+
+					request.getRequestDispatcher("/WEB-INF/JSP/HomePoliceman.jsp").forward(request,response);
+
 					return;
 				}
 				if(staff instanceof BrigadeChief) {
+
 					response.sendRedirect("BrigadeChief");
+
+					request.getRequestDispatcher("/WEB-INF/JSP/HomeBrigadeChief.jsp").forward(request,response);
+
 					return;
 				}
 				if(staff instanceof Collector) {
+
 					response.sendRedirect("Collector");
+
+					request.getRequestDispatcher("/WEB-INF/JSP/HomeCollector.jsp").forward(request,response);
+
 					return;
 				}
 				if(staff instanceof Administrator) {
+
 					System.out.println("ici7");
 					request.getRequestDispatcher("/WEB-INF/JSP/AddAccount.jsp").forward(request,response);
+
+					//response.sendRedirect("AddAccount");
+					request.getRequestDispatcher("/WEB-INF/JSP/HomeAdministrator.jsp").forward(request,response);
+
 					return;
 				}
 			}			

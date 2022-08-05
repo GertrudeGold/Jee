@@ -16,6 +16,7 @@ public class Collector extends Staff {
 	}
 	public Collector(String firstname, String lastname, String matricule,int id,ArrayList<Fine> fines) {
 		super(firstname, lastname, matricule,id);
+		this.fines=fines;
 		// TODO Auto-generated constructor stub
 	}
 

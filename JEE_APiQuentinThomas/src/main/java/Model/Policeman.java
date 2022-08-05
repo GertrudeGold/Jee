@@ -11,13 +11,15 @@ public class Policeman extends Staff {
 		super(firstname, lastname, matricule,id);
 		// TODO Auto-generated constructor stub
 	}
-	public Policeman(String firstname, String lastname, String matricule,String password ) {
+	public Policeman(String firstname, String lastname, String matricule,String password,BrigadeChief brigadeChief ) {
 		super(firstname, lastname, matricule,password);
 		// TODO Auto-generated constructor stub
+		this.brigadeChief=brigadeChief;
 	}
 	public Policeman(String firstname, String lastname, String matricule,int id ,BrigadeChief brigadeChief) {
 		super(firstname, lastname, matricule,id);
 		// TODO Auto-generated constructor stub
+		this.brigadeChief=brigadeChief;
 	}
 	public Policeman() {
 		// TODO Auto-generated constructor stub

@@ -5,16 +5,32 @@
 <head>
 <meta charset="ISO-8859-1">
 <title>Add Account</title>
+<<<<<<< HEAD
 <script type="text/javascript" src="main.js"></script>
+=======
+>>>>>>> branch 'master' of https://github.com/GertrudeGold/Jee.git
 </head>
 <body>
+<script type="text/javascript">
+  function AddAccountSelected() 
+{
+  if(document.getElementById("Selectedvalue") == "Policeman")
+  {
+      document.getElementById("ChiefIdInput").style.display = "compact";
+  }
+}
+</script>
 <h1>Create account</h1>
 <form action="AddAccount" method="POST">
 	<table border="1" cellspacing="0" cellpadding="5">
 	<tr>
 		<td>Account type</td>
 		<td>
+<<<<<<< HEAD
 		<select name="type" id="Selectedvalue" onChange="AddAccountSelected();" >
+=======
+		<select name="type" id="Selectedvalue" onChange="AddAccountSelected()" >
+>>>>>>> branch 'master' of https://github.com/GertrudeGold/Jee.git
 			<option value="Administrator">Administrator</option>
 			<option value="BrigadeChief">Brigade chief</option>
 			<option value="Collector">Collector</option>

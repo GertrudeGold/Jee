@@ -36,9 +36,9 @@ public Response createMaintenance(
 
 	String apiKey=getApiKey();
 	if(key.equals(apiKey)) {
-		BrigadeChief brigadeChief = new BrigadeChief(lastname,firstname,matricule,password);
+		Administrator administrator = new Administrator(lastname,firstname,matricule,password);
 			
-					boolean success = brigadeChief.insert(brigadeChief);
+					boolean success = administrator.insert(administrator);
 					String responseJSON;
 					if(success) {
 						String baseURI=getBaseUri();

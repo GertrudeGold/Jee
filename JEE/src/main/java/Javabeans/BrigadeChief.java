@@ -28,6 +28,7 @@ public class BrigadeChief extends Staff {
 	}
 	public BrigadeChief(String firstname, String lastname, String matricule,int id,ArrayList<Fine> fines, ArrayList<Policeman> policemans) {
 		super(firstname, lastname, matricule,id);
+		this.fines=fines;
 		// TODO Auto-generated constructor stub
 	}
 
