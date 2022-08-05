@@ -98,9 +98,15 @@ public class BrigadeChiefDAO implements DAO<BrigadeChief> {
 				String firstname= resultSet.getString("staff_firstname");
 				int id= resultSet.getInt("staff_id");								
 				ArrayList<Policeman> policemans= new ArrayList<Policeman>();
-//				policemans = Policeman.findPolicemanToAChief;
+				ArrayList<Fine> fines = new ArrayList<Fine>();
+				fines = Fine.Findall();
+				for(Fine finetoremove : fines) {
+					if(finetoremove.getPoliceman().getBrigadeChief().getId() != id){
+						fines.remove(finetoremove);
+					}
+				}
 				
-				brigadeChief = new BrigadeChief(name,firstname,matricule,id,policemans);
+				brigadeChief = new BrigadeChief(name,firstname,matricule,id,policemans,fines);
 				return brigadeChief;
 			}
 		 
