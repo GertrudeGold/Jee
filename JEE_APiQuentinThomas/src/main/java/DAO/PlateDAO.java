@@ -23,11 +23,7 @@ public class PlateDAO implements DAO<Plate>{
 		return false;
 	}
 
-	@Override
-	public boolean delete(int id) {
-		// TODO Auto-generated method stub
-		return false;
-	}
+	
 
 	@Override
 	public int update(Plate obj) {

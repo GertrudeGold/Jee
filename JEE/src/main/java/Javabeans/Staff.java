@@ -18,16 +18,28 @@ public abstract class Staff implements Serializable {
 	private String lastname;
 	private String matricule;
 	private int id;
-	public Staff(String firstname, String lastname, String matricule,int id) {
+	private String password;
+	public Staff(String firstname, String lastname, String matricule,String password) {
+		
+		this.firstname = firstname;
+		this.lastname = lastname;
+		this.matricule = matricule;
+		this.password=password;
+	}
+public Staff(String firstname, String lastname, String matricule,int id) {
 		
 		this.firstname = firstname;
 		this.lastname = lastname;
 		this.matricule = matricule;
 		this.id=id;
+		
 	}
-	
 	public Staff() {}
 	
+	public String getPassword() {
+		return password;
+	}
+
 	public String getFirstname() {
 		return firstname;
 	}
@@ -83,4 +95,35 @@ public abstract class Staff implements Serializable {
 		return null;
 		
 	}
+	public  boolean insert(Staff staff) {
+		
+		boolean success=false;
+		 String res = "";
+	     res = staff.getMatricule().substring(0,2);
+	     if(res.equals("ad")) {
+			 AdministratorDAO administratorDAO=new AdministratorDAO();
+			
+			 return  administratorDAO.insert((Javabeans.Administrator) staff);
+		}
+		if(res.equals("pm")) {
+			 PolicemanDAO PolicemanDAO=new PolicemanDAO();
+			 
+			 return PolicemanDAO.insert((Policeman) staff);
+		}
+		if(res.equals("bc")) {
+			 BrigadeChiefDAO brigadeChiefDAO=new BrigadeChiefDAO();
+			
+			 return  brigadeChiefDAO.insert((BrigadeChief) staff);
+		}
+		if(res.equals("co")) {
+			 CollectorDAO collectorDAO=new CollectorDAO();
+			
+			 return collectorDAO.insert((Collector)staff);
+		}
+		
+		return success;
+		
+		
+	
+}
 }

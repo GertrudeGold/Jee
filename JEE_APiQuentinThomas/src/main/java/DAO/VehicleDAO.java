@@ -24,11 +24,7 @@ public class VehicleDAO implements DAO<Vehicle> {
 		return false;
 	}
 
-	@Override
-	public boolean delete(int id) {
-		// TODO Auto-generated method stub
-		return false;
-	}
+	
 
 	@Override
 	public int update(Vehicle obj) {

@@ -1,5 +1,6 @@
 package DAO;
 
+import java.sql.CallableStatement;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
@@ -14,8 +15,35 @@ public class PolicemanDAO implements DAO<Policeman>{
 
 	@Override
 	public boolean insert(Policeman obj) {
-		// TODO Auto-generated method stub
-		return false;
+		Connection conn=ConnectionDatabase.getConnection();
+		boolean success=false;
+		CallableStatement callableStatement = null;
+		try {
+			String sql="{call insert_staff(?,?,?,?,?)}";
+			callableStatement = conn.prepareCall(sql);
+			callableStatement.setString(1, obj.getFirstname());
+			callableStatement.setString(2, obj.getLastname());
+			callableStatement.setString(3, obj.getMatricule());
+			callableStatement.setString(4, obj.getPassword());
+			callableStatement.registerOutParameter(5, java.sql.Types.NUMERIC);
+			callableStatement.executeUpdate();
+			success = true;
+			return success;
+		}
+		catch(SQLException e) {
+			System.out.println("Erreur SQL update brigadechiefDAO " + e.getMessage() + e.toString() );
+			return success;
+		}
+		finally {
+			try {
+				if(callableStatement!=null) {
+					callableStatement.close();
+				}	
+				conn.close();
+			}catch (SQLException e) {
+				System.out.println(e.getMessage());
+			}
+		}
 	}
 
 	@Override
@@ -24,11 +52,7 @@ public class PolicemanDAO implements DAO<Policeman>{
 		return false;
 	}
 
-	@Override
-	public boolean delete(int id) {
-		// TODO Auto-generated method stub
-		return false;
-	}
+	
 
 	@Override
 	public int update(Policeman obj) {

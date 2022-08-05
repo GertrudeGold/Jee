@@ -18,11 +18,7 @@ public class StaffDAO implements DAO<Staff>{
 		return false;
 	}
 
-	@Override
-	public boolean delete(int id) {
-		// TODO Auto-generated method stub
-		return false;
-	}
+	
 
 	@Override
 	public int update(Staff obj) {

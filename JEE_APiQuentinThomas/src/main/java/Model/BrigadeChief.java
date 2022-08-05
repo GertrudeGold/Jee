@@ -12,6 +12,10 @@ private ArrayList<Fine>fines;
 		super(firstname, lastname, matricule,id);
 		// TODO Auto-generated constructor stub
 	}
+	public BrigadeChief(String firstname, String lastname, String matricule,String password) {
+		super(firstname, lastname, matricule,password);
+		// TODO Auto-generated constructor stub
+	}
 	public BrigadeChief(String firstname, String lastname, String matricule,int id,ArrayList<Policeman> policemans,ArrayList<Fine>fines) {
 		super(firstname, lastname, matricule,id);
 		// TODO Auto-generated constructor stub
@@ -21,6 +25,12 @@ private ArrayList<Fine>fines;
 		// TODO Auto-generated constructor stub
 	}
 
+	public ArrayList<Policeman> getPolicemans() {
+		return policemans;
+	}
+	public ArrayList<Fine> getFines() {
+		return fines;
+	}
 	public static BrigadeChief login(String matricule,String pwd) {
 		
 		

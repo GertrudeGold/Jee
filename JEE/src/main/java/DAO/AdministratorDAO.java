@@ -22,6 +22,7 @@ import com.sun.jersey.api.client.config.DefaultClientConfig;
 import com.sun.jersey.core.util.MultivaluedMapImpl;
 
 import Javabeans.Administrator;
+import Javabeans.BrigadeChief;
 
 
 
@@ -56,8 +57,24 @@ public class AdministratorDAO implements DAO<Administrator> {
 	}
 	@Override
 	public boolean insert(Administrator obj) {
-		// TODO Auto-generated method stub
-		return false;
+		
+			boolean success = false;
+			String key = getApiKey();
+			MultivaluedMap<String, String> parameters = new MultivaluedMapImpl();
+			parameters.add("staff_lastname", obj.getLastname());
+			parameters.add("staff_firstname", obj.getFirstname());
+			parameters.add("staff_matricule", obj.getMatricule());
+			parameters.add("staff_password", obj.getPassword());
+			ClientResponse res= resource
+					.path("brigadeChief")
+					.path("create")
+					.header(key, key)
+					.post(ClientResponse.class,parameters);
+			int StatusCode=res.getStatus();
+			if(StatusCode == 201) {
+				success=true;
+			}
+			return success;
 	}
 
 	@Override
@@ -110,8 +127,8 @@ public class AdministratorDAO implements DAO<Administrator> {
 //		return administrator;
 //	}
 	public Administrator login(String matricule,String password) {
-		System.out.println("ici10");
-		String key=getApiKey();
+		
+		//String key=getApiKey();
 		int status;
 		MultivaluedMap<String,String> paramsPost=new MultivaluedMapImpl();
 		paramsPost.add("matricule", matricule);
@@ -131,13 +148,13 @@ public class AdministratorDAO implements DAO<Administrator> {
 			headers=responseJSON.getHeaders();
 			List<String> apiKey=headers.get("api-key");
 			saveApiKey(apiKey.get(0));
-			System.out.println("ici1");
+			
 			ObjectMapper mapper=new ObjectMapper();
 			try {
-				System.out.println("ici2");
+				
 				return administrator=(Administrator) mapper.readValue(response, Administrator.class);
 			} catch (Exception e) {
-				System.out.println("ici3");
+				
 				return null;
 			}
 			

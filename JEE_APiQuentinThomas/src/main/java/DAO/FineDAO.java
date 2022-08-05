@@ -28,11 +28,7 @@ public class FineDAO implements DAO<Fine>{
 		return false;
 	}
 
-	@Override
-	public boolean delete(int id) {
-		// TODO Auto-generated method stub
-		return false;
-	}
+	
 
 	@Override
 	public int update(Fine obj) {

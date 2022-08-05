@@ -12,6 +12,7 @@ import javax.ws.rs.core.Response.Status;
 
 import DAO.AdministratorDAO;
 import Model.Administrator;
+import Model.BrigadeChief;
 import Model.Staff;
 import Other.Error;
 
@@ -22,7 +23,42 @@ private Error error = null;
 boolean success = false;
 Administrator administrator = null;
 
+@POST
+@Path("/create")
+@Produces(MediaType.APPLICATION_JSON)
+public Response createMaintenance(
+		@FormParam("staff_lastname") String lastname,
+		@FormParam("staff_firstname") String firstname,
+		@FormParam("staff_matricule") String matricule,
+		@FormParam("staff_password") String password,
+		@HeaderParam("key") String key) 
+{
 
+	String apiKey=getApiKey();
+	if(key.equals(apiKey)) {
+		BrigadeChief brigadeChief = new BrigadeChief(lastname,firstname,matricule,password);
+			
+					boolean success = brigadeChief.insert(brigadeChief);
+					String responseJSON;
+					if(success) {
+						String baseURI=getBaseUri();
+						responseJSON="{\"success\":\"true\"}";
+						return Response
+								.status(Status.CREATED)
+								.entity(responseJSON)
+								.build();
+						
+					}else {
+					return Response.status(Status.SERVICE_UNAVAILABLE).build();
+					}
+			
+				
+		}
+	else{
+		return Response.status(Status.UNAUTHORIZED).build();
+	}
+			
+}
 
 @GET
 @Produces(MediaType.APPLICATION_JSON)
@@ -39,8 +75,7 @@ public Response bidon() {
 public Response login(
 		@FormParam("matricule") String matricule, 
 		@FormParam("password") String password) {
-	System.out.println(matricule);
-	System.out.println(password);
+	
 	
     administrator= (Administrator) Staff.login(matricule, password);
 	if(administrator != null) {

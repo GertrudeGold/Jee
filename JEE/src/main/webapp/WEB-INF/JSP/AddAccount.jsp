@@ -1,10 +1,11 @@
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1" pageEncoding="ISO-8859-1"%>
+
 <!DOCTYPE html>
 <html>
 <head>
 <meta charset="ISO-8859-1">
 <title>Add Account</title>
-<script type="text/javascript" src="${pageContext.request.contextPath}/js/main.js"></script>
+<script type="text/javascript" src="main.js"></script>
 </head>
 <body>
 <h1>Create account</h1>
@@ -13,12 +14,13 @@
 	<tr>
 		<td>Account type</td>
 		<td>
-		<select name="type" id="Selectedvalue" onChange='AddAccountSelected();' >
+		<select name="type" id="Selectedvalue" onChange="AddAccountSelected();" >
 			<option value="Administrator">Administrator</option>
 			<option value="BrigadeChief">Brigade chief</option>
 			<option value="Collector">Collector</option>
 			<option value="Policeman">Policeman</option>
 		</select>
+		
 			<tr style="display: none" id="ChiefIdInput">
 			<td>Chief Id</td>
 			<td><input type="text" name="ChiefId" value="" size="20"></td>

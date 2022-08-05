@@ -50,8 +50,23 @@ public class PolicemanDAO implements DAO<Policeman>{
 	}
 	@Override
 	public boolean insert(Policeman obj) {
-		// TODO Auto-generated method stub
-		return false;
+		boolean success = false;
+		String key = getApiKey();
+		MultivaluedMap<String, String> parameters = new MultivaluedMapImpl();
+		parameters.add("staff_lastname", obj.getLastname());
+		parameters.add("staff_firstname", obj.getFirstname());
+		parameters.add("staff_matricule", obj.getMatricule());
+		parameters.add("staff_password", obj.getPassword());
+		ClientResponse res= resource
+				.path("brigadeChief")
+				.path("create")
+				.header(key, key)
+				.post(ClientResponse.class,parameters);
+		int StatusCode=res.getStatus();
+		if(StatusCode == 201) {
+			success=true;
+		}
+		return success;
 	}
 
 	@Override
@@ -79,7 +94,7 @@ public class PolicemanDAO implements DAO<Policeman>{
 	}
 	public Policeman login(String matricule,String password) {
 		System.out.println("ici10");
-		String key=getApiKey();
+		//String key=getApiKey();
 		int status;
 		MultivaluedMap<String,String> paramsPost=new MultivaluedMapImpl();
 		paramsPost.add("matricule", matricule);

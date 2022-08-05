@@ -1,7 +1,8 @@
+
 function AddAccountSelected() 
 {
-  if(document.getElementById("Selectedvalue") == "Policeman")
+  if(document.getElementById("Selectedvalue") === "Policeman")
   {
-  	document.getElementById("ChiefIdInput").style.display = "compact";
+  	document.getElementById("ChiefIdInput").style.display = 'block';
   }
 }

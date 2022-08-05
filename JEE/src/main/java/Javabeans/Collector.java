@@ -10,6 +10,10 @@ public class Collector extends Staff {
 		super(firstname, lastname, matricule,id);
 		// TODO Auto-generated constructor stub
 	}
+	public Collector(String firstname, String lastname, String matricule,String password) {
+		super(firstname, lastname, matricule,password);
+		// TODO Auto-generated constructor stub
+	}
 	public Collector(String firstname, String lastname, String matricule,int id,ArrayList<Fine> fines) {
 		super(firstname, lastname, matricule,id);
 		// TODO Auto-generated constructor stub

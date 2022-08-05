@@ -27,11 +27,7 @@ public class ViolationDAO implements DAO<Violation>{
 		return false;
 	}
 
-	@Override
-	public boolean delete(int id) {
-		// TODO Auto-generated method stub
-		return false;
-	}
+	
 
 	@Override
 	public int update(Violation obj) {
