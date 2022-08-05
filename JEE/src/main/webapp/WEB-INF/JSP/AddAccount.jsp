@@ -4,16 +4,24 @@
 <head>
 <meta charset="ISO-8859-1">
 <title>Add Account</title>
-<script type="text/javascript" src="${pageContext.request.contextPath}/js/main.js"></script>
 </head>
 <body>
+<script type="text/javascript">
+  function AddAccountSelected() 
+{
+  if(document.getElementById("Selectedvalue") == "Policeman")
+  {
+      document.getElementById("ChiefIdInput").style.display = "compact";
+  }
+}
+</script>
 <h1>Create account</h1>
 <form action="AddAccount" method="POST">
 	<table border="1" cellspacing="0" cellpadding="5">
 	<tr>
 		<td>Account type</td>
 		<td>
-		<select name="type" id="Selectedvalue" onChange='AddAccountSelected();' >
+		<select name="type" id="Selectedvalue" onChange="AddAccountSelected()" >
 			<option value="Administrator">Administrator</option>
 			<option value="BrigadeChief">Brigade chief</option>
 			<option value="Collector">Collector</option>

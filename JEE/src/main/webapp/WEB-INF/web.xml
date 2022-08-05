@@ -40,6 +40,69 @@
   </servlet-mapping>
   
   <servlet>
+      <servlet-name>RedirectAdministrator</servlet-name>
+      <servlet-class>Servlets.RedirectAdministrator</servlet-class>
+  </servlet>
+  <servlet-mapping>
+	  <servlet-name>RedirectAdministrator</servlet-name>
+	  <url-pattern>/RedirectAdministrator</url-pattern>
+  </servlet-mapping>
+  
+  <servlet>
+      <servlet-name>RedirectBrigadeChief</servlet-name>
+      <servlet-class>Servlets.RedirectBrigadeChief</servlet-class>
+  </servlet>
+  <servlet-mapping>
+	  <servlet-name>RedirectBrigadeChief</servlet-name>
+	  <url-pattern>/RedirectBrigadeChief</url-pattern>
+  </servlet-mapping>
+  
+  <servlet>
+      <servlet-name>RedirectCollector</servlet-name>
+      <servlet-class>Servlets.RedirectCollector</servlet-class>
+  </servlet>
+  <servlet-mapping>
+	  <servlet-name>RedirectCollector</servlet-name>
+	  <url-pattern>/RedirectCollector</url-pattern>
+  </servlet-mapping>
+  
+  <servlet>
+      <servlet-name>RedirectPoliceman</servlet-name>
+      <servlet-class>Servlets.RedirectPoliceman</servlet-class>
+  </servlet>
+  <servlet-mapping>
+	  <servlet-name>RedirectPoliceman</servlet-name>
+	  <url-pattern>/RedirectPoliceman</url-pattern>
+  </servlet-mapping>
+  
+  <servlet>
+      <servlet-name>ListAccount</servlet-name>
+      <servlet-class>Servlets.ListAccount</servlet-class>
+  </servlet>
+  <servlet-mapping>
+	  <servlet-name>ListAccount</servlet-name>
+	  <url-pattern>/ListAccount</url-pattern>
+  </servlet-mapping>
+  
+  <servlet>
+      <servlet-name>ListVehicle</servlet-name>
+      <servlet-class>Servlets.ListVehicle</servlet-class>
+  </servlet>
+  <servlet-mapping>
+	  <servlet-name>ListVehicle</servlet-name>
+	  <url-pattern>/ListVehicle</url-pattern>
+  </servlet-mapping>
+  
+  <servlet>
+      <servlet-name>ListViolation</servlet-name>
+      <servlet-class>Servlets.ListViolation</servlet-class>
+  </servlet>
+  <servlet-mapping>
+	  <servlet-name>ListViolation</servlet-name>
+	  <url-pattern>/ListViolation</url-pattern>
+  </servlet-mapping>
+  
+  <servlet>
       <servlet-name>AddAccount</servlet-name>
       <servlet-class>Servlets.AddAccount</servlet-class>
   </servlet>

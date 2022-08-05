@@ -58,20 +58,20 @@ public class Authentication extends HttpServlet {
 			Staff staff = (Staff)session.getAttribute("ConnectedStaff");
 			if(staff !=null && staff.getMatricule() != null) {
 				if(staff instanceof Policeman) {
-					response.sendRedirect("HomePoliceman");
+					request.getRequestDispatcher("/WEB-INF/JSP/HomePoliceman.jsp").forward(request,response);
 					return;
 				}
 				if(staff instanceof BrigadeChief) {
-					response.sendRedirect("HomeBrigadeChief");
+					request.getRequestDispatcher("/WEB-INF/JSP/HomeBrigadeChief.jsp").forward(request,response);
 					return;
 				}
 				if(staff instanceof Collector) {
-					response.sendRedirect("HomeCollector");
+					request.getRequestDispatcher("/WEB-INF/JSP/HomeCollector.jsp").forward(request,response);
 					return;
 				}
 				if(staff instanceof Administrator) {
 					//response.sendRedirect("AddAccount");
-					request.getRequestDispatcher("/WEB-INF/JSP/AddAccount.jsp").forward(request,response);
+					request.getRequestDispatcher("/WEB-INF/JSP/HomeAdministrator.jsp").forward(request,response);
 					return;
 				}
 			}			
