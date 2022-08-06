@@ -2,12 +2,6 @@ package Javabeans;
 
 import java.util.ArrayList;
 
-
-
-
-
-
-
 public class BrigadeChief extends Staff {
 	ArrayList<Fine> fines;
 	private ArrayList<Policeman> policemans;

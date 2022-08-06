@@ -8,12 +8,10 @@
 </head>
 <body>
 <h1>>Bienvenue ${ConnectedStaff.firstname} ${ConnectedStaff.lastname}</h1>
-
 <form action="RedirectAdministrator" method="post">
     <input type="submit" name="button1" value="Manage account" />
     <input type="submit" name="button2" value="Manage vehicle" />
     <input type="submit" name="button3" value="Manage violation" />
 </form>
-
 </body>
 </html>

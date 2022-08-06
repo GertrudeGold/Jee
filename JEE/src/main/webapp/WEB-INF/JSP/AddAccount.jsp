@@ -1,45 +1,33 @@
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1" pageEncoding="ISO-8859-1"%>
-
 <!DOCTYPE html>
 <html>
 <head>
 <meta charset="ISO-8859-1">
 <title>Add Account</title>
-<<<<<<< HEAD
-<script type="text/javascript" src="main.js"></script>
-=======
->>>>>>> branch 'master' of https://github.com/GertrudeGold/Jee.git
+<script type="text/javascript">
+	function showDiv(divId, element)
+    {
+    	document.getElementById(divId).style.display = element.value == 4 ? 'table-row' : 'none';
+    }
+</script>
 </head>
 <body>
-<script type="text/javascript">
-  function AddAccountSelected() 
-{
-  if(document.getElementById("Selectedvalue") == "Policeman")
-  {
-      document.getElementById("ChiefIdInput").style.display = "compact";
-  }
-}
-</script>
 <h1>Create account</h1>
 <form action="AddAccount" method="POST">
 	<table border="1" cellspacing="0" cellpadding="5">
 	<tr>
 		<td>Account type</td>
 		<td>
-<<<<<<< HEAD
-		<select name="type" id="Selectedvalue" onChange="AddAccountSelected();" >
-=======
-		<select name="type" id="Selectedvalue" onChange="AddAccountSelected()" >
->>>>>>> branch 'master' of https://github.com/GertrudeGold/Jee.git
-			<option value="Administrator">Administrator</option>
-			<option value="BrigadeChief">Brigade chief</option>
-			<option value="Collector">Collector</option>
-			<option value="Policeman">Policeman</option>
-		</select>
-		
-			<tr style="display: none" id="ChiefIdInput">
-			<td>Chief Id</td>
-			<td><input type="text" name="ChiefId" value="" size="20"></td>
+		<select id="test" name="form_select" onchange="showDiv('hidden_div', this)">
+           <option value=1>Admin</option>
+           <option value=2>Collector</option>
+           <option value=3>BrigadeChief</option>
+           <option value=4>Policeman</option>
+        </select>
+        </td>
+        	<tr style="display: none" id="hidden_div">
+              <td>Chief Id</td>
+              <td><input type="text" name="ChiefId" value="" size="20"></td>
 			</tr>
 	<tr>
 		<td>Lastname</td>
