@@ -10,6 +10,7 @@ import java.util.Date;
 
 import javax.ws.rs.DELETE;
 import javax.ws.rs.FormParam;
+import javax.ws.rs.GET;
 import javax.ws.rs.HeaderParam;
 import javax.ws.rs.POST;
 import javax.ws.rs.PUT;
@@ -107,6 +108,29 @@ public class BrigadeChiefAPI extends BaseAPI{
 		boolean success= brigadeChiefDAO.delete(id);
 		if(success) {
 			return Response.status(Status.NO_CONTENT).build();
+		}else {
+			return Response.status(Status.SERVICE_UNAVAILABLE).build();
+		}
+		}
+		else {
+			return Response.status(Status.UNAUTHORIZED).build();
+		}
+		
+	}
+	@GET
+	@Path("{id}")
+	@Produces(MediaType.APPLICATION_JSON)
+	public Response findBrigadeChiefToAPoliceman(
+			@PathParam("id") int id, 
+			@HeaderParam("key") String key)
+	{
+		String apiKey=getApiKey();
+		if(key.equals(apiKey)) {
+		boolean success= brigadeChiefDAO.delete(id);
+		if(success) {
+			BrigadeChief brigadeChief = new BrigadeChief();
+			brigadeChief=brigadeChief.findBrigadeChiefToAPoliceman(id);
+			return Response.status(Status.OK).entity(brigadeChief).build();
 		}else {
 			return Response.status(Status.SERVICE_UNAVAILABLE).build();
 		}
