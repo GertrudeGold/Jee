@@ -4,6 +4,9 @@ import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.Date;
 
+import DAO.FineDAO;
+import DAO.ViolationDAO;
+
 
 
 public class Fine implements Serializable {
@@ -67,6 +70,20 @@ public String getComment() {
 public Policeman getPoliceman() {
 	return policeman;
 }
-
+public boolean insert(Fine fine) {
+	boolean success;
+	FineDAO fineDAO=new FineDAO();
+	return success =  fineDAO.insert(fine);
+}
+public boolean delete(Fine fine) {
+	boolean success;
+	FineDAO fineDAO=new FineDAO();
+	return success =  fineDAO.delete(fine);
+}
+public boolean update(Fine fine) {
+	boolean success;
+	FineDAO fineDAO=new FineDAO();
+	return success =  fineDAO.update(fine);
+}
 
 }

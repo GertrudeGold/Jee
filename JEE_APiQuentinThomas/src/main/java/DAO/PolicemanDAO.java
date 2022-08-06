@@ -61,9 +61,9 @@ public class PolicemanDAO implements DAO<Policeman>{
 	
 
 	@Override
-	public int update(Policeman obj) {
+	public boolean update(Policeman obj) {
 		// TODO Auto-generated method stub
-		return 0;
+		return false;
 	}
 
 	@Override

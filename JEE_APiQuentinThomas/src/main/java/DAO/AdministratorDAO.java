@@ -64,9 +64,9 @@ public class AdministratorDAO implements DAO<Administrator> {
 	
 
 	@Override
-	public int update(Administrator obj) {
+	public boolean update(Administrator obj) {
 		// TODO Auto-generated method stub
-		return 0;
+		return false;
 	}
 
 	@Override

@@ -32,9 +32,9 @@ public class FineDAO implements DAO<Fine>{
 	
 
 	@Override
-	public int update(Fine obj) {
+	public boolean update(Fine obj) {
 		// TODO Auto-generated method stub
-		return 0;
+		return false;
 	}
 
 	@Override

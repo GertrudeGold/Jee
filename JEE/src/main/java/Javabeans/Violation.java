@@ -42,4 +42,14 @@ public class Violation implements Serializable{
 		ViolationDAO violationDAO=new ViolationDAO();
 		return success =  violationDAO.insert(violation);
 	}
+	public boolean delete(Violation violation) {
+		boolean success;
+		ViolationDAO violationDAO=new ViolationDAO();
+		return success =  violationDAO.delete(violation);
+	}
+	public boolean update(Violation violation) {
+		boolean success;
+		ViolationDAO violationDAO=new ViolationDAO();
+		return success =  violationDAO.update(violation);
+	}
 }

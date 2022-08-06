@@ -57,9 +57,9 @@ public class BrigadeChiefDAO implements DAO<BrigadeChief> {
 	
 
 	@Override
-	public int update(BrigadeChief obj) {
+	public boolean update(BrigadeChief obj) {
 		// TODO Auto-generated method stub
-		return 0;
+		return false;
 	}
 
 	@Override

@@ -13,7 +13,7 @@ public interface DAO<T> {
 	
 	public boolean delete(int id);
 	
-	public int update(T obj);
+	public boolean update(T obj);
 	
 	public T find(int id);
 	

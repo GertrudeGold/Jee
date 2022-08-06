@@ -78,5 +78,34 @@ public static ArrayList<Fine>Findall() {
 return fines;
 
 }
+public  boolean delete(Fine fine ) {
+	
+	boolean success;
+	FineDAO fineDAO=new FineDAO();
+	success =  fineDAO.delete(fine);
 
+
+return success;
+
+}
+public  boolean update(Fine fine ) {
+	
+	boolean success;
+	FineDAO fineDAO=new FineDAO();
+	success =  fineDAO.update(fine);
+
+
+return success;
+
+}
+public  boolean insert(Fine fine ) {
+	
+	boolean success;
+	FineDAO fineDAO=new FineDAO();
+	success =  fineDAO.insert(fine);
+
+
+return success;
+
+}
 }

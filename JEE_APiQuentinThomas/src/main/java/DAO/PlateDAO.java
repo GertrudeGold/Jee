@@ -26,9 +26,9 @@ public class PlateDAO implements DAO<Plate>{
 	
 
 	@Override
-	public int update(Plate obj) {
+	public boolean update(Plate obj) {
 		// TODO Auto-generated method stub
-		return 0;
+		return false;
 	}
 
 	@Override

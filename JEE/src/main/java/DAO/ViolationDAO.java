@@ -84,8 +84,21 @@ public class ViolationDAO implements DAO<Violation> {
 
 	@Override
 	public boolean update(Violation obj) {
-		// TODO Auto-generated method stub
-		return false;
+		boolean success = false;
+		String key = getApiKey();
+		MultivaluedMap<String, String> parameters = new MultivaluedMapImpl();
+		parameters.add("violation_type", obj.getType());
+		parameters.add("violation_amount", String.valueOf(obj.getPrice()));
+		ClientResponse res= resource
+				.path("violation")
+				.path(String.valueOf(obj.getId()))
+				.header(key, key)
+				.put(ClientResponse.class,parameters);
+		int StatusCode=res.getStatus();
+		if(StatusCode == 204) {
+			success=true;
+		}
+		return success;
 	}
 
 	@Override

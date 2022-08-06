@@ -151,4 +151,32 @@ public  boolean delete(Staff staff) {
 		
 		return success;	
 }
+public  boolean update(Staff staff) {
+	
+	boolean success=false;
+	 String res = "";
+     res = staff.getMatricule().substring(0,2);
+     if(res.equals("ad")) {
+		 AdministratorDAO administratorDAO=new AdministratorDAO();
+		
+		 return  administratorDAO.update((Javabeans.Administrator) staff);
+	}
+	if(res.equals("pm")) {
+		 PolicemanDAO PolicemanDAO=new PolicemanDAO();
+		 
+		 return PolicemanDAO.update((Policeman) staff);
+	}
+	if(res.equals("bc")) {
+		 BrigadeChiefDAO brigadeChiefDAO=new BrigadeChiefDAO();
+		
+		 return  brigadeChiefDAO.update((BrigadeChief) staff);
+	}
+	if(res.equals("co")) {
+		 CollectorDAO collectorDAO=new CollectorDAO();
+		
+		 return collectorDAO.update((Collector)staff);
+	}
+	
+	return success;
+}
 }
