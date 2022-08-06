@@ -43,9 +43,41 @@ public class ViolationDAO implements DAO<Violation>{
 
 	@Override
 	public ArrayList<Violation> findAll() {
-		// TODO Auto-generated method stub
-		return null;
+		ArrayList<Violation> violations = new ArrayList<Violation>();
+		
+		
+		
+		Connection conn=ConnectionDatabase.getConnection();
+		try {
+			PreparedStatement preparedStatement = conn.prepareStatement("Select * from (violation v inner join finedetail fd on v.violation_id= fd.violation_id)");
+			
+			ResultSet resultSet=preparedStatement.executeQuery();
+			while(resultSet.next()) {
+				int idviolation =  resultSet.getInt("violation_id");
+				String type= resultSet.getString("violation_type");
+				double amount= resultSet.getDouble("violation_amount");
+				
+				
+				Violation violation  = new Violation(idviolation,type,amount);				
+				violations.add(violation);
+				
+			}
+			
+	
+		} catch (Exception e) {
+			System.out.println(e.getMessage());
+		}
+		finally {
+			try {
+				
+				conn.close();
+			}catch (SQLException e) {
+				System.out.println(e.getMessage());
+			}
+		}
+		return violations;
 	}
+	
 	public ArrayList<Violation> GetViolationsToAFine(int id){
 		ArrayList<Violation> violations = new ArrayList<Violation>();
 		
@@ -53,8 +85,8 @@ public class ViolationDAO implements DAO<Violation>{
 		
 		Connection conn=ConnectionDatabase.getConnection();
 		try {
-			PreparedStatement preparedStatement = conn.prepareStatement("Select * from violation v inner join finedetail fd on v.violation_id= fd.violation_id where fine_id=?");
-			
+			PreparedStatement preparedStatement = conn.prepareStatement("Select * from( violation v inner join finedetail fd on v.violation_id= fd.violation_id) where fine_id=?");
+			preparedStatement.setInt(1, id);
 			ResultSet resultSet=preparedStatement.executeQuery();
 			while(resultSet.next()) {
 				int idviolation =  resultSet.getInt("violation_id");

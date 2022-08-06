@@ -65,8 +65,34 @@ public class VehicleDAO implements DAO<Vehicle> {
 
 	@Override
 	public ArrayList<Vehicle> findAll() {
-		// TODO Auto-generated method stub
-		return null;
+		ArrayList<Vehicle> vehicles = new ArrayList<Vehicle>();
+		
+		Connection conn=ConnectionDatabase.getConnection();
+		try {
+			PreparedStatement preparedStatement = conn.prepareStatement("SELECT * FROM Vehicle ");
+			
+			
+			ResultSet resultSet=preparedStatement.executeQuery();
+			if(resultSet.next()) {
+				String type = resultSet.getString("vehicle_type");
+				int id = resultSet.getInt("vehicle_id");
+				Vehicle vehicle = new Vehicle(type,id);				
+			
+				vehicles.add(vehicle);
+			}
+	
+		} catch (Exception e) {
+			System.out.println(e.getMessage());
+		}
+		finally {
+			try {
+				
+				conn.close();
+			}catch (SQLException e) {
+				System.out.println(e.getMessage());
+			}
+		}
+		return vehicles;
 	}
 
 }

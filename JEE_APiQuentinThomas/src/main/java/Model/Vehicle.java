@@ -1,7 +1,9 @@
 package Model;
 
 import java.io.Serializable;
+import java.util.ArrayList;
 
+import DAO.AdministratorDAO;
 import DAO.PolicemanDAO;
 import DAO.VehicleDAO;
 
@@ -41,6 +43,11 @@ public Vehicle find(int id) {
 
 
 return vehicle;
-
 }
+public static ArrayList<Vehicle> findAll(){
+	VehicleDAO vehicleDAO=new VehicleDAO();
+	ArrayList<Vehicle> vehicle = vehicleDAO.findAll();
+	return vehicle;
+}
+
 }

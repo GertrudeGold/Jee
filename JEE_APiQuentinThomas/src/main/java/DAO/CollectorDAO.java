@@ -19,13 +19,13 @@ public class CollectorDAO implements DAO<Collector>{
 		boolean success=false;
 		CallableStatement callableStatement = null;
 		try {
-			String sql="{call insert_staff(?,?,?,?,?)}";
+			String sql="{call insert_staff(?,?,?,?)}";
 			callableStatement = conn.prepareCall(sql);
 			callableStatement.setString(1, obj.getFirstname());
 			callableStatement.setString(2, obj.getLastname());
 			callableStatement.setString(3, obj.getMatricule());
 			callableStatement.setString(4, obj.getPassword());
-			callableStatement.registerOutParameter(5, java.sql.Types.NUMERIC);
+//			callableStatement.registerOutParameter(5, java.sql.Types.NUMERIC);
 			callableStatement.executeUpdate();
 			success = true;
 			return success;
@@ -68,8 +68,36 @@ public class CollectorDAO implements DAO<Collector>{
 
 	@Override
 	public ArrayList<Collector> findAll() {
-		// TODO Auto-generated method stub
-		return null;
+		ArrayList<Collector> collectors = new ArrayList<Collector>();
+		Connection conn=ConnectionDatabase.getConnection();
+		try {
+			PreparedStatement preparedStatement = conn.prepareStatement("SELECT * FROM( Staff s inner join BrigadeChief b on s.staff_id=b.staff_id) ");
+			
+			ResultSet resultSet=preparedStatement.executeQuery();
+			while(resultSet.next()) {
+				String name =  resultSet.getString("staff_lastname");
+				String firstname= resultSet.getString("staff_firstname");
+				String matricule= resultSet.getString("staff_matricule");
+				int id= resultSet.getInt("staff_id");	
+				ArrayList<Fine> fines = new ArrayList<Fine>();
+				fines=Fine.Findall();
+				Collector collector = new Collector(name,firstname,matricule,id,fines);			
+				collectors.add(collector);
+				
+			}
+	
+		} catch (Exception e) {
+			System.out.println(e.getMessage());
+		}
+		finally {
+			try {
+				
+				conn.close();
+			}catch (SQLException e) {
+				System.out.println(e.getMessage());
+			}
+		}
+		return collectors;
 	}
 	public  Collector login(String matricule,String password) {
 		Collector collector = null;

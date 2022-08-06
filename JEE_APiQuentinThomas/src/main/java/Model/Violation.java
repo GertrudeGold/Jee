@@ -42,4 +42,14 @@ public class Violation implements Serializable{
 	return violations;
 
 	}
+public static ArrayList<Violation>findAll() {
+		
+		
+		ViolationDAO violationDAO=new ViolationDAO();
+		ArrayList<Violation> violations =  violationDAO.findAll();
+
+
+	return violations;
+
+	}
 }

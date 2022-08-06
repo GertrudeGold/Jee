@@ -50,7 +50,7 @@ public class FineDAO implements DAO<Fine>{
 		
 		Connection conn=ConnectionDatabase.getConnection();
 		try {
-			PreparedStatement preparedStatement = conn.prepareStatement("SELECT * FROM Fine WHERE  fine_validation=1 ");
+			PreparedStatement preparedStatement = conn.prepareStatement("SELECT * FROM Fine ");
 			
 			ResultSet resultSet=preparedStatement.executeQuery();
 			while(resultSet.next()) {
@@ -59,7 +59,7 @@ public class FineDAO implements DAO<Fine>{
 				String fineguiltyfirstname= resultSet.getString("fine_guilty_firstname");
 				String  finecommentary= resultSet.getString("fine_commentary");
 				int id= resultSet.getInt("fine_id");		
-				int validation=1;
+				int validation= resultSet.getInt("fine_validation");	
 				int policemanid=resultSet.getInt("policeman_id");
 				Policeman policeman = new Policeman();
 				policeman =	policeman.find(policemanid);

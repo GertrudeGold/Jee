@@ -3,6 +3,7 @@ package Model;
 import java.util.ArrayList;
 
 import DAO.CollectorDAO;
+import DAO.PolicemanDAO;
 
 
 
@@ -35,4 +36,9 @@ ArrayList<Fine> fines;
 	return collector;
 	
 }
+	public static ArrayList<Collector> findAll(){
+		CollectorDAO collectorDAO=new CollectorDAO();
+		ArrayList<Collector> collector =  collectorDAO.findAll();
+		return collector;
+	}
 }

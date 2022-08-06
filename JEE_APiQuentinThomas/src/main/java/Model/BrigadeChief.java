@@ -51,4 +51,25 @@ public  BrigadeChief find(int id) {
 	return brigadeChief;
 	
 }
+public  static ArrayList<BrigadeChief> findAll() {
+	
+	
+	BrigadeChiefDAO brigadeChiefDAO=new BrigadeChiefDAO();
+	ArrayList<BrigadeChief> brigadeChiefs =  brigadeChiefDAO.findAll();
+
+
+return brigadeChiefs;
+
+}
+public  BrigadeChief findBrigadeChiefToAPoliceman(int id) {
+	
+	
+	BrigadeChiefDAO brigadeChiefDAO=new BrigadeChiefDAO();
+	BrigadeChief brigadeChief =  brigadeChiefDAO.findBrigadeChiefToAPoliceman(id);
+
+
+return brigadeChief;
+
+}
+
 }
