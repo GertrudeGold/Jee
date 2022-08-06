@@ -58,8 +58,34 @@ public class ViolationDAO implements DAO<Violation>{
 
 	@Override
 	public boolean update(Violation obj) {
-		// TODO Auto-generated method stub
-		return false;
+		Connection conn=ConnectionDatabase.getConnection();
+		boolean success=false;
+		CallableStatement callableStatement = null;
+		try {
+			String sql="{call update_violation(?,?)}";
+			callableStatement = conn.prepareCall(sql);
+			callableStatement.setString(1, obj.getType());
+			callableStatement.setDouble(2, obj.getPrice());
+			
+
+			callableStatement.executeUpdate();
+			success = true;
+			return success;
+		}
+		catch(SQLException e) {
+			System.out.println("Erreur SQL update violationDAO " + e.getMessage() + e.toString() );
+			return success;
+		}
+		finally {
+			try {
+				if(callableStatement!=null) {
+					callableStatement.close();
+				}	
+				conn.close();
+			}catch (SQLException e) {
+				System.out.println(e.getMessage());
+			}
+		}
 	}
 
 	@Override

@@ -6,6 +6,10 @@ import java.util.ArrayList;
 
 public class Administrator extends Staff {
 
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = -299473754370671086L;
 	ArrayList<Policeman> policemans = new ArrayList<Policeman>();
 	ArrayList<Collector> collectors = new ArrayList<Collector>();
 	ArrayList<BrigadeChief> brigadeChiefs = new ArrayList<BrigadeChief>();

@@ -18,8 +18,8 @@
 	<tr>
 		<td>Account type</td>
 		<td>
-		<select id="test" name="form_select" onchange="showDiv('hidden_div', this)">
-           <option value=1>Admin</option>
+		<select id="test" name="SelectedType" onchange="showDiv('hidden_div', this)">
+           <option value=1>Administrator</option>
            <option value=2>Collector</option>
            <option value=3>BrigadeChief</option>
            <option value=4>Policeman</option>

@@ -5,6 +5,10 @@ import java.util.ArrayList;
 
 public class Collector extends Staff {
 
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = -7415516270204843768L;
 	ArrayList<Fine> fines;
 	public Collector(String firstname, String lastname, String matricule,int id) {
 		super(firstname, lastname, matricule,id);

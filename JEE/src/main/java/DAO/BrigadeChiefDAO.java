@@ -142,13 +142,13 @@ public class BrigadeChiefDAO implements DAO<BrigadeChief>{
 			headers=responseJSON.getHeaders();
 			List<String> apiKey=headers.get("api-key");
 			saveApiKey(apiKey.get(0));
-			System.out.println("ici1");
+	
 			ObjectMapper mapper=new ObjectMapper();
 			try {
-				System.out.println("ici2");
+				
 				return brigadeChief=(BrigadeChief) mapper.readValue(response, BrigadeChief.class);
 			} catch (Exception e) {
-				System.out.println("ici3");
+				
 				return null;
 			}
 			
@@ -156,6 +156,32 @@ public class BrigadeChiefDAO implements DAO<BrigadeChief>{
 		
 		
 		return null;
+	
+	}
+	public BrigadeChief findBrigadeChiefToAPoliceman(int id) {
+		
+		String key=getApiKey();
+		int status;
+		
+		String res=resource
+				.path("BrigadeChief")
+				.path(String.valueOf(id))
+				.header(key, key)
+				.accept(MediaType.APPLICATION_JSON)
+				.get(String.class);
+		
+		BrigadeChief brigadeChief=null;
+		
+		ObjectMapper mapper=new ObjectMapper();
+		try {
+			
+			return brigadeChief = (BrigadeChief) mapper.readValue(res, BrigadeChief.class);
+		} catch (Exception e) {
+			System.out.println(e.getMessage());
+			return null;
+		}
+		
+		
 	
 	}
 }

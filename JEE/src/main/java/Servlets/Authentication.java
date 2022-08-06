@@ -27,8 +27,7 @@ public class Authentication extends HttpServlet {
 	private static String apiKey;
        
     public Authentication() {
-        super();
-        
+        super(); 
     }
     
     @Override
@@ -69,27 +68,19 @@ public class Authentication extends HttpServlet {
 				if(staff instanceof BrigadeChief) {
 
 					response.sendRedirect("BrigadeChief");
-
 					request.getRequestDispatcher("/WEB-INF/JSP/HomeBrigadeChief.jsp").forward(request,response);
-
 					return;
 				}
 				if(staff instanceof Collector) {
-
 					response.sendRedirect("Collector");
-
 					request.getRequestDispatcher("/WEB-INF/JSP/HomeCollector.jsp").forward(request,response);
-
 					return;
 				}
 				if(staff instanceof Administrator) {
-
 					System.out.println("ici7");
 					request.getRequestDispatcher("/WEB-INF/JSP/AddAccount.jsp").forward(request,response);
-
 					//response.sendRedirect("AddAccount");
 					request.getRequestDispatcher("/WEB-INF/JSP/HomeAdministrator.jsp").forward(request,response);
-
 					return;
 				}
 			}			
@@ -158,11 +149,7 @@ public class Authentication extends HttpServlet {
 				session.setAttribute("apiKey", apiKey);
 				session.setAttribute("ConnectedStaff", administrator);
 		}
-		
-			
-			
-
-		}
+	}
 		doGet(request, response);
 	}
 

@@ -3,36 +3,47 @@
 <html>
 <head>
 <meta charset="ISO-8859-1">
-<title>Add Account</title>
+<title>Modify Account</title>
+<script type="text/javascript">
+	function showDiv(divId, element)
+    {
+    	document.getElementById(divId).style.display = element.value == 4 ? 'table-row' : 'none';
+    }
+</script>
 </head>
 <body>
+
 <h1>Modify account</h1>
 <form action="ModifyAccount" method="POST">
 	<table border="1" cellspacing="0" cellpadding="5">
 	<tr>
 		<td>Account type</td>
 		<td>
-		<select id="type" name="type">
-			<option value="Administrator">Administrator</option>
-			<option value="BrigadeChief">Brigade chief</option>
-			<option value="Collector">Collector</option>
-			<option value="Policeman">Policeman</option>
-		</select>
-	</tr>
+		<select id="test" name="form_select" onchange="showDiv('hidden_div', this)">
+           <option value=1>Admin</option>
+           <option value=2>Collector</option>
+           <option value=3>BrigadeChief</option>
+           <option value=4>Policeman</option>
+        </select>
+        </td>
+        	<tr style="display: none" id="hidden_div">
+              <td>Chief Id</td>
+              <td><input type="text" name="ChiefId" value="<%= %>" size="20"></td>
+			</tr>
 	<tr>
 		<td>Lastname</td>
-		<td><input type="text" name="lastname" value="" size="20" required></td>
+		<td><input type="text" name="lastname" value="<%= %>" size="20" required></td>
 	</tr>
 	<tr>
 		<td>Firstname</td>
-		<td><input type="text" name="firstname" value="" size="20" required></td>
+		<td><input type="text" name="firstname" value="<%= %>" size="20" required></td>
 	</tr>	
 	<tr>
 		<td>Password</td>
-		<td><input type="password" name="password" value="" size="20" required></td>
+		<td><input type="password" name="password" value="<%= %>" size="20" required></td>
 	</tr>
 	<tr>
-		<td colspan="2" align="center"><input type="submit" name="submit" id="submit" value="Create"></td>
+		<td colspan="2" align="center"><input type="submit" name="submit" id="submit" value="Modify"></td>
 	</tr>
 	</table>
 </form>

@@ -9,9 +9,9 @@
 <body>
 <h1>>Bienvenue ${ConnectedStaff.firstname} ${ConnectedStaff.lastname}</h1>
 <form action="RedirectAdministrator" method="post">
-    <input type="submit" name="button1" value="Manage account" />
-    <input type="submit" name="button2" value="Manage vehicle" />
-    <input type="submit" name="button3" value="Manage violation" />
+    <input type="submit" name="ManageAccount" value="Manage account" />
+    <input type="submit" name="ManageVehicle" value="Manage vehicle" />
+    <input type="submit" name="ManageViolation" value="Manage violation" />
 </form>
 </body>
 </html>

@@ -1,5 +1,8 @@
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1" pageEncoding="ISO-8859-1"%>
-<%@page import="Javabeans.Staff" %>
+<%@page import="Javabeans.Administrator" %>
+<%@page import="Javabeans.BrigadeChief" %>
+<%@page import="Javabeans.Collector" %>
+<%@page import="Javabeans.Policeman" %>
 <%@page import="java.util.ArrayList" %>
 <!DOCTYPE html>
 <html>
@@ -8,8 +11,15 @@
 <title>List of account</title>
 </head>
 <body>
-<% ArrayList<Staff> accounts=(ArrayList<Staff>) request.getAttribute("Accounts");%>
+<% ArrayList<Administrator> adAccounts=(ArrayList<Administrator>)request.getAttribute("adAccounts");%>
+<% ArrayList<Collector> coAccounts=(ArrayList<Collector>) request.getAttribute("coAccounts");%>
+<% ArrayList<Policeman> pmAccounts=(ArrayList<Policeman>) request.getAttribute("pmAccounts");%>
+<% ArrayList<BrigadeChief> bcAccounts=(ArrayList<BrigadeChief>) request.getAttribute("bcAccounts");%>
 
+<form action="RedirectAdministrator" method="post">
+	<td><input type="submit" name="CreateAccount" value="Create"></td>
+</form>
+<h2>Administrator</h2>
 <table cellspacing="1" cellpadding="4" border="3">
 	<thead>
 		<tr>
@@ -23,17 +33,17 @@
 		</tr>
 	</thead>
 	<tbody>
-	<% for(int i=0;i<accounts.size();i++){
-		Staff account=accounts.get(i);%>
+	<% for(int i=0;i<adAccounts.size();i++){
+		Administrator account=adAccounts.get(i);%>
 		<tr>
 			<td><%= account.getId() %></td>
 			<td><%= account.getLastname() %></td>
 			<td><%= account.getFirstname() %></td>
 			<td><%= account.getMatricule() %></td>
 			<td><%= account.getPassword() %></td>
-			<form action="??" method="post">
-			<td><input type="submit" name="Modify" value="Modify"></td>
-			<td><input type="submit" name="Delete" value="Delete"></td>
+			<form action="RedirectAdministrator" method="post">
+			<td><button type="submit" name="ModifyAccount" value="<%=account%>">Modify</td>
+			<td><button type="submit" name="DeleteAccount" value="<%=account%>">Delete</td>
 			</form>
 		</tr>
 	<%} 
@@ -41,8 +51,102 @@
 	</tbody>
 </table>
 <br>
-<form action="??" method="post">
-	<td><input type="submit" name="Create" value="Create"></td>
-</form>
+<h2>BrigadeChief</h2>
+<table cellspacing="1" cellpadding="4" border="3">
+	<thead>
+		<tr>
+			<th>Id</<th>
+			<th>Lastname</<th>
+			<th>Firstname</<th>
+			<th>Matricule</<th>
+			<th>Password</<th>
+			<th>Modify</<th>
+			<th>Delete</<th>
+		</tr>
+	</thead>
+	<tbody>
+	<% for(int i=0;i<bcAccounts.size();i++){
+		BrigadeChief account=bcAccounts.get(i);%>
+		<tr>
+			<td><%= account.getId() %></td>
+			<td><%= account.getLastname() %></td>
+			<td><%= account.getFirstname() %></td>
+			<td><%= account.getMatricule() %></td>
+			<td><%= account.getPassword() %></td>
+			<form action="RedirectAdministrator" method="post">
+			<td><button type="submit" name="ModifyAccount" value="<%=account%>">Modify</td>
+			<td><button type="submit" name="DeleteAccount" value="<%=account%>">Delete</td>
+			</form>
+		</tr>
+	<%} 
+	%>
+	</tbody>
+</table>
+<br>
+<h2>Collector</h2>
+<table cellspacing="1" cellpadding="4" border="3">
+	<thead>
+		<tr>
+			<th>Id</<th>
+			<th>Lastname</<th>
+			<th>Firstname</<th>
+			<th>Matricule</<th>
+			<th>Password</<th>
+			<th>Modify</<th>
+			<th>Delete</<th>
+		</tr>
+	</thead>
+	<tbody>
+	<% for(int i=0;i<coAccounts.size();i++){
+		Collector account=coAccounts.get(i);%>
+		<tr>
+			<td><%= account.getId() %></td>
+			<td><%= account.getLastname() %></td>
+			<td><%= account.getFirstname() %></td>
+			<td><%= account.getMatricule() %></td>
+			<td><%= account.getPassword() %></td>
+			<form action="RedirectAdministrator" method="post">
+			<td><button type="submit" name="ModifyAccount" value="<%=account%>">Modify</td>
+			<td><button type="submit" name="DeleteAccount" value="<%=account%>">Delete</td>
+			</form>
+		</tr>
+	<%} 
+	%>
+	</tbody>
+</table>
+<br>
+<h2>Policeman</h2>
+<table cellspacing="1" cellpadding="4" border="3">
+	<thead>
+		<tr>
+			<th>Id</<th>
+			<th>Lastname</<th>
+			<th>Firstname</<th>
+			<th>Matricule</<th>
+			<th>Password</<th>
+			<th>Modify</<th>
+			<th>Delete</<th>
+		</tr>
+	</thead>
+	<tbody>
+	<% for(int i=0;i<pmAccounts.size();i++){
+		Policeman account=pmAccounts.get(i);%>
+		<tr>
+			<td><%= account.getId() %></td>
+			<td><%= account.getLastname() %></td>
+			<td><%= account.getFirstname() %></td>
+			<td><%= account.getMatricule() %></td>
+			<td><%= account.getPassword() %></td>
+			<form action="RedirectAdministrator" method="post">
+			<td><button type="submit" name="ModifyAccount" value="<%=account%>">Modify</td>
+			<td><button type="submit" name="DeleteAccount" value="<%=account%>">Delete</td>
+			</form>
+		</tr>
+	<%} 
+	%>
+	</tbody>
+</table>
+<br>
+
 </body>
 </html>

@@ -10,8 +10,8 @@
 <h1>>Bienvenue ${ConnectedStaff.firstname} ${ConnectedStaff.lastname}</h1>
 
 <form action="RedirectCollector" method="post">
-    <input type="submit" name="button1" value="Manage violation amount" />
-    <input type="submit" name="button2" value="See validated fine" />
+    <input type="submit" name="ManageViolationAmount" value="Manage violation amount" />
+    <input type="submit" name="SeeValidatedFine" value="See validated fine" />
 </form>
 
 </body>

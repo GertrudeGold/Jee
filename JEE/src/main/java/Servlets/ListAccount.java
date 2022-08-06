@@ -2,6 +2,7 @@ package Servlets;
 
 import java.io.IOException;
 
+
 import java.util.ArrayList;
 
 import javax.naming.Context;
@@ -12,7 +13,12 @@ import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 
+import Javabeans.Collector;
+import Javabeans.Policeman;
+import Javabeans.BrigadeChief;
+import Javabeans.Administrator;
 import Javabeans.Staff;
 
 @WebServlet("/ListAccount")
@@ -26,8 +32,20 @@ public class ListAccount extends HttpServlet {
 
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		// TODO Auto-generated method stub
-		//ArrayList<Staff> accounts=Staff.getAll();
-		//request.setAttribute("Accounts", accounts);
+		HttpSession session = request.getSession(false);
+		
+		Administrator admin = (Administrator) session.getAttribute("ConnectedStaff");
+		
+		ArrayList<Administrator> adAccounts= admin.getAdministrators();
+		ArrayList<Collector> coAccounts= admin.getCollectors();
+		ArrayList<Policeman> pmAccounts= admin.getPolicemans();
+		ArrayList<BrigadeChief> bcAccounts= admin.getBrigadeChiefs();
+
+		request.setAttribute("adAccounts", adAccounts);
+		request.setAttribute("coAccounts", coAccounts);
+		request.setAttribute("pmAccounts", pmAccounts);
+		request.setAttribute("bcAccounts", bcAccounts);
+		
 		request.getRequestDispatcher("/WEB-INF/JSP/ListAccount.jsp").forward(request,response);
 	}
 
