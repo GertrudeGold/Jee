@@ -65,8 +65,34 @@ public class AdministratorDAO implements DAO<Administrator> {
 
 	@Override
 	public boolean update(Administrator obj) {
-		// TODO Auto-generated method stub
-		return false;
+		Connection conn=ConnectionDatabase.getConnection();
+		boolean success=false;
+		CallableStatement callableStatement = null;
+		try {
+			String sql="{call update_staff(?,?,?,?)}";
+			callableStatement = conn.prepareCall(sql);
+			callableStatement.setString(1, obj.getFirstname());
+			callableStatement.setString(2, obj.getLastname());
+			callableStatement.setString(3, obj.getMatricule());
+			callableStatement.setString(4, obj.getPassword());
+			callableStatement.executeUpdate();
+			success = true;
+			return success;
+		}
+		catch(SQLException e) {
+			System.out.println("Erreur SQL update administrateurDAO " + e.getMessage() + e.toString() );
+			return success;
+		}
+		finally {
+			try {
+				if(callableStatement!=null) {
+					callableStatement.close();
+				}	
+				conn.close();
+			}catch (SQLException e) {
+				System.out.println(e.getMessage());
+			}
+		}
 	}
 
 	@Override

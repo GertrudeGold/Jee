@@ -55,8 +55,34 @@ public class VehicleDAO implements DAO<Vehicle> {
 
 	@Override
 	public boolean update(Vehicle obj) {
-		// TODO Auto-generated method stub
-		return false;
+		Connection conn=ConnectionDatabase.getConnection();
+		boolean success=false;
+		CallableStatement callableStatement = null;
+		try {
+			String sql="{call update_vehicle(?,?)}";
+			callableStatement = conn.prepareCall(sql);
+			callableStatement.setString(1, obj.getType());
+			
+			
+
+			callableStatement.executeUpdate();
+			success = true;
+			return success;
+		}
+		catch(SQLException e) {
+			System.out.println("Erreur SQL update vehicleDAO " + e.getMessage() + e.toString() );
+			return success;
+		}
+		finally {
+			try {
+				if(callableStatement!=null) {
+					callableStatement.close();
+				}	
+				conn.close();
+			}catch (SQLException e) {
+				System.out.println(e.getMessage());
+			}
+		}
 	}
 
 	@Override
