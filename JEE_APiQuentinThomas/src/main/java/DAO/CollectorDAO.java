@@ -55,9 +55,9 @@ public class CollectorDAO implements DAO<Collector>{
 	
 
 	@Override
-	public int update(Collector obj) {
+	public boolean update(Collector obj) {
 		// TODO Auto-generated method stub
-		return 0;
+		return false;
 	}
 
 	@Override

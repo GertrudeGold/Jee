@@ -18,20 +18,30 @@ import Model.Administrator;
 import Model.Staff;
 import Other.Error;
 @Path("/fine")
-public class FineAPI {
+public class FineAPI extends BaseAPI{
 
 	private FineDAO fineDAO = new FineDAO();
 	private Error error = null;
 	boolean success = false;
 	@DELETE
 	@Path("{id}")
-	public Response delete(@PathParam("id") int id) {
+	public Response delete(
+			@PathParam("id") int id, 
+			@HeaderParam("key") String key)
+	{
+		String apiKey=getApiKey();
+		if(key.equals(apiKey)) {
 		boolean success= fineDAO.delete(id);
 		if(success) {
 			return Response.status(Status.NO_CONTENT).build();
 		}else {
 			return Response.status(Status.SERVICE_UNAVAILABLE).build();
 		}
+		}
+		else {
+			return Response.status(Status.UNAUTHORIZED).build();
+		}
+		
 	}
 	
 }

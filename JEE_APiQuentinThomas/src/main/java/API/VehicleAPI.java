@@ -4,6 +4,7 @@ import javax.ws.rs.DELETE;
 import javax.ws.rs.FormParam;
 import javax.ws.rs.HeaderParam;
 import javax.ws.rs.POST;
+import javax.ws.rs.PUT;
 import javax.ws.rs.Path;
 import javax.ws.rs.PathParam;
 import javax.ws.rs.Produces;
@@ -14,6 +15,7 @@ import javax.ws.rs.core.Response.Status;
 import DAO.VehicleDAO;
 import DAO.ViolationDAO;
 import Model.Administrator;
+import Model.Collector;
 import Model.Vehicle;
 import Model.Violation;
 import Other.Error;
@@ -60,12 +62,44 @@ public class VehicleAPI extends BaseAPI{
 	}
 	@DELETE
 	@Path("{id}")
-	public Response delete(@PathParam("id") int id) {
+	public Response delete(
+			@PathParam("id") int id, 
+			@HeaderParam("key") String key)
+	{
+		String apiKey=getApiKey();
+		if(key.equals(apiKey)) {
 		boolean success= vehicleDAO.delete(id);
 		if(success) {
 			return Response.status(Status.NO_CONTENT).build();
 		}else {
 			return Response.status(Status.SERVICE_UNAVAILABLE).build();
 		}
+		}
+		else {
+			return Response.status(Status.UNAUTHORIZED).build();
+		}
+		
+	}
+	@PUT
+	@Path("{id}")
+	public Response update(@PathParam("id") int id,
+			@FormParam("vehicle_type") String type,
+			
+		
+			@HeaderParam("key") String key) {
+		String apiKey=getApiKey();
+
+		if(key.equals(apiKey)) {
+		Vehicle vehicle = new Vehicle(type);
+		boolean success= vehicle.update(vehicle);
+		if(success) {
+			return Response.status(Status.NO_CONTENT).build();
+		}else {
+			return Response.status(Status.SERVICE_UNAVAILABLE).build();
+		}
+		}else {
+			return Response.status(Status.UNAUTHORIZED).build();
+		}
+
 	}
 }

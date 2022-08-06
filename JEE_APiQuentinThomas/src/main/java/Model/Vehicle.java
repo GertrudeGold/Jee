@@ -60,5 +60,15 @@ public boolean insert(Vehicle vehicle) {
 	VehicleDAO vehicleDAO=new VehicleDAO();
 	return success =  vehicleDAO.insert(vehicle);
 }
+public boolean delete(Vehicle vehicle) {
+	boolean success;
+	VehicleDAO vehicleDAO=new VehicleDAO();
+	return success =  vehicleDAO.delete(vehicle);
+}
+public boolean update(Vehicle vehicle) {
+	boolean success;
+	VehicleDAO vehicleDAO=new VehicleDAO();
+	return success =  vehicleDAO.update(vehicle);
+}
 
 }

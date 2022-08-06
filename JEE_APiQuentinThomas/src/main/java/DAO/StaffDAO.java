@@ -21,9 +21,9 @@ public class StaffDAO implements DAO<Staff>{
 	
 
 	@Override
-	public int update(Staff obj) {
+	public boolean update(Staff obj) {
 		// TODO Auto-generated method stub
-		return 0;
+		return false;
 	}
 
 	@Override

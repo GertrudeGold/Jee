@@ -57,9 +57,9 @@ public class ViolationDAO implements DAO<Violation>{
 	
 
 	@Override
-	public int update(Violation obj) {
+	public boolean update(Violation obj) {
 		// TODO Auto-generated method stub
-		return 0;
+		return false;
 	}
 
 	@Override

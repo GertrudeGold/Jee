@@ -54,9 +54,9 @@ public class VehicleDAO implements DAO<Vehicle> {
 	
 
 	@Override
-	public int update(Vehicle obj) {
+	public boolean update(Vehicle obj) {
 		// TODO Auto-generated method stub
-		return 0;
+		return false;
 	}
 
 	@Override

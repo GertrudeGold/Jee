@@ -59,7 +59,7 @@ public class PolicemanDAO implements DAO<Policeman>{
 		parameters.add("staff_password", obj.getPassword());
 		parameters.add("chief_id", String.valueOf(obj.getBrigadeChief().getId()));
 		ClientResponse res= resource
-				.path("brigadeChief")
+				.path("policeman")
 				.path("create")
 				.header(key, key)
 				.post(ClientResponse.class,parameters);
@@ -90,8 +90,24 @@ public class PolicemanDAO implements DAO<Policeman>{
 
 	@Override
 	public boolean update(Policeman obj) {
-		// TODO Auto-generated method stub
-		return false;
+		boolean success = false;
+		String key = getApiKey();
+		MultivaluedMap<String, String> parameters = new MultivaluedMapImpl();
+		parameters.add("staff_lastname", obj.getLastname());
+		parameters.add("staff_firstname", obj.getFirstname());
+		parameters.add("staff_matricule", obj.getMatricule());
+		parameters.add("staff_password", obj.getPassword());
+		parameters.add("chief_id", String.valueOf(obj.getBrigadeChief().getId()));
+		ClientResponse res= resource
+				.path("policeman")
+				.path(String.valueOf(obj.getId()))
+				.header(key, key)
+				.put(ClientResponse.class,parameters);
+		int StatusCode=res.getStatus();
+		if(StatusCode == 204) {
+			success=true;
+		}
+		return success;
 	}
 
 	@Override

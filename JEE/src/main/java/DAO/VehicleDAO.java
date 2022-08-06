@@ -73,8 +73,20 @@ public class VehicleDAO implements DAO<Vehicle>{
 
 	@Override
 	public boolean update(Vehicle obj) {
-		// TODO Auto-generated method stub
-		return false;
+		boolean success = false;
+		String key = getApiKey();
+		MultivaluedMap<String, String> parameters = new MultivaluedMapImpl();
+		parameters.add("vehicle_type", obj.getType());
+		ClientResponse res= resource
+				.path("vehicle")
+				.path(String.valueOf(obj.getId()))
+				.header(key, key)
+				.put(ClientResponse.class,parameters);
+		int StatusCode=res.getStatus();
+		if(StatusCode == 204) {
+			success=true;
+		}
+		return success;
 	}
 
 	@Override

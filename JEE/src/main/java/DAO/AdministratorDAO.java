@@ -66,7 +66,7 @@ public class AdministratorDAO implements DAO<Administrator> {
 			parameters.add("staff_matricule", obj.getMatricule());
 			parameters.add("staff_password", obj.getPassword());
 			ClientResponse res= resource
-					.path("brigadeChief")
+					.path("administrator")
 					.path("create")
 					.header(key, key)
 					.post(ClientResponse.class,parameters);
@@ -98,8 +98,23 @@ public class AdministratorDAO implements DAO<Administrator> {
 
 	@Override
 	public boolean update(Administrator obj) {
-		// TODO Auto-Administrator method stub
-		return false;
+		boolean success = false;
+		String key = getApiKey();
+		MultivaluedMap<String, String> parameters = new MultivaluedMapImpl();
+		parameters.add("staff_lastname", obj.getLastname());
+		parameters.add("staff_firstname", obj.getFirstname());
+		parameters.add("staff_matricule", obj.getMatricule());
+		parameters.add("staff_password", obj.getPassword());
+		ClientResponse res= resource
+				.path("administrator")
+				.path(String.valueOf(obj.getId()))
+				.header(key, key)
+				.put(ClientResponse.class,parameters);
+		int StatusCode=res.getStatus();
+		if(StatusCode == 204) {
+			success=true;
+		}
+		return success;
 	}
 
 	@Override
