@@ -31,7 +31,7 @@ public class CollectorDAO implements DAO<Collector>{
 			return success;
 		}
 		catch(SQLException e) {
-			System.out.println("Erreur SQL update brigadechiefDAO " + e.getMessage() + e.toString() );
+			System.out.println("Erreur SQL insert brigadechiefDAO " + e.getMessage() + e.toString() );
 			return success;
 		}
 		finally {
@@ -130,6 +130,35 @@ public class CollectorDAO implements DAO<Collector>{
 			}
 		}
 		return collector;
+	}
+
+	@Override
+	public boolean delete(int id) {
+		Connection conn=ConnectionDatabase.getConnection();
+		boolean success=false;
+		CallableStatement callableStatement = null;
+		try {
+			String sql="{call delete_staff(?)}";
+			callableStatement = conn.prepareCall(sql);
+			callableStatement.setInt(1, id);
+			callableStatement.executeUpdate();
+			success = true;
+			return success;
+		}
+		catch(SQLException e) {
+			System.out.println("Erreur SQL delete collectorDAO " + e.getMessage() + e.toString() );
+			return success;
+		}
+		finally {
+			try {
+				if(callableStatement!=null) {
+					callableStatement.close();
+				}	
+				conn.close();
+			}catch (SQLException e) {
+				System.out.println(e.getMessage());
+			}
+		}
 	}
 
 }

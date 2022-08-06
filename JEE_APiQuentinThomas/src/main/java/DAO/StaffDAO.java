@@ -38,4 +38,10 @@ public class StaffDAO implements DAO<Staff>{
 		return null;
 	}
 
+	@Override
+	public boolean delete(int id) {
+		// TODO Auto-generated method stub
+		return false;
+	}
+
 }

@@ -122,8 +122,33 @@ public Staff(String firstname, String lastname, String matricule,int id) {
 		}
 		
 		return success;
+}
+public  boolean delete(Staff staff) {
 		
+		boolean success=false;
+		 String res = "";
+	     res = staff.getMatricule().substring(0,2);
+	     if(res.equals("ad")) {
+			 AdministratorDAO administratorDAO=new AdministratorDAO();
+			
+			 return  administratorDAO.delete((Javabeans.Administrator) staff);
+		}
+		if(res.equals("pm")) {
+			 PolicemanDAO PolicemanDAO=new PolicemanDAO();
+			 
+			 return PolicemanDAO.delete((Policeman) staff);
+		}
+		if(res.equals("bc")) {
+			 BrigadeChiefDAO brigadeChiefDAO=new BrigadeChiefDAO();
+			
+			 return  brigadeChiefDAO.delete((BrigadeChief) staff);
+		}
+		if(res.equals("co")) {
+			 CollectorDAO collectorDAO=new CollectorDAO();
+			
+			 return collectorDAO.delete((Collector)staff);
+		}
 		
-	
+		return success;	
 }
 }

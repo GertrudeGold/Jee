@@ -1,5 +1,6 @@
 package DAO;
 
+import java.sql.CallableStatement;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
@@ -90,6 +91,35 @@ public class FineDAO implements DAO<Fine>{
 			}
 		}
 		return fines;
+	}
+
+	@Override
+	public boolean delete(int id) {
+		Connection conn=ConnectionDatabase.getConnection();
+		boolean success=false;
+		CallableStatement callableStatement = null;
+		try {
+			String sql="{call delete_fine(?)}";
+			callableStatement = conn.prepareCall(sql);
+			callableStatement.setInt(1, id);
+			callableStatement.executeUpdate();
+			success = true;
+			return success;
+		}
+		catch(SQLException e) {
+			System.out.println("Erreur SQL delete fineDAO " + e.getMessage() + e.toString() );
+			return success;
+		}
+		finally {
+			try {
+				if(callableStatement!=null) {
+					callableStatement.close();
+				}	
+				conn.close();
+			}catch (SQLException e) {
+				System.out.println(e.getMessage());
+			}
+		}
 	}
 
 }

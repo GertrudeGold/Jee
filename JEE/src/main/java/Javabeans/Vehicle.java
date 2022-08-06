@@ -2,6 +2,9 @@ package Javabeans;
 
 import java.io.Serializable;
 
+import DAO.VehicleDAO;
+
+
 public class Vehicle implements Serializable {
 /**
 	 * 
@@ -14,6 +17,11 @@ public Vehicle(String type, int id) {
 	this.type = type;
 	this.id = id;
 }
+public Vehicle(String type) {
+	super();
+	this.type = type;
+	
+}
 public String getType() {
 	return type;
 }
@@ -25,5 +33,10 @@ public int getId() {
 }
 public void setId(int id) {
 	this.id = id;
+}
+public boolean insert(Vehicle vehicle) {
+	boolean success;
+	VehicleDAO vehicleDAO=new VehicleDAO();
+	return success =  vehicleDAO.insert(vehicle);
 }
 }

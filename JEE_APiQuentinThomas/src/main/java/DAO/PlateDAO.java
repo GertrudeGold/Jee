@@ -68,4 +68,10 @@ public class PlateDAO implements DAO<Plate>{
 		return null;
 	}
 
+	@Override
+	public boolean delete(int id) {
+		// TODO Auto-generated method stub
+		return false;
+	}
+
 }

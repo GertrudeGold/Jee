@@ -1,5 +1,6 @@
 package DAO;
 
+import java.sql.CallableStatement;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
@@ -17,8 +18,34 @@ public class ViolationDAO implements DAO<Violation>{
 
 	@Override
 	public boolean insert(Violation obj) {
-		// TODO Auto-generated method stub
-		return false;
+		Connection conn=ConnectionDatabase.getConnection();
+		boolean success=false;
+		CallableStatement callableStatement = null;
+		try {
+			String sql="{call insert_violation(?,?)}";
+			callableStatement = conn.prepareCall(sql);
+			callableStatement.setString(1, obj.getType());
+			callableStatement.setDouble(2, obj.getPrice());
+			
+
+			callableStatement.executeUpdate();
+			success = true;
+			return success;
+		}
+		catch(SQLException e) {
+			System.out.println("Erreur SQL insert violationDAO " + e.getMessage() + e.toString() );
+			return success;
+		}
+		finally {
+			try {
+				if(callableStatement!=null) {
+					callableStatement.close();
+				}	
+				conn.close();
+			}catch (SQLException e) {
+				System.out.println(e.getMessage());
+			}
+		}
 	}
 
 	@Override
@@ -112,5 +139,34 @@ public class ViolationDAO implements DAO<Violation>{
 			}
 		}
 		return violations;
+	}
+
+	@Override
+	public boolean delete(int id) {
+		Connection conn=ConnectionDatabase.getConnection();
+		boolean success=false;
+		CallableStatement callableStatement = null;
+		try {
+			String sql="{call delete_violation(?)}";
+			callableStatement = conn.prepareCall(sql);
+			callableStatement.setInt(1, id);
+			callableStatement.executeUpdate();
+			success = true;
+			return success;
+		}
+		catch(SQLException e) {
+			System.out.println("Erreur SQL delete violationDAO " + e.getMessage() + e.toString() );
+			return success;
+		}
+		finally {
+			try {
+				if(callableStatement!=null) {
+					callableStatement.close();
+				}	
+				conn.close();
+			}catch (SQLException e) {
+				System.out.println(e.getMessage());
+			}
+		}
 	}
 }
