@@ -21,19 +21,19 @@ public class BrigadeChiefDAO implements DAO<BrigadeChief> {
 		boolean success=false;
 		CallableStatement callableStatement = null;
 		try {
-			String sql="{call insert_staff(?,?,?,?,?)}";
+			String sql="{call insert_staff(?,?,?,?)}";
 			callableStatement = conn.prepareCall(sql);
 			callableStatement.setString(1, obj.getFirstname());
 			callableStatement.setString(2, obj.getLastname());
 			callableStatement.setString(3, obj.getMatricule());
 			callableStatement.setString(4, obj.getPassword());
-			callableStatement.registerOutParameter(5, java.sql.Types.NUMERIC);
+//			callableStatement.registerOutParameter(5, java.sql.Types.NUMERIC);
 			callableStatement.executeUpdate();
 			success = true;
 			return success;
 		}
 		catch(SQLException e) {
-			System.out.println("Erreur SQL update brigadechiefDAO " + e.getMessage() + e.toString() );
+			System.out.println("Erreur SQL insert brigadechiefDAO " + e.getMessage() + e.toString() );
 			return success;
 		}
 		finally {
@@ -67,7 +67,7 @@ public class BrigadeChiefDAO implements DAO<BrigadeChief> {
 		BrigadeChief brigadeChief = null;
 		Connection conn=ConnectionDatabase.getConnection();
 		try {
-			PreparedStatement preparedStatement = conn.prepareStatement("SELECT * FROM(Staff s inner join BrigadeChief b on s.staff_id=b.staff_id)where staff_id =? ");
+			PreparedStatement preparedStatement = conn.prepareStatement("SELECT * FROM(Staff s inner join BrigadeChief b on s.staff_id=b.staff_id)where b.chief_id =? ");
 			preparedStatement.setInt(1, id);
 			
 			ResultSet resultSet=preparedStatement.executeQuery();
@@ -79,12 +79,13 @@ public class BrigadeChiefDAO implements DAO<BrigadeChief> {
 				policemans = Policeman.findPolicemanToAChief(id);
 				ArrayList<Fine> fines = new ArrayList<Fine>();
 				fines = Fine.Findall();
+				if(fines !=null) {
 				for(Fine finetoremove : fines) {
 					if(finetoremove.getPoliceman().getBrigadeChief().getId() != id){
 						fines.remove(finetoremove);
 					}
 				}
-				
+				}
 				brigadeChief = new BrigadeChief(name,firstname,matricule,id,policemans,fines);
 				
 				
@@ -104,12 +105,83 @@ public class BrigadeChiefDAO implements DAO<BrigadeChief> {
 		}
 		return brigadeChief;
 	}
-
+	public BrigadeChief findBrigadeChiefToAPoliceman(int id) {
+		BrigadeChief brigadeChief = null;
+		Connection conn=ConnectionDatabase.getConnection();
+		try {
+			PreparedStatement preparedStatement = conn.prepareStatement("SELECT * FROM(Staff s inner join BrigadeChief b on s.staff_id=b.staff_id)where b.chief_id =? ");
+			preparedStatement.setInt(1, id);
+			
+			ResultSet resultSet=preparedStatement.executeQuery();
+			if(resultSet.next()) {
+				String name =  resultSet.getString("staff_lastname");
+				String firstname= resultSet.getString("staff_firstname");
+				String matricule= resultSet.getString("staff_matricule");		
+				
+				
+				brigadeChief = new BrigadeChief(name,firstname,matricule,id);
+				
+				
+				return brigadeChief;
+			}
+	
+		} catch (Exception e) {
+			System.out.println(e.getMessage());
+		}
+		finally {
+			try {
+				
+				conn.close();
+			}catch (SQLException e) {
+				System.out.println(e.getMessage());
+			}
+		}
+		return brigadeChief;
+	}
 	@Override
 	public ArrayList<BrigadeChief> findAll() {
-		// TODO Auto-generated method stub
-		return null;
+		ArrayList<BrigadeChief> brigadeChiefs = new ArrayList();
+		Connection conn=ConnectionDatabase.getConnection();
+		try {
+			PreparedStatement preparedStatement = conn.prepareStatement("SELECT * FROM Staff s inner join BrigadeChief b on s.staff_id=b.staff_id ");
+			
+			ResultSet resultSet=preparedStatement.executeQuery();
+			while(resultSet.next()) {
+				String name =  resultSet.getString("staff_lastname");
+				String firstname= resultSet.getString("staff_firstname");
+				String matricule= resultSet.getString("staff_matricule");
+				int id= resultSet.getInt("staff_id");	
+				int chefid= resultSet.getInt("chief_id");	
+				ArrayList<Policeman> policemans= new ArrayList<Policeman>();
+				policemans=Policeman.findPolicemanToAChief(chefid);
+				ArrayList<Fine> fines = new ArrayList<Fine>();
+				fines = Fine.Findall();
+				for(Fine finetoremove : fines) {
+					if(finetoremove.getPoliceman().getBrigadeChief().getId() != id || finetoremove.getValidation()==1){
+						fines.remove(finetoremove);
+					}
+				}
+				
+				BrigadeChief brigadeChief = new BrigadeChief(name,firstname,matricule,id,policemans,fines);
+				brigadeChiefs.add(brigadeChief);
+				
+			}
+		 
+		  
+		} catch (Exception e) {
+			System.out.println(e.getMessage());
+		}
+		finally {
+			try {
+				
+				conn.close();
+			}catch (SQLException e) {
+				System.out.println(e.getMessage());
+			}
+		}
+		return brigadeChiefs;
 	}
+	
 	public  BrigadeChief login(String matricule,String password) {
 		BrigadeChief brigadeChief = null;
 		Connection conn=ConnectionDatabase.getConnection();
@@ -121,12 +193,14 @@ public class BrigadeChiefDAO implements DAO<BrigadeChief> {
 			if(resultSet.next()) {
 				String name =  resultSet.getString("staff_lastname");
 				String firstname= resultSet.getString("staff_firstname");
-				int id= resultSet.getInt("staff_id");								
+				int id= resultSet.getInt("staff_id");	
+				int chefid= resultSet.getInt("chief_id");	
 				ArrayList<Policeman> policemans= new ArrayList<Policeman>();
+				policemans=Policeman.findPolicemanToAChief(chefid);
 				ArrayList<Fine> fines = new ArrayList<Fine>();
 				fines = Fine.Findall();
 				for(Fine finetoremove : fines) {
-					if(finetoremove.getPoliceman().getBrigadeChief().getId() != id){
+					if(finetoremove.getPoliceman().getBrigadeChief().getId() != id || finetoremove.getValidation()==1){
 						fines.remove(finetoremove);
 					}
 				}
@@ -148,5 +222,34 @@ public class BrigadeChiefDAO implements DAO<BrigadeChief> {
 			}
 		}
 		return brigadeChief;
+	}
+
+	@Override
+	public boolean delete(int id) {
+		Connection conn=ConnectionDatabase.getConnection();
+		boolean success=false;
+		CallableStatement callableStatement = null;
+		try {
+			String sql="{call delete_staff(?)}";
+			callableStatement = conn.prepareCall(sql);
+			callableStatement.setInt(1, id);
+			callableStatement.executeUpdate();
+			success = true;
+			return success;
+		}
+		catch(SQLException e) {
+			System.out.println("Erreur SQL delete brigadeChiefDAO " + e.getMessage() + e.toString() );
+			return success;
+		}
+		finally {
+			try {
+				if(callableStatement!=null) {
+					callableStatement.close();
+				}	
+				conn.close();
+			}catch (SQLException e) {
+				System.out.println(e.getMessage());
+			}
+		}
 	}
 }

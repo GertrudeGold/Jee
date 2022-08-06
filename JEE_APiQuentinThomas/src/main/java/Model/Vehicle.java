@@ -1,9 +1,12 @@
 package Model;
 
 import java.io.Serializable;
+import java.util.ArrayList;
 
+import DAO.AdministratorDAO;
 import DAO.PolicemanDAO;
 import DAO.VehicleDAO;
+import DAO.ViolationDAO;
 
 public class Vehicle implements Serializable {
 /**
@@ -16,6 +19,11 @@ public Vehicle(String type, int id) {
 	super();
 	this.type = type;
 	this.id = id;
+}
+public Vehicle(String type) {
+	super();
+	this.type = type;
+	
 }
 public Vehicle() {
 	super();
@@ -41,6 +49,16 @@ public Vehicle find(int id) {
 
 
 return vehicle;
-
 }
+public static ArrayList<Vehicle> findAll(){
+	VehicleDAO vehicleDAO=new VehicleDAO();
+	ArrayList<Vehicle> vehicle = vehicleDAO.findAll();
+	return vehicle;
+}
+public boolean insert(Vehicle vehicle) {
+	boolean success;
+	VehicleDAO vehicleDAO=new VehicleDAO();
+	return success =  vehicleDAO.insert(vehicle);
+}
+
 }

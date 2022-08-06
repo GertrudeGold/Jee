@@ -72,8 +72,20 @@ public class CollectorDAO  implements DAO<Collector>{
 
 	@Override
 	public boolean delete(Collector obj) {
-		// TODO Auto-generated method stub
-		return false;
+		boolean success = false;
+		String key = getApiKey();
+				
+		ClientResponse res= resource
+				.path("collector")
+				.path(String.valueOf(obj.getId()))
+				.header(key, key)
+				.delete(ClientResponse.class);
+		int StatusCode=res.getStatus();
+		
+		if(StatusCode == 204) {
+			success=true;
+		}
+		return success;
 	}
 
 	@Override

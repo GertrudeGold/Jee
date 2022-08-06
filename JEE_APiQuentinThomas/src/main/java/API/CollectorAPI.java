@@ -1,14 +1,18 @@
 package API;
 
+import javax.ws.rs.DELETE;
 import javax.ws.rs.FormParam;
 import javax.ws.rs.HeaderParam;
 import javax.ws.rs.POST;
 import javax.ws.rs.Path;
+import javax.ws.rs.PathParam;
 import javax.ws.rs.Produces;
 import javax.ws.rs.core.MediaType;
 import javax.ws.rs.core.Response;
 import javax.ws.rs.core.Response.Status;
 
+import DAO.BrigadeChiefDAO;
+import DAO.CollectorDAO;
 import Model.BrigadeChief;
 import Model.Collector;
 import Model.Staff;
@@ -19,6 +23,7 @@ public class CollectorAPI  extends BaseAPI{
 	private Error error = null;
 	boolean success = false;
 	Collector collector = null;
+	private CollectorDAO collectorDAO = new CollectorDAO();
 	
 	@POST
 	@Path("/create")
@@ -80,5 +85,15 @@ public class CollectorAPI  extends BaseAPI{
 			return Response.status(Status.OK).entity(error.getJSON()).build();
 		}
 		
+	}
+	@DELETE
+	@Path("{id}")
+	public Response delete(@PathParam("id") int id) {
+		boolean success= collectorDAO.delete(id);
+		if(success) {
+			return Response.status(Status.NO_CONTENT).build();
+		}else {
+			return Response.status(Status.SERVICE_UNAVAILABLE).build();
+		}
 	}
 }

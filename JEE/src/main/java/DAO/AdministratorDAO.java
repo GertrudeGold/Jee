@@ -79,9 +79,22 @@ public class AdministratorDAO implements DAO<Administrator> {
 
 	@Override
 	public boolean delete(Administrator obj) {
-		// TODO Auto-generated method stub
-		return false;
-	}
+		boolean success = false;
+		String key = getApiKey();
+				
+		ClientResponse res= resource
+				.path("administrator")
+				.path(String.valueOf(obj.getId()))
+				.header(key, key)
+				.delete(ClientResponse.class);
+		int StatusCode=res.getStatus();
+		
+		if(StatusCode == 204) {
+			success=true;
+		}
+		return success;
+
+			}
 
 	@Override
 	public boolean update(Administrator obj) {
@@ -101,31 +114,7 @@ public class AdministratorDAO implements DAO<Administrator> {
 		return null;
 	}
 
-//	public Administrator login(String matricule,String password) {
-//		Administrator administrator=null;
-//		int status;
-//		MultivaluedMap<String,String> paramsPost=new MultivaluedMapImpl();
-//		paramsPost.add("matricule", String.valueOf(matricule));
-//		paramsPost.add("password", password);
-//		ClientResponse res=resource
-//				.path("Administrator")
-//				.path("login")
-//				.accept(MediaType.APPLICATION_JSON)
-//				.post(ClientResponse.class,paramsPost)
-//				;
-//		ObjectMapper mapper=new ObjectMapper();
-//		try {
-//			return administrator=(Administrator) mapper.readValue(res, Administrator.class);
-//			MultivaluedMap<String, String> headers;
-//			headers=res.getHeaders();
-//			List<String> apiKey=headers.get("api-key");
-//			saveApiKey(apiKey.get(0));
-//		} catch (Exception e) {
-//			return administrator;
-//		}
-//		
-//		return administrator;
-//	}
+
 	public Administrator login(String matricule,String password) {
 		
 		//String key=getApiKey();

@@ -53,4 +53,9 @@ public static ArrayList<Policeman> findPolicemanToAChief(int id){
 	ArrayList<Policeman> policemans =  policemanDAO.findPolicemanToAChief(id);
 	return policemans;
 }
+public static ArrayList<Policeman> findAll(){
+	PolicemanDAO policemanDAO=new PolicemanDAO();
+	ArrayList<Policeman> policemans =  policemanDAO.findAll();
+	return policemans;
+}
 }

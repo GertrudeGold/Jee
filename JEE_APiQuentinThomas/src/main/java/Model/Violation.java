@@ -22,6 +22,12 @@ public class Violation implements Serializable{
 		this.type = type;
 		this.price = price;
 	}
+	public Violation( String type, double price) {
+		super();
+
+		this.type = type;
+		this.price = price;
+	}
 	public Violation() {}
 	public int getId() {
 		return id;
@@ -42,4 +48,19 @@ public class Violation implements Serializable{
 	return violations;
 
 	}
+public static ArrayList<Violation>findAll() {
+		
+		
+		ViolationDAO violationDAO=new ViolationDAO();
+		ArrayList<Violation> violations =  violationDAO.findAll();
+
+
+	return violations;
+
+	}
+public boolean insert(Violation violation) {
+	boolean success;
+	ViolationDAO violationDAO=new ViolationDAO();
+	return success =  violationDAO.insert(violation);
+}
 }

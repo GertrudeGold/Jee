@@ -17,22 +17,27 @@ public class PolicemanDAO implements DAO<Policeman>{
 	public boolean insert(Policeman obj) {
 		Connection conn=ConnectionDatabase.getConnection();
 		boolean success=false;
+		int createdId=0;
 		CallableStatement callableStatement = null;
 		try {
-			String sql="{call insert_staff(?,?,?,?,?,?)}";
+			String sql="{call insert_staff(?,?,?,?,?)}";
 			callableStatement = conn.prepareCall(sql);
 			callableStatement.setString(1, obj.getFirstname());
 			callableStatement.setString(2, obj.getLastname());
 			callableStatement.setString(3, obj.getMatricule());
 			callableStatement.setString(4, obj.getPassword());
-			callableStatement.setInt(5, 1);
-			callableStatement.registerOutParameter(6, java.sql.Types.NUMERIC);
+			callableStatement.setInt(5, obj.getBrigadeChief().getId());
+//			callableStatement.registerOutParameter(6, java.sql.Types.NUMERIC);
 			callableStatement.executeUpdate();
+//			createdId = callableStatement.getInt(6);
+			
 			success = true;
+			
+		
 			return success;
 		}
 		catch(SQLException e) {
-			System.out.println("Erreur SQL update brigadechiefDAO " + e.getMessage() + e.toString() );
+			System.out.println("Erreur SQL insert policemanDAO " + e.getMessage() + e.toString() );
 			return success;
 		}
 		finally {
@@ -100,8 +105,39 @@ public class PolicemanDAO implements DAO<Policeman>{
 
 	@Override
 	public ArrayList<Policeman> findAll() {
-		// TODO Auto-generated method stub
-		return null;
+ArrayList<Policeman> policemans = new ArrayList();
+		
+		Connection conn=ConnectionDatabase.getConnection();
+		try {
+			PreparedStatement preparedStatement = conn.prepareStatement("SELECT * FROM( Staff s inner join Policeman p on s.staff_id = p.staff_id)");
+			
+			
+			ResultSet resultSet=preparedStatement.executeQuery();
+			while(resultSet.next()) {
+				String name =  resultSet.getString("staff_lastname");
+				String firstname= resultSet.getString("staff_firstname");
+				String matricule= resultSet.getString("staff_matricule");
+				int idpoliceman= resultSet.getInt("staff_id");
+				int	idchief = resultSet.getInt("chief_id");
+				BrigadeChief brigadechief= new BrigadeChief();
+				brigadechief = brigadechief.findBrigadeChiefToAPoliceman(idchief);
+				Policeman policeman = new Policeman(name,firstname,matricule,idpoliceman);				
+				policemans.add(policeman);
+				
+			}
+	
+		} catch (Exception e) {
+			System.out.println(e.getMessage());
+		}
+		finally {
+			try {
+				
+				conn.close();
+			}catch (SQLException e) {
+				System.out.println(e.getMessage());
+			}
+		}
+		return policemans;
 	}
 	public  Policeman login(String matricule,String password) {
 		Policeman policeman = null;
@@ -147,10 +183,10 @@ public class PolicemanDAO implements DAO<Policeman>{
 				String firstname= resultSet.getString("staff_firstname");
 				String matricule= resultSet.getString("staff_matricule");
 				int idpoliceman= resultSet.getInt("staff_id");
-				int	idchief = resultSet.getInt("chief_id");
-				BrigadeChief brigadechief= new BrigadeChief();
-				brigadechief = brigadechief.find(idchief);
-				Policeman policeman = new Policeman(name,firstname,matricule,idpoliceman,brigadechief);				
+				//int	idchief = resultSet.getInt("chief_id");
+				//BrigadeChief brigadechief= new BrigadeChief();
+				//brigadechief = brigadechief.find(idchief);
+				Policeman policeman = new Policeman(name,firstname,matricule,idpoliceman);				
 				policemans.add(policeman);
 				
 			}
@@ -167,5 +203,34 @@ public class PolicemanDAO implements DAO<Policeman>{
 			}
 		}
 		return policemans;
+	}
+
+	@Override
+	public boolean delete(int id) {
+		Connection conn=ConnectionDatabase.getConnection();
+		boolean success=false;
+		CallableStatement callableStatement = null;
+		try {
+			String sql="{call delete_staff(?)}";
+			callableStatement = conn.prepareCall(sql);
+			callableStatement.setInt(1, id);
+			callableStatement.executeUpdate();
+			success = true;
+			return success;
+		}
+		catch(SQLException e) {
+			System.out.println("Erreur SQL delete policemanDAO " + e.getMessage() + e.toString() );
+			return success;
+		}
+		finally {
+			try {
+				if(callableStatement!=null) {
+					callableStatement.close();
+				}	
+				conn.close();
+			}catch (SQLException e) {
+				System.out.println(e.getMessage());
+			}
+		}
 	}
 }
