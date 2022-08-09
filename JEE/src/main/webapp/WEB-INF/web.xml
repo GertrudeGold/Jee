@@ -23,7 +23,7 @@
   
   <servlet>
       <servlet-name>ConnectionPage</servlet-name>
-      <servlet-class>Servlets.ConnectionPage</servlet-class>
+      <servlet-class>appli.Servlets.ConnectionPage</servlet-class>
   </servlet>
   <servlet-mapping>
 	  <servlet-name>ConnectionPage</servlet-name>
@@ -32,7 +32,7 @@
 
     <servlet>
       <servlet-name>Authentication</servlet-name>
-      <servlet-class>Servlets.Authentication</servlet-class>
+      <servlet-class>appli.Servlets.Authentication</servlet-class>
   </servlet>
   <servlet-mapping>
 	  <servlet-name>Authentication</servlet-name>
@@ -41,7 +41,7 @@
   
   <servlet>
       <servlet-name>RedirectAdministrator</servlet-name>
-      <servlet-class>Servlets.RedirectAdministrator</servlet-class>
+      <servlet-class>appli.Servlets.RedirectAdministrator</servlet-class>
   </servlet>
   <servlet-mapping>
 	  <servlet-name>RedirectAdministrator</servlet-name>
@@ -50,7 +50,7 @@
   
   <servlet>
       <servlet-name>RedirectBrigadeChief</servlet-name>
-      <servlet-class>Servlets.RedirectBrigadeChief</servlet-class>
+      <servlet-class>appli.Servlets.RedirectBrigadeChief</servlet-class>
   </servlet>
   <servlet-mapping>
 	  <servlet-name>RedirectBrigadeChief</servlet-name>
@@ -59,7 +59,7 @@
   
   <servlet>
       <servlet-name>RedirectCollector</servlet-name>
-      <servlet-class>Servlets.RedirectCollector</servlet-class>
+      <servlet-class>appli.Servlets.RedirectCollector</servlet-class>
   </servlet>
   <servlet-mapping>
 	  <servlet-name>RedirectCollector</servlet-name>
@@ -68,7 +68,7 @@
   
   <servlet>
       <servlet-name>RedirectPoliceman</servlet-name>
-      <servlet-class>Servlets.RedirectPoliceman</servlet-class>
+      <servlet-class>appli.Servlets.RedirectPoliceman</servlet-class>
   </servlet>
   <servlet-mapping>
 	  <servlet-name>RedirectPoliceman</servlet-name>
@@ -77,7 +77,7 @@
   
   <servlet>
       <servlet-name>ListAccount</servlet-name>
-      <servlet-class>Servlets.ListAccount</servlet-class>
+      <servlet-class>appli.Servlets.ListAccount</servlet-class>
   </servlet>
   <servlet-mapping>
 	  <servlet-name>ListAccount</servlet-name>
@@ -86,7 +86,7 @@
   
   <servlet>
       <servlet-name>ListFineByBrigade</servlet-name>
-      <servlet-class>Servlets.ListFineByBrigade</servlet-class>
+      <servlet-class>appli.Servlets.ListFineByBrigade</servlet-class>
   </servlet>
   <servlet-mapping>
 	  <servlet-name>ListFineByBrigade</servlet-name>
@@ -95,7 +95,7 @@
   
   <servlet>
       <servlet-name>ListVehicle</servlet-name>
-      <servlet-class>Servlets.ListVehicle</servlet-class>
+      <servlet-class>appli.Servlets.ListVehicle</servlet-class>
   </servlet>
   <servlet-mapping>
 	  <servlet-name>ListVehicle</servlet-name>
@@ -104,7 +104,7 @@
   
   <servlet>
       <servlet-name>ListViolation</servlet-name>
-      <servlet-class>Servlets.ListViolation</servlet-class>
+      <servlet-class>appli.Servlets.ListViolation</servlet-class>
   </servlet>
   <servlet-mapping>
 	  <servlet-name>ListViolation</servlet-name>
@@ -113,7 +113,7 @@
   
   <servlet>
       <servlet-name>AddAccount</servlet-name>
-      <servlet-class>Servlets.AddAccount</servlet-class>
+      <servlet-class>appli.appli.Servlets.AddAccount</servlet-class>
   </servlet>
   <servlet-mapping>
 	  <servlet-name>AddAccount</servlet-name>
@@ -126,7 +126,7 @@
 	</error-page>
 	<servlet>
       <servlet-name>AddVehicle</servlet-name>
-      <servlet-class>Servlets.AddVehicle</servlet-class>
+      <servlet-class>appli.Servlets.AddVehicle</servlet-class>
   </servlet>
   <servlet-mapping>
 	  <servlet-name>AddVehicle</servlet-name>
@@ -135,7 +135,7 @@
   
    <servlet>
       <servlet-name>AddViolation</servlet-name>
-      <servlet-class>Servlets.AddViolation</servlet-class>
+      <servlet-class>appli.Servlets.AddViolation</servlet-class>
   </servlet>
   <servlet-mapping>
 	  <servlet-name>AddViolation</servlet-name>
@@ -144,7 +144,7 @@
   
   <servlet>
       <servlet-name>ModifyAccount</servlet-name>
-      <servlet-class>Servlets.ModifyAccount</servlet-class>
+      <servlet-class>appli.Servlets.ModifyAccount</servlet-class>
   </servlet>
   <servlet-mapping>
 	  <servlet-name>ModifyAccount</servlet-name>
@@ -153,7 +153,7 @@
   
   <servlet>
       <servlet-name>ModifyVehicle</servlet-name>
-      <servlet-class>Servlets.ModifyVehicle</servlet-class>
+      <servlet-class>appli.Servlets.ModifyVehicle</servlet-class>
   </servlet>
   <servlet-mapping>
 	  <servlet-name>ModifyVehicle</servlet-name>
@@ -162,7 +162,7 @@
   
   <servlet>
       <servlet-name>ModifyViolation</servlet-name>
-      <servlet-class>Servlets.ModifyViolation</servlet-class>
+      <servlet-class>appli.Servlets.ModifyViolation</servlet-class>
   </servlet>
   <servlet-mapping>
 	  <servlet-name>ModifyViolation</servlet-name>
