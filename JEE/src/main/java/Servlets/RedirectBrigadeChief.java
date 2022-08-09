@@ -1,6 +1,7 @@
 package Servlets;
 
 import java.io.IOException;
+
 import java.util.ArrayList;
 
 import javax.servlet.ServletException;
@@ -24,14 +25,22 @@ public class RedirectBrigadeChief extends HttpServlet {
 
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {	
 		HttpSession session = request.getSession(false);
-		
+		BrigadeChief chief = (BrigadeChief) session.getAttribute("ConnectedStaff");
+		//Will validate Fine
 		if (request.getParameter("Validate") != null) {
 			Fine fine = (Fine) request.getAttribute("fine");
 			
         }
+		//Will unvalidate Fine
 		if (request.getParameter("Unvalidate") != null) {
-			Fine fine = (Fine) request.getAttribute("fine");
-			
+			Fine fineToDelete = (Fine) request.getAttribute("fine");
+			ArrayList<Fine> fines = chief.getFines();
+			for(Fine fine:fines) {
+				if(fine.equals(fineToDelete)) {
+					fine.delete(fine);
+					fines.remove(fineToDelete);
+				}
+			}	
         } 
 		
 	}
