@@ -56,9 +56,14 @@ public String getMatricule() {
 public void setMatricule(String matricule) {
 	this.matricule = matricule;
 }
+
+public void setId(int id) {
+	this.id = id;
+}
 public int getId() {
 	return id;
 };
+
 public static Staff login(String matricule,String pwd) {
 	
 	 String res = "";

@@ -134,6 +134,41 @@ public class PolicemanDAO implements DAO<Policeman>{
 		}
 		return policeman;
 	}
+	public Policeman findPolicemanToAFine(int id) {
+		Policeman policeman = null;
+		
+		Connection conn=ConnectionDatabase.getConnection();
+		try {
+			PreparedStatement preparedStatement = conn.prepareStatement("SELECT * FROM( Staff s inner join Policeman p on s.staff_id = p.staff_id)WHERE p.staff_id =?");
+			preparedStatement.setInt(1, id);
+			
+			ResultSet resultSet=preparedStatement.executeQuery();
+			if(resultSet.next()) {
+				String name =  resultSet.getString("staff_lastname");
+				String firstname= resultSet.getString("staff_firstname");
+				String matricule= resultSet.getString("staff_matricule");
+				id= resultSet.getInt("staff_id");
+				int	idchief = resultSet.getInt("chief_id");
+				BrigadeChief brigadechief= new BrigadeChief(idchief);
+//				brigadechief = brigadechief.find(idchief);
+				policeman = new Policeman(name,firstname,matricule,id,brigadechief);				
+			
+				return policeman;
+			}
+	
+		} catch (Exception e) {
+			System.out.println(e.getMessage());
+		}
+		finally {
+			try {
+				
+				conn.close();
+			}catch (SQLException e) {
+				System.out.println(e.getMessage());
+			}
+		}
+		return policeman;
+	}
 
 	@Override
 	public ArrayList<Policeman> findAll() {

@@ -45,7 +45,7 @@ public class FineDAO implements DAO<Fine>{
 
 	@Override
 	public ArrayList<Fine> findAll() {
-		ArrayList<Fine> fines = null;
+		ArrayList<Fine> fines = new ArrayList<Fine>();
 		
 		
 		
@@ -63,13 +63,13 @@ public class FineDAO implements DAO<Fine>{
 				int validation= resultSet.getInt("fine_validation");	
 				int policemanid=resultSet.getInt("policeman_id");
 				Policeman policeman = new Policeman();
-				policeman =	policeman.find(policemanid);
+				policeman =	policeman.findPolicemanToAFine(policemanid);
 				int vehicleid=resultSet.getInt("vehicle_id");
 				Vehicle vehicle = new Vehicle();
-				vehicle.find(vehicleid);
-				int plateid=resultSet.getInt(" plate_id");
+				vehicle = vehicle.find(vehicleid);
+				int plateid=resultSet.getInt("plate_id");
 				Plate plate = new Plate();
-				plate.find(plateid);
+				plate = plate.find(plateid);
 				ArrayList<Violation> violations = new ArrayList();
 				violations = Violation.GetViolationsOfAFine(id);
 				Fine fine  = new Fine(id,vehicle,plate,date,fineguiltyfirstname,fineguiltylastname,finecommentary,

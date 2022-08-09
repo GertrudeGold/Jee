@@ -181,14 +181,16 @@ public class BrigadeChiefDAO implements DAO<BrigadeChief> {
 				ArrayList<Policeman> policemans= new ArrayList<Policeman>();
 				policemans=Policeman.findPolicemanToAChief(chefid);
 				ArrayList<Fine> fines = new ArrayList<Fine>();
-				fines = Fine.Findall();
-				for(Fine finetoremove : fines) {
-					if(finetoremove.getPoliceman().getBrigadeChief().getId() != id || finetoremove.getValidation()==1){
-						fines.remove(finetoremove);
-					}
-				}
 				
-				BrigadeChief brigadeChief = new BrigadeChief(name,firstname,matricule,id,policemans,fines);
+				fines = Fine.Findall();
+				ArrayList<Fine> finesToAdd = new ArrayList<Fine>();
+				for(Fine fine : fines) {
+                    if(fine.getPoliceman().getBrigadeChief().getChiefid() == chefid && fine.getValidation()==0){
+                    	finesToAdd.add(fine);
+                    }
+                }
+				
+				BrigadeChief brigadeChief = new BrigadeChief(name,firstname,matricule,id,policemans,finesToAdd);
 				brigadeChiefs.add(brigadeChief);
 				
 			}
@@ -226,10 +228,10 @@ public class BrigadeChiefDAO implements DAO<BrigadeChief> {
 				ArrayList<Fine> fines = new ArrayList<Fine>();
 				fines = Fine.Findall();
 				for(Fine finetoremove : fines) {
-					if(finetoremove.getPoliceman().getBrigadeChief().getId() != id || finetoremove.getValidation()==1){
-						fines.remove(finetoremove);
-					}
-				}
+                    if(finetoremove.getPoliceman().getBrigadeChief().getChiefid() != chefid || finetoremove.getValidation()==1){
+                        fines.remove(finetoremove);
+                    }
+                }
 				
 				brigadeChief = new BrigadeChief(name,firstname,matricule,id,policemans,fines);
 				return brigadeChief;
