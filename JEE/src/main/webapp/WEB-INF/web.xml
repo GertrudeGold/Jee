@@ -85,6 +85,15 @@
   </servlet-mapping>
   
   <servlet>
+      <servlet-name>ListFineByBrigade</servlet-name>
+      <servlet-class>Servlets.ListFineByBrigade</servlet-class>
+  </servlet>
+  <servlet-mapping>
+	  <servlet-name>ListFineByBrigade</servlet-name>
+	  <url-pattern>/List-Fine-By-Brigade</url-pattern>
+  </servlet-mapping>
+  
+  <servlet>
       <servlet-name>ListVehicle</servlet-name>
       <servlet-class>Servlets.ListVehicle</servlet-class>
   </servlet>
