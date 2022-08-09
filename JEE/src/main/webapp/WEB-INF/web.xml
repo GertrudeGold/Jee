@@ -111,5 +111,25 @@
 	  <url-pattern>/Add-Account</url-pattern>
   </servlet-mapping>
   
+   <servlet>
+      <servlet-name>AddVehicle</servlet-name>
+      <servlet-class>Servlets.AddVehicle</servlet-class>
+  </servlet>
+  <servlet-mapping>
+	  <servlet-name>AddVehicle</servlet-name>
+	  <url-pattern>/Add-Vehicle</url-pattern>
+  </servlet-mapping>
+  
+   <servlet>
+      <servlet-name>AddViolation</servlet-name>
+      <servlet-class>Servlets.AddViolation</servlet-class>
+  </servlet>
+  <servlet-mapping>
+	  <servlet-name>AddViolation</servlet-name>
+	  <url-pattern>/Add-Violation</url-pattern>
+  </servlet-mapping>
+  
+  
+  
 
 </web-app>

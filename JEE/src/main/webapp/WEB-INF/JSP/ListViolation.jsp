@@ -5,7 +5,7 @@
 <html>
 <head>
 <meta charset="ISO-8859-1">
-<title>List of account</title>
+<title>List of violation</title>
 </head>
 <body>
 <% ArrayList<Violation> violations=(ArrayList<Violation>) request.getAttribute("violations");%>
@@ -27,9 +27,9 @@
 			<td><%= violation.getId() %></td>
 			<td><%= violation.getType() %></td>
 			<td><%= violation.getPrice() %></td>
-			<form action="??" method="post">
-			<td><input type="submit" name="Modify" value="Modify"></td>
-			<td><input type="submit" name="Delete" value="Delete"></td>
+			<form action="RedirectAdministrator" method="post">
+			<td><button type="submit" name="ModifyViolation" value="<%= violation %>">Modify</button></td>
+			<td><button type="submit" name="DeleteViolation" value="<%= violation %>">Delete</button></td>
 			</form>
 		</tr>
 	<%} 
@@ -37,7 +37,7 @@
 	</tbody>
 </table>
 <br>
-<form action="??" method="post">
+<form action="RedirectAdministrator" method="post">
 	<td><input type="submit" name="Create" value="Create"></td>
 </form>
 </body>

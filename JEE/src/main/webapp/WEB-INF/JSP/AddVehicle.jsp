@@ -3,7 +3,7 @@
 <html>
 <head>
 <meta charset="ISO-8859-1">
-<title>Add Account</title>
+<title>Add Vehicle</title>
 </head>
 <body>
 <h1>Add vehicle</h1>

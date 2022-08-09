@@ -2,6 +2,7 @@ package Servlets;
 
 import java.io.IOException;
 
+
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
@@ -9,6 +10,10 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
+import Javabeans.Administrator;
+import Javabeans.Collector;
+import Javabeans.BrigadeChief;
+import Javabeans.Policeman;
 import Javabeans.Staff;
 import Javabeans.Vehicle;
 import Javabeans.Violation;
@@ -27,53 +32,91 @@ public class RedirectAdministrator extends HttpServlet {
 		HttpSession session = request.getSession(false);
 		
 		//Account Side
+		//SELECT
 		if (request.getParameter("ManageAccount") != null)
 			response.sendRedirect("ListAccount");
-		
+		//UPDATE
 		if (request.getParameter("ModifyAccount") != null) {
-			//Staff staff=(Staff) session.getAttribute("ConnectedStaff");
-			response.sendRedirect("");
-		}
+			Object account = request.getParameter("ModifyAccount");
+			if(account instanceof Administrator)
+				
 			
-		if (request.getParameter("DeleteAccount") != null) {
+			if(account instanceof Collector)
+				
+			
+			if(account instanceof BrigadeChief)	
+				
+			
+			if(account instanceof Policeman)
+				
 			response.sendRedirect("");
 		}
 		
+		//DELETE
+		if (request.getParameter("DeleteAccount") != null) {
+			Object account = request.getParameter("DeleteAccount");
+			if(account instanceof Administrator)
+				((Staff) account).delete((Staff) account);
+			
+			if(account instanceof Collector)
+				((Staff) account).delete((Staff) account);
+			
+			if(account instanceof BrigadeChief)	
+				((Staff) account).delete((Staff) account);
+			
+			if(account instanceof Policeman)
+				((Staff) account).delete((Staff) account);
+			
+			request.getRequestDispatcher("/WEB-INF/JSP/HomeAministrator.jsp").forward(request,response);
+		}
+		//INSERT
 		if (request.getParameter("CreateAccount") != null) {		
 			request.getRequestDispatcher("/WEB-INF/JSP/AddAccount.jsp").forward(request,response);
 		}
 		
 		//Vehicle Side
+		//SELECT
 		if (request.getParameter("ManageVehicle") != null)
 			response.sendRedirect("ListVehicle");
 		
+		//UPDATE
 		if (request.getParameter("ModifyVehicle") != null) {
 			
-			response.sendRedirect("");
-		}
-			
-		if (request.getParameter("DeleteVehicle") != null) {
-			response.sendRedirect("");
+			request.getRequestDispatcher("/WEB-INF/JSP/HomeAministrator.jsp").forward(request,response);
 		}
 		
+		//DELETE	
+		if (request.getParameter("DeleteVehicle") != null) {
+			//Vehicle vehicle = request.getParameter("DeleteVehicle");
+			//vehicle.delete(vehicle);
+			request.getRequestDispatcher("/WEB-INF/JSP/HomeAministrator.jsp").forward(request,response);
+		}
+		
+		//INSERT
 		if (request.getParameter("CreateVehicle") != null) {		
 			request.getRequestDispatcher("/WEB-INF/JSP/AddVehicle.jsp").forward(request,response);
 		}
 		
 		
-		//Account Side
+		//Violation Side
+		//SELECT
 		if (request.getParameter("ManageViolation") != null)
 			response.sendRedirect("ListViolation");
 		
+		//UPDATE
 		if (request.getParameter("ModifyViolation") != null) {
 			
-			response.sendRedirect("");
-		}
-			
-		if (request.getParameter("DeleteViolation") != null) {
-			response.sendRedirect("");
+			request.getRequestDispatcher("/WEB-INF/JSP/HomeAministrator.jsp").forward(request,response);
 		}
 		
+		//DELETE	
+		if (request.getParameter("DeleteViolation") != null) {
+			//Violation violation = request.getParameter("DeleteViolation");
+			//violation.delete(violation);
+			request.getRequestDispatcher("/WEB-INF/JSP/HomeAministrator.jsp").forward(request,response);
+		}
+		
+		//INSERT
 		if (request.getParameter("CreateViolation") != null) {		
 			request.getRequestDispatcher("/WEB-INF/JSP/AddViolation.jsp").forward(request,response);
 		}

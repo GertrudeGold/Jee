@@ -5,7 +5,7 @@
 <html>
 <head>
 <meta charset="ISO-8859-1">
-<title>List of account</title>
+<title>List of validated fine</title>
 </head>
 <body>
 <% ArrayList<Fine> fines=(ArrayList<Fine>) request.getAttribute("fines");%>
