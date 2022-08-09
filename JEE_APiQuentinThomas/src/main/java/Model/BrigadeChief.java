@@ -2,27 +2,32 @@ package Model;
 
 import java.util.ArrayList;
 
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 
 import DAO.BrigadeChiefDAO;
+
 
 public class BrigadeChief extends Staff {
 private ArrayList<Policeman> policemans;
 private ArrayList<Fine>fines;
+@JsonIgnoreProperties
 private int chiefid;
-	public BrigadeChief(String firstname, String lastname, String matricule,int id) {
-		super(firstname, lastname, matricule,id);
-		// TODO Auto-generated constructor stub
-	}
-	public BrigadeChief(String firstname, String lastname, String matricule,String password) {
-		super(firstname, lastname, matricule,password);
-		// TODO Auto-generated constructor stub
-	}
-	public BrigadeChief(String firstname, String lastname, String matricule,int id,ArrayList<Policeman> policemans,ArrayList<Fine>fines) {
-		super(firstname, lastname, matricule,id);
-		// TODO Auto-generated constructor stub
-		this.policemans=policemans;
-		this.fines=fines;
-	}
+public BrigadeChief(String firstname, String lastname, String matricule,int id,int chiefid) {
+	super(firstname, lastname, matricule,id);
+	// TODO Auto-generated constructor stub
+	this.chiefid=chiefid;
+}
+public BrigadeChief(String firstname, String lastname, String matricule,String password) {
+	super(firstname, lastname, matricule,password);
+	// TODO Auto-generated constructor stub
+}
+public BrigadeChief(String firstname, String lastname, String matricule,int id,ArrayList<Policeman> policemans,ArrayList<Fine>fines, int chiefid) {
+	super(firstname, lastname, matricule,id);
+	// TODO Auto-generated constructor stub
+	this.policemans=policemans;
+	this.fines=fines;
+	this.chiefid=chiefid;
+}
 
 	public BrigadeChief(int chiefid) {
 		 this.chiefid=chiefid;

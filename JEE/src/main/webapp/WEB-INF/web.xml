@@ -12,12 +12,12 @@
 
   <context-param>
   	<param-name>apiUrl</param-name>
-  	<param-value>http://localhost:8080/JEE_APIQuentinThomas</param-value>
+  	<param-value>http://localhost:8080/JEE_APiQuentinThomas/api</param-value>
   </context-param>
   <env-entry> 
     <env-entry-name>apiUrl</env-entry-name>
     <env-entry-type>java.lang.String</env-entry-type>
-    <env-entry-value>http://localhost:8080/JEE_APIQuentinThomas</env-entry-value> 
+    <env-entry-value>http://localhost:8080/JEE_APiQuentinThomas/api</env-entry-value> 
  </env-entry>
 
   
@@ -111,5 +111,8 @@
 	  <url-pattern>/Add-Account</url-pattern>
   </servlet-mapping>
   
-
+<error-page>
+		<exception-type>java.lang.Exception</exception-type>
+		<location>/Errors.jsp</location>
+	</error-page>
 </web-app>

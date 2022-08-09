@@ -101,18 +101,18 @@ public class BrigadeChiefDAO implements DAO<BrigadeChief> {
 				String name =  resultSet.getString("staff_lastname");
 				String firstname= resultSet.getString("staff_firstname");
 				String matricule= resultSet.getString("staff_matricule");		
+				int chefid= resultSet.getInt("chief_id");	
 				ArrayList<Policeman> policemans= new ArrayList<Policeman>();
 				policemans = Policeman.findPolicemanToAChief(id);
 				ArrayList<Fine> fines = new ArrayList<Fine>();
 				fines = Fine.Findall();
-				if(fines !=null) {
-				for(Fine finetoremove : fines) {
-					if(finetoremove.getPoliceman().getBrigadeChief().getId() != id){
-						fines.remove(finetoremove);
-					}
-				}
-				}
-				brigadeChief = new BrigadeChief(name,firstname,matricule,id,policemans,fines);
+				ArrayList<Fine> finesToAdd = new ArrayList<Fine>();
+				for(Fine fine : fines) {
+                    if(fine.getPoliceman().getBrigadeChief().getChiefid() == chefid && fine.getValidation()==0){
+                    	finesToAdd.add(fine);
+                    }
+                }
+				brigadeChief = new BrigadeChief(name,firstname,matricule,id,policemans,finesToAdd,chefid);
 				
 				
 				return brigadeChief;
@@ -142,10 +142,11 @@ public class BrigadeChiefDAO implements DAO<BrigadeChief> {
 			if(resultSet.next()) {
 				String name =  resultSet.getString("staff_lastname");
 				String firstname= resultSet.getString("staff_firstname");
-				String matricule= resultSet.getString("staff_matricule");		
+				String matricule= resultSet.getString("staff_matricule");
+				int chiefid= resultSet.getInt("chief_id");		
 				
 				
-				brigadeChief = new BrigadeChief(name,firstname,matricule,id);
+				brigadeChief = new BrigadeChief(name,firstname,matricule,id,chiefid);
 				
 				
 				return brigadeChief;
@@ -190,7 +191,7 @@ public class BrigadeChiefDAO implements DAO<BrigadeChief> {
                     }
                 }
 				
-				BrigadeChief brigadeChief = new BrigadeChief(name,firstname,matricule,id,policemans,finesToAdd);
+				BrigadeChief brigadeChief = new BrigadeChief(name,firstname,matricule,id,policemans,finesToAdd,chefid);
 				brigadeChiefs.add(brigadeChief);
 				
 			}
@@ -227,13 +228,14 @@ public class BrigadeChiefDAO implements DAO<BrigadeChief> {
 				policemans=Policeman.findPolicemanToAChief(chefid);
 				ArrayList<Fine> fines = new ArrayList<Fine>();
 				fines = Fine.Findall();
-				for(Fine finetoremove : fines) {
-                    if(finetoremove.getPoliceman().getBrigadeChief().getChiefid() != chefid || finetoremove.getValidation()==1){
-                        fines.remove(finetoremove);
+				ArrayList<Fine> finesToAdd = new ArrayList<Fine>();
+				for(Fine fine : fines) {
+                    if(fine.getPoliceman().getBrigadeChief().getChiefid() == chefid && fine.getValidation()==0){
+                    	finesToAdd.add(fine);
                     }
                 }
 				
-				brigadeChief = new BrigadeChief(name,firstname,matricule,id,policemans,fines);
+				brigadeChief = new BrigadeChief(name,firstname,matricule,id,policemans,finesToAdd,chefid);
 				return brigadeChief;
 			}
 		 

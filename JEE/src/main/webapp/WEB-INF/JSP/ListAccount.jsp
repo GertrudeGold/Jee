@@ -1,8 +1,8 @@
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1" pageEncoding="ISO-8859-1"%>
-<%@page import="Javabeans.Administrator" %>
-<%@page import="Javabeans.BrigadeChief" %>
-<%@page import="Javabeans.Collector" %>
-<%@page import="Javabeans.Policeman" %>
+<%@page import="appli.Javabeans.Administrator" %>
+<%@page import="appli.Javabeans.BrigadeChief" %>
+<%@page import="appli.Javabeans.Collector" %>
+<%@page import="appli.Javabeans.Policeman" %>
 <%@page import="java.util.ArrayList" %>
 <!DOCTYPE html>
 <html>
