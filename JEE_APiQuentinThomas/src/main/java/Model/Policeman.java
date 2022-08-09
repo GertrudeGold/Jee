@@ -48,6 +48,17 @@ public Policeman find(int id) {
 return policeman;
 
 }
+public Policeman findPolicemanToAFine(int id) {
+	
+	
+	PolicemanDAO policemanDAO=new PolicemanDAO();
+	Policeman policeman =  policemanDAO.findPolicemanToAFine(id);
+
+
+return policeman;
+
+}
+
 public static ArrayList<Policeman> findPolicemanToAChief(int id){
 	PolicemanDAO policemanDAO=new PolicemanDAO();
 	ArrayList<Policeman> policemans =  policemanDAO.findPolicemanToAChief(id);
@@ -58,4 +69,8 @@ public static ArrayList<Policeman> findAll(){
 	ArrayList<Policeman> policemans =  policemanDAO.findAll();
 	return policemans;
 }
+public void setBrigadeChief(BrigadeChief brigadeChief) {
+	this.brigadeChief = brigadeChief;
+}
+
 }

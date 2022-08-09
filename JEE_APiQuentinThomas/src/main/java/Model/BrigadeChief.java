@@ -8,6 +8,7 @@ import DAO.BrigadeChiefDAO;
 public class BrigadeChief extends Staff {
 private ArrayList<Policeman> policemans;
 private ArrayList<Fine>fines;
+private int chiefid;
 	public BrigadeChief(String firstname, String lastname, String matricule,int id) {
 		super(firstname, lastname, matricule,id);
 		// TODO Auto-generated constructor stub
@@ -19,6 +20,13 @@ private ArrayList<Fine>fines;
 	public BrigadeChief(String firstname, String lastname, String matricule,int id,ArrayList<Policeman> policemans,ArrayList<Fine>fines) {
 		super(firstname, lastname, matricule,id);
 		// TODO Auto-generated constructor stub
+		this.policemans=policemans;
+		this.fines=fines;
+	}
+
+	public BrigadeChief(int chiefid) {
+		 this.chiefid=chiefid;
+		
 	}
 
 	public BrigadeChief() {
@@ -61,6 +69,7 @@ public  static ArrayList<BrigadeChief> findAll() {
 return brigadeChiefs;
 
 }
+
 public  BrigadeChief findBrigadeChiefToAPoliceman(int id) {
 	
 	
@@ -70,6 +79,9 @@ public  BrigadeChief findBrigadeChiefToAPoliceman(int id) {
 
 return brigadeChief;
 
+}
+public int getChiefid() {
+	return chiefid;
 }
 
 }
