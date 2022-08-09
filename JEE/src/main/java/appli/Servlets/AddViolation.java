@@ -7,34 +7,30 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-/**
- * Servlet implementation class ConnectionPage
- */
-@WebServlet("/ConnectionPage")
-public class ConnectionPage extends HttpServlet {
+import appli.Javabeans.Vehicle;
+import  appli.Javabeans.Violation;
+
+@WebServlet("/AddViolation")
+public class AddViolation extends HttpServlet {
 	private static final long serialVersionUID = 1L;
        
-    /**
-     * @see HttpServlet#HttpServlet()
-     */
-    public ConnectionPage() {
+    public AddViolation() {
         super();
         // TODO Auto-generated constructor stub
     }
 
-	/**
-	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)
-	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		// TODO Auto-generated method stub
-		request.getRequestDispatcher("/WEB-INF/JSP/ConnectionPage.jsp").forward(request,response);
+		response.sendRedirect("ListVehicle");
 	}
 
-	/**
-	 * @see HttpServlet#doPost(HttpServletRequest request, HttpServletResponse response)
-	 */
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		// TODO Auto-generated method stub
+		String type = request.getParameter("type");
+		double amount = Double.valueOf(request.getParameter("amount"));
+		Violation violation = new Violation(type, amount);
+		violation.insert(violation);
+		
 		doGet(request, response);
 	}
 

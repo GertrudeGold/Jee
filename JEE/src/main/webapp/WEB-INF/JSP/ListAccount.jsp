@@ -42,8 +42,8 @@
 			<td><%= account.getMatricule() %></td>
 			<td><%= account.getPassword() %></td>
 			<form action="RedirectAdministrator" method="post">
-			<td><button type="submit" name="ModifyAccount" value="<%=account%>">Modify</td>
-			<td><button type="submit" name="DeleteAccount" value="<%=account%>">Delete</td>
+			<td><button type="submit" name="ModifyAccount" value="<% request.setAttribute("account", account); %>"></button>Modify</td>
+			<td><button type="submit" name="DeleteAccount" value="<% request.setAttribute("account", account); %>"></button>Delete</td>
 			</form>
 		</tr>
 	<%} 
@@ -74,8 +74,8 @@
 			<td><%= account.getMatricule() %></td>
 			<td><%= account.getPassword() %></td>
 			<form action="RedirectAdministrator" method="post">
-			<td><button type="submit" name="ModifyAccount" value="<%=account%>">Modify</td>
-			<td><button type="submit" name="DeleteAccount" value="<%=account%>">Delete</td>
+			<td><button type="submit" name="ModifyAccount" value="<% request.setAttribute("account", account); %>">Modify</td>
+			<td><button type="submit" name="DeleteAccount" value="<% request.setAttribute("account", account); %>">Delete</td>
 			</form>
 		</tr>
 	<%} 
@@ -106,8 +106,8 @@
 			<td><%= account.getMatricule() %></td>
 			<td><%= account.getPassword() %></td>
 			<form action="RedirectAdministrator" method="post">
-			<td><button type="submit" name="ModifyAccount" value="<%=account%>">Modify</td>
-			<td><button type="submit" name="DeleteAccount" value="<%=account%>">Delete</td>
+			<td><button type="submit" name="ModifyAccount" value="<% request.setAttribute("account", account); %>"></button>Modify</td>
+			<td><button type="submit" name="DeleteAccount" value="<% request.setAttribute("account", account); %>"></button>Delete</td>
 			</form>
 		</tr>
 	<%} 
@@ -138,8 +138,8 @@
 			<td><%= account.getMatricule() %></td>
 			<td><%= account.getPassword() %></td>
 			<form action="RedirectAdministrator" method="post">
-			<td><button type="submit" name="ModifyAccount" value="<%=account%>">Modify</td>
-			<td><button type="submit" name="DeleteAccount" value="<%=account%>">Delete</td>
+			<td><button type="submit" name="ModifyAccount" value="<% request.setAttribute("account", account); %>">Modify</td>
+			<td><button type="submit" name="DeleteAccount" value="<% request.setAttribute("account", account); %>">Delete</td>
 			</form>
 		</tr>
 	<%} 

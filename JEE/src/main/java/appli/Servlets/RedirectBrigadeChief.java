@@ -10,8 +10,8 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
-import appli.Javabeans.BrigadeChief;
-import appli.Javabeans.Fine;
+import  appli.Javabeans.BrigadeChief;
+import  appli.Javabeans.Fine;
 
 @WebServlet("/RedirectBrigadeChief")
 public class RedirectBrigadeChief extends HttpServlet {
@@ -25,12 +25,15 @@ public class RedirectBrigadeChief extends HttpServlet {
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {	
 		HttpSession session = request.getSession(false);
 		
-		if (request.getParameter("button1") != null) {
-			BrigadeChief chief = (BrigadeChief)session.getAttribute("ConnectedStaff");
-			ArrayList<Fine> fines = chief.getFines();
-			request.setAttribute("fines", fines);
-			request.getRequestDispatcher("/WEB-INF/JSP/ListFineByBrigade.jsp").forward(request,response);
-       } 
+		if (request.getParameter("Validate") != null) {
+			Fine fine = (Fine) request.getAttribute("fine");
+			
+        }
+		if (request.getParameter("Unvalidate") != null) {
+			Fine fine = (Fine) request.getAttribute("fine");
+			
+        } 
+		
 	}
 
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {

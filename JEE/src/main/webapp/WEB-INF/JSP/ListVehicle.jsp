@@ -5,7 +5,7 @@
 <html>
 <head>
 <meta charset="ISO-8859-1">
-<title>List of account</title>
+<title>List of vehicle</title>
 </head>
 <body>
 <% ArrayList<Vehicle> vehicles=(ArrayList<Vehicle>) request.getAttribute("vehicles");%>
@@ -25,9 +25,9 @@
 		<tr>
 			<td><%= vehicle.getId() %></td>
 			<td><%= vehicle.getType() %></td>
-			<form action="??" method="post">
-			<td><input type="submit" name="Modify" value="Modify"></td>
-			<td><input type="submit" name="Delete" value="Delete"></td>
+			<form action="RedirectAdministrator" method="post">
+			<td><button type="submit" name="ModifyVehicle" value="<% request.setAttribute("vehicle", vehicle); %>">Modify</button></td>
+			<td><button type="submit" name="DeleteVehicle" value="<% request.setAttribute("vehicle", vehicle); %>">Delete</button></td>
 			</form>
 		</tr>
 	<%} 
@@ -35,7 +35,7 @@
 	</tbody>
 </table>
 <br>
-<form action="??" method="post">
+<form action="RedirectAdministrator" method="post">
 	<td><input type="submit" name="Create" value="Create"></td>
 </form>
 </body>

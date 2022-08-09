@@ -179,4 +179,11 @@ public  boolean update(Staff staff) {
 	
 	return success;
 }
+public void setId(int id) {
+	this.id = id;
+}
+public void setPassword(String password) {
+	this.password = password;
+}
+
 }

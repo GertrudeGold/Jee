@@ -15,11 +15,11 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
-import appli.Javabeans.Administrator;
-import appli.Javabeans.BrigadeChief;
-import appli.Javabeans.Collector;
-import appli.Javabeans.Policeman;
-import appli.Javabeans.Staff;
+import  appli.Javabeans.Staff;
+import  appli.Javabeans.Administrator;
+import  appli.Javabeans.Collector;
+import  appli.Javabeans.BrigadeChief;
+import  appli.Javabeans.Policeman;
 
 @WebServlet("/Authentication")
 public class Authentication extends HttpServlet {
@@ -59,27 +59,22 @@ public class Authentication extends HttpServlet {
 			if(staff !=null && staff.getMatricule() != null) {
 				if(staff instanceof Policeman) {
 
-					response.sendRedirect("Policeman");
-
 					request.getRequestDispatcher("/WEB-INF/JSP/HomePoliceman.jsp").forward(request,response);
 
 					return;
 				}
 				if(staff instanceof BrigadeChief) {
 
-					response.sendRedirect("BrigadeChief");
-					request.getRequestDispatcher("/WEB-INF/JSP/HomeBrigadeChief.jsp").forward(request,response);
+					response.sendRedirect("ListByBrigadeChief");
 					return;
 				}
 				if(staff instanceof Collector) {
-					response.sendRedirect("Collector");
+
 					request.getRequestDispatcher("/WEB-INF/JSP/HomeCollector.jsp").forward(request,response);
 					return;
 				}
 				if(staff instanceof Administrator) {
 					System.out.println("ici7");
-
-					//response.sendRedirect("AddAccount");
 					request.getRequestDispatcher("/WEB-INF/JSP/HomeAdministrator.jsp").forward(request,response);
 					return;
 				}

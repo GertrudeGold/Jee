@@ -21,6 +21,7 @@
 		<td colspan="2" align="center"><input type="submit" name="submit" id="submit" value="Submit"></td>
 	</tr>
 	</table>
+	<p>If you are an administrator, be patient program recover the necessary data for you. it may take time.</p>
 </form>
 </body>
 </html>

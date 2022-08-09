@@ -2,7 +2,6 @@ package appli.Servlets;
 
 import java.io.IOException;
 
-
 import java.util.ArrayList;
 
 import javax.naming.Context;
@@ -15,11 +14,10 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
-import appli.Javabeans.Administrator;
-import appli.Javabeans.BrigadeChief;
-import appli.Javabeans.Collector;
-import appli.Javabeans.Policeman;
-import appli.Javabeans.Staff;
+import  appli.Javabeans.Collector;
+import  appli.Javabeans.Policeman;
+import  appli.Javabeans.BrigadeChief;
+import  appli.Javabeans.Administrator;
 
 @WebServlet("/ListAccount")
 public class ListAccount extends HttpServlet {

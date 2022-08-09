@@ -85,6 +85,15 @@
   </servlet-mapping>
   
   <servlet>
+      <servlet-name>ListFineByBrigade</servlet-name>
+      <servlet-class>Servlets.ListFineByBrigade</servlet-class>
+  </servlet>
+  <servlet-mapping>
+	  <servlet-name>ListFineByBrigade</servlet-name>
+	  <url-pattern>/List-Fine-By-Brigade</url-pattern>
+  </servlet-mapping>
+  
+  <servlet>
       <servlet-name>ListVehicle</servlet-name>
       <servlet-class>Servlets.ListVehicle</servlet-class>
   </servlet>
@@ -115,4 +124,48 @@
 		<exception-type>java.lang.Exception</exception-type>
 		<location>/Errors.jsp</location>
 	</error-page>
+	<servlet>
+      <servlet-name>AddVehicle</servlet-name>
+      <servlet-class>Servlets.AddVehicle</servlet-class>
+  </servlet>
+  <servlet-mapping>
+	  <servlet-name>AddVehicle</servlet-name>
+	  <url-pattern>/Add-Vehicle</url-pattern>
+  </servlet-mapping>
+  
+   <servlet>
+      <servlet-name>AddViolation</servlet-name>
+      <servlet-class>Servlets.AddViolation</servlet-class>
+  </servlet>
+  <servlet-mapping>
+	  <servlet-name>AddViolation</servlet-name>
+	  <url-pattern>/Add-Violation</url-pattern>
+  </servlet-mapping>
+  
+  <servlet>
+      <servlet-name>ModifyAccount</servlet-name>
+      <servlet-class>Servlets.ModifyAccount</servlet-class>
+  </servlet>
+  <servlet-mapping>
+	  <servlet-name>ModifyAccount</servlet-name>
+	  <url-pattern>/Modify-Account</url-pattern>
+  </servlet-mapping>
+  
+  <servlet>
+      <servlet-name>ModifyVehicle</servlet-name>
+      <servlet-class>Servlets.ModifyVehicle</servlet-class>
+  </servlet>
+  <servlet-mapping>
+	  <servlet-name>ModifyVehicle</servlet-name>
+	  <url-pattern>/Modify-Vehicle</url-pattern>
+  </servlet-mapping>
+  
+  <servlet>
+      <servlet-name>ModifyViolation</servlet-name>
+      <servlet-class>Servlets.ModifyViolation</servlet-class>
+  </servlet>
+  <servlet-mapping>
+	  <servlet-name>ModifyViolation</servlet-name>
+	  <url-pattern>/Modify-Violation</url-pattern>
+  </servlet-mapping>
 </web-app>

@@ -52,4 +52,14 @@ public class Violation implements Serializable{
 		ViolationDAO violationDAO=new ViolationDAO();
 		return success =  violationDAO.update(violation);
 	}
+	public void setId(int id) {
+		this.id = id;
+	}
+	public void setType(String type) {
+		this.type = type;
+	}
+	public void setPrice(double price) {
+		this.price = price;
+	}
+	
 }
