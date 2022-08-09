@@ -2,20 +2,23 @@ package Servlets;
 
 import java.io.IOException;
 
+import java.util.ArrayList;
+
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 
+import Javabeans.Administrator;
 import Javabeans.Vehicle;
 
-
-@WebServlet("/AddVehicle")
-public class AddVehicle extends HttpServlet {
+@WebServlet("/ModifyVehicle")
+public class ModifyVehicle extends HttpServlet {
 	private static final long serialVersionUID = 1L;
 
-    public AddVehicle() {
+    public ModifyVehicle() {
         super();
         // TODO Auto-generated constructor stub
     }
@@ -25,12 +28,22 @@ public class AddVehicle extends HttpServlet {
 		response.sendRedirect("ListVehicle");
 	}
 
-
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		// TODO Auto-generated method stub
+		
+		HttpSession session = request.getSession(false);
+		Administrator connected = (Administrator) session.getAttribute("ConnectedStaff");
+		Vehicle oldVehicle = (Vehicle)request.getAttribute("vehicle");
+		
 		String type = request.getParameter("type");
-		Vehicle vehicle = new Vehicle(type);
-		vehicle.update(vehicle);
+		
+		ArrayList<Vehicle> vehicles = connected.getVehicles();
+		for(Vehicle vehicle : vehicles) {
+			if(vehicle.getType().equals(oldVehicle.getType())) {
+				vehicle.setType(type);
+		    	vehicle.update(vehicle);	
+			}
+		}
 		
 		doGet(request, response);
 	}

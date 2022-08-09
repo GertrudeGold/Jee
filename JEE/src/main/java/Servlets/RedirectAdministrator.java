@@ -37,19 +37,9 @@ public class RedirectAdministrator extends HttpServlet {
 			response.sendRedirect("ListAccount");
 		//UPDATE
 		if (request.getParameter("ModifyAccount") != null) {
-			Object account = request.getParameter("ModifyAccount");
-			if(account instanceof Administrator)
-				
-			
-			if(account instanceof Collector)
-				
-			
-			if(account instanceof BrigadeChief)	
-				
-			
-			if(account instanceof Policeman)
-				
-			response.sendRedirect("");
+			Staff account = (Staff)request.getAttribute("account");	
+			request.setAttribute("account", account);
+			request.getRequestDispatcher("/WEB-INF/JSP/ModifyAccount.jsp").forward(request,response);
 		}
 		
 		//DELETE
@@ -81,8 +71,9 @@ public class RedirectAdministrator extends HttpServlet {
 		
 		//UPDATE
 		if (request.getParameter("ModifyVehicle") != null) {
-			
-			request.getRequestDispatcher("/WEB-INF/JSP/HomeAministrator.jsp").forward(request,response);
+			Vehicle vehicle = (Vehicle)request.getAttribute("vehicle");
+			request.setAttribute("vehicle", vehicle);
+			request.getRequestDispatcher("/WEB-INF/JSP/ModifyVehicle.jsp").forward(request,response);
 		}
 		
 		//DELETE	
@@ -105,8 +96,9 @@ public class RedirectAdministrator extends HttpServlet {
 		
 		//UPDATE
 		if (request.getParameter("ModifyViolation") != null) {
-			
-			request.getRequestDispatcher("/WEB-INF/JSP/HomeAministrator.jsp").forward(request,response);
+			Violation violation = (Violation)request.getAttribute("violation");
+			request.setAttribute("violation", violation);
+			request.getRequestDispatcher("/WEB-INF/JSP/ModifyViolation.jsp").forward(request,response);
 		}
 		
 		//DELETE	

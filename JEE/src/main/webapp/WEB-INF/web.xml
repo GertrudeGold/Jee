@@ -129,6 +129,33 @@
 	  <url-pattern>/Add-Violation</url-pattern>
   </servlet-mapping>
   
+  <servlet>
+      <servlet-name>ModifyAccount</servlet-name>
+      <servlet-class>Servlets.ModifyAccount</servlet-class>
+  </servlet>
+  <servlet-mapping>
+	  <servlet-name>ModifyAccount</servlet-name>
+	  <url-pattern>/Modify-Account</url-pattern>
+  </servlet-mapping>
+  
+  <servlet>
+      <servlet-name>ModifyVehicle</servlet-name>
+      <servlet-class>Servlets.ModifyVehicle</servlet-class>
+  </servlet>
+  <servlet-mapping>
+	  <servlet-name>ModifyVehicle</servlet-name>
+	  <url-pattern>/Modify-Vehicle</url-pattern>
+  </servlet-mapping>
+  
+  <servlet>
+      <servlet-name>ModifyViolation</servlet-name>
+      <servlet-class>Servlets.ModifyViolation</servlet-class>
+  </servlet>
+  <servlet-mapping>
+	  <servlet-name>ModifyViolation</servlet-name>
+	  <url-pattern>/Modify-Violation</url-pattern>
+  </servlet-mapping>
+  
   
   
 

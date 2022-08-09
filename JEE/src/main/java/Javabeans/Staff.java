@@ -39,6 +39,10 @@ public Staff(String firstname, String lastname, String matricule,int id) {
 	public String getPassword() {
 		return password;
 	}
+	
+	public void setPassword(String password) {
+		this.password = password;
+	}
 
 	public String getFirstname() {
 		return firstname;

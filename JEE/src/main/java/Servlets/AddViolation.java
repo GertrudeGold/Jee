@@ -27,7 +27,7 @@ public class AddViolation extends HttpServlet {
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		// TODO Auto-generated method stub
 		String type = request.getParameter("type");
-		double amount = Double.parseDouble(request.getParameter("amount"));
+		double amount = Double.valueOf(request.getParameter("amount"));
 		Violation violation = new Violation(type, amount);
 		violation.insert(violation);
 		
