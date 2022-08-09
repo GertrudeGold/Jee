@@ -16,10 +16,6 @@ public class BrigadeChief extends Staff {
 	private ArrayList<Policeman> policemans;
 	@JsonIgnoreProperties
 	int chiefid;
-	
-	public int getChiefid() {
-		return chiefid;
-	}
 	public ArrayList<Fine> getFines() {
 		return fines;
 	}
@@ -35,17 +31,11 @@ public class BrigadeChief extends Staff {
 		super(firstname, lastname, matricule,password);
 		// TODO Auto-generated constructor stub
 	}
-	public BrigadeChief(String firstname, String lastname, String matricule,int id,ArrayList<Policeman> policemans,ArrayList<Fine>fines, int chiefid) {
+	public BrigadeChief(String firstname, String lastname, String matricule,int id,ArrayList<Fine> fines, ArrayList<Policeman> policemans,int chiefid) {
 		super(firstname, lastname, matricule,id);
-		// TODO Auto-generated constructor stub
-		this.policemans=policemans;
 		this.fines=fines;
 		this.chiefid=chiefid;
-	}
-
-	public BrigadeChief(int chiefid) {
-		 this.chiefid=chiefid;
-		
+		// TODO Auto-generated constructor stub
 	}
 
 	public BrigadeChief() {
@@ -61,4 +51,17 @@ public class BrigadeChief extends Staff {
 	return brigadeChief;
 
 	}
+	public int getChiefid() {
+		return chiefid;
+	}
+	public void setChiefid(int chiefid) {
+		this.chiefid = chiefid;
+	}
+	public void setFines(ArrayList<Fine> fines) {
+		this.fines = fines;
+	}
+	public void setPolicemans(ArrayList<Policeman> policemans) {
+		this.policemans = policemans;
+	}
+	
 }

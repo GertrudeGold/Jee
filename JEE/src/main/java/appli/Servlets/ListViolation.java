@@ -10,8 +10,8 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
-import  appli.Javabeans.Administrator;
-import  appli.Javabeans.Violation;
+import appli.Javabeans.Administrator;
+import appli.Javabeans.Violation;
 
 @WebServlet("/ListViolation")
 public class ListViolation extends HttpServlet {

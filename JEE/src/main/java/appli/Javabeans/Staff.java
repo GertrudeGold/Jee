@@ -36,6 +36,12 @@ public Staff(String firstname, String lastname, String matricule,int id) {
 	}
 	public Staff() {}
 	
+	public void setId(int id) {
+		this.id = id;
+	}
+	public void setPassword(String password) {
+		this.password = password;
+	}
 	public String getPassword() {
 		return password;
 	}
@@ -179,11 +185,4 @@ public  boolean update(Staff staff) {
 	
 	return success;
 }
-public void setId(int id) {
-	this.id = id;
-}
-public void setPassword(String password) {
-	this.password = password;
-}
-
 }

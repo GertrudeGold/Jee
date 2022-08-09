@@ -8,7 +8,7 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 import appli.Javabeans.Vehicle;
-import  appli.Javabeans.Violation;
+import appli.Javabeans.Violation;
 
 @WebServlet("/AddViolation")
 public class AddViolation extends HttpServlet {

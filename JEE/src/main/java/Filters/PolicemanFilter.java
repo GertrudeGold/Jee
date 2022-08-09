@@ -1,4 +1,4 @@
-package appli.Filters;
+package Filters;
 
 import java.io.IOException;
 import javax.servlet.Filter;
@@ -9,12 +9,14 @@ import javax.servlet.ServletRequest;
 import javax.servlet.ServletResponse;
 import javax.servlet.annotation.WebFilter;
 
-@WebFilter("/BrigadeChiefFilter")
-public class BrigadeChiefFilter implements Filter {
+@WebFilter("/PolicemanFilter")
+public class PolicemanFilter implements Filter {
 
-    public BrigadeChiefFilter() {
+
+    public PolicemanFilter() {
         // TODO Auto-generated constructor stub
     }
+
 
 	public void destroy() {
 		// TODO Auto-generated method stub

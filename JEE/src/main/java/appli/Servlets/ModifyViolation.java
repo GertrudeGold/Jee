@@ -10,9 +10,9 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
-import  appli.Javabeans.Administrator;
-import  appli.Javabeans.Vehicle;
-import  appli.Javabeans.Violation;
+import appli.Javabeans.Administrator;
+import appli.Javabeans.Vehicle;
+import appli.Javabeans.Violation;
 
 @WebServlet("/ModifyViolation")
 public class ModifyViolation extends HttpServlet {

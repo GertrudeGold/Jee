@@ -1,4 +1,4 @@
-package appli.Filters;
+package Filters;
 
 import java.io.IOException;
 import javax.servlet.Filter;
@@ -9,10 +9,10 @@ import javax.servlet.ServletRequest;
 import javax.servlet.ServletResponse;
 import javax.servlet.annotation.WebFilter;
 
-@WebFilter("/AuthenticationFilter")
-public class AuthenticationFilter implements Filter {
+@WebFilter("/AdministratorFilter")
+public class AdministratorFilter implements Filter {
 
-    public AuthenticationFilter() {
+    public AdministratorFilter() {
         // TODO Auto-generated constructor stub
     }
 

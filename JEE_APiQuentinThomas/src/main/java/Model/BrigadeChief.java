@@ -21,12 +21,11 @@ public BrigadeChief(String firstname, String lastname, String matricule,String p
 	super(firstname, lastname, matricule,password);
 	// TODO Auto-generated constructor stub
 }
-public BrigadeChief(String firstname, String lastname, String matricule,int id,ArrayList<Policeman> policemans,ArrayList<Fine>fines, int chiefid) {
+public BrigadeChief(String firstname, String lastname, String matricule,int id,ArrayList<Fine> fines, ArrayList<Policeman> policemans,int chiefid) {
 	super(firstname, lastname, matricule,id);
-	// TODO Auto-generated constructor stub
-	this.policemans=policemans;
 	this.fines=fines;
 	this.chiefid=chiefid;
+	// TODO Auto-generated constructor stub
 }
 
 	public BrigadeChief(int chiefid) {

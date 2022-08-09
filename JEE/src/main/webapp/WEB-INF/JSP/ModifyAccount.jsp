@@ -1,9 +1,9 @@
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1" pageEncoding="ISO-8859-1"%>
-<%@page import=" appli.Javabeans.Staff" %>
-<%@page import=" appli.Javabeans.Administrator" %>
-<%@page import=" appli.Javabeans.Collector" %>
-<%@page import=" appli.Javabeans.BrigadeChief" %>
-<%@page import=" appli.Javabeans.Policeman" %>
+<%@page import="appli.Javabeans.Staff" %>
+<%@page import="appli.Javabeans.Administrator" %>
+<%@page import="appli.Javabeans.Collector" %>
+<%@page import="appli.Javabeans.BrigadeChief" %>
+<%@page import="appli.Javabeans.Policeman" %>
 <!DOCTYPE html>
 <html>
 <head>

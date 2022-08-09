@@ -10,10 +10,10 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
-import  appli.Javabeans.Administrator;
-import  appli.Javabeans.BrigadeChief;
-import  appli.Javabeans.Collector;
-import  appli.Javabeans.Policeman;
+import appli.Javabeans.Administrator;
+import appli.Javabeans.BrigadeChief;
+import appli.Javabeans.Collector;
+import appli.Javabeans.Policeman;
 
 @WebServlet("/MofifyAccount")
 public class MofifyAccount extends HttpServlet {

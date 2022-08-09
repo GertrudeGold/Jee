@@ -24,7 +24,7 @@ public Vehicle(String type) {
 }
 public Vehicle() {
 	super();
-
+	
 	
 }
 public String getType() {

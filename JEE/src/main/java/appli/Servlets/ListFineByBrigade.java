@@ -10,9 +10,9 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
-import  appli.Javabeans.Administrator;
-import  appli.Javabeans.BrigadeChief;
-import  appli.Javabeans.Fine;
+import appli.Javabeans.Administrator;
+import appli.Javabeans.BrigadeChief;
+import appli.Javabeans.Fine;
 
 @WebServlet("/ListFineByBrigade")
 public class ListFineByBrigade extends HttpServlet {

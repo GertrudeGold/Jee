@@ -90,7 +90,7 @@ public Response login(
 	}else {
 		
 		error=Error.USER_AUTHENTICATION_FAILED;
-		error.setDescription("Invalid data for the login, verify your login and password");
+		error.setDescription("Invalid data for the login, verify your matricule and password");
 		return Response.status(Status.OK).entity(error.getJSON()).build();
 	}
 	

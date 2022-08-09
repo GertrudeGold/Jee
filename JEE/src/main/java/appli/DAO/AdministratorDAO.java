@@ -130,46 +130,7 @@ public class AdministratorDAO implements DAO<Administrator> {
 	}
 
 
-//	public Administrator login(String matricule,String password) {
-//		
-//		//String key=getApiKey();
-//		int status;
-//		MultivaluedMap<String,String> paramsPost=new MultivaluedMapImpl();
-//		paramsPost.add("matricule", matricule);
-//		paramsPost.add("password", password);
-//		ClientResponse responseJSON=resource
-//				.path("administrator")
-//				.path("login")
-//				.accept(MediaType.APPLICATION_JSON)
-//				.post(ClientResponse.class,paramsPost);
-//		
-//		Administrator administrator=null;
-//		String response=responseJSON.getEntity(String.class);
-//		status = responseJSON.getStatus();
-//		if(status==200) {
-//			
-//			
-//			MultivaluedMap<String, String> headers;
-//			headers=responseJSON.getHeaders();
-//			List<String> apiKey=headers.get("api-key");
-//			saveApiKey(apiKey.get(0));
-//			
-//			ObjectMapper mapper=new ObjectMapper();
-//			try {
-//				
-//				return administrator=(Administrator) mapper.readValue(response, Administrator.class);
-//			} catch (Exception e) {
-//				
-//				return null;
-//			}
-//			
-//		}
-//		
-//		
-//		return null;
-//	
-//	}
-public Administrator login(String matricule,String password) {
+	public Administrator login(String matricule,String password) {
 		
 		//String key=getApiKey();
 		int status;
@@ -208,4 +169,5 @@ public Administrator login(String matricule,String password) {
 		return null;
 	
 	}
+	
 }

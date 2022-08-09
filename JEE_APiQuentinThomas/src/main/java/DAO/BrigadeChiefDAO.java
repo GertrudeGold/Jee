@@ -100,7 +100,7 @@ public class BrigadeChiefDAO implements DAO<BrigadeChief> {
 			if(resultSet.next()) {
 				String name =  resultSet.getString("staff_lastname");
 				String firstname= resultSet.getString("staff_firstname");
-				String matricule= resultSet.getString("staff_matricule");		
+				String matricule= resultSet.getString("staff_matricule");	
 				int chefid= resultSet.getInt("chief_id");	
 				ArrayList<Policeman> policemans= new ArrayList<Policeman>();
 				policemans = Policeman.findPolicemanToAChief(id);
@@ -112,7 +112,7 @@ public class BrigadeChiefDAO implements DAO<BrigadeChief> {
                     	finesToAdd.add(fine);
                     }
                 }
-				brigadeChief = new BrigadeChief(name,firstname,matricule,id,policemans,finesToAdd,chefid);
+				brigadeChief = new BrigadeChief(name,firstname,matricule,id,fines,policemans,chefid);
 				
 				
 				return brigadeChief;
@@ -142,11 +142,10 @@ public class BrigadeChiefDAO implements DAO<BrigadeChief> {
 			if(resultSet.next()) {
 				String name =  resultSet.getString("staff_lastname");
 				String firstname= resultSet.getString("staff_firstname");
-				String matricule= resultSet.getString("staff_matricule");
-				int chiefid= resultSet.getInt("chief_id");		
+				String matricule= resultSet.getString("staff_matricule");		
+				int chefid= resultSet.getInt("chief_id");
 				
-				
-				brigadeChief = new BrigadeChief(name,firstname,matricule,id,chiefid);
+				brigadeChief = new BrigadeChief(name,firstname,matricule,id,chefid);
 				
 				
 				return brigadeChief;
@@ -191,7 +190,7 @@ public class BrigadeChiefDAO implements DAO<BrigadeChief> {
                     }
                 }
 				
-				BrigadeChief brigadeChief = new BrigadeChief(name,firstname,matricule,id,policemans,finesToAdd,chefid);
+				BrigadeChief brigadeChief = new BrigadeChief(name,firstname,matricule,id,finesToAdd,policemans,chefid);
 				brigadeChiefs.add(brigadeChief);
 				
 			}
@@ -235,7 +234,7 @@ public class BrigadeChiefDAO implements DAO<BrigadeChief> {
                     }
                 }
 				
-				brigadeChief = new BrigadeChief(name,firstname,matricule,id,policemans,finesToAdd,chefid);
+				brigadeChief = new BrigadeChief(name,firstname,matricule,id,fines,policemans,chefid);
 				return brigadeChief;
 			}
 		 
