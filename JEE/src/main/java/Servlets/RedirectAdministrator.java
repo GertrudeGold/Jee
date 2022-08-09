@@ -1,7 +1,7 @@
 package Servlets;
 
 import java.io.IOException;
-
+import java.util.ArrayList;
 
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
@@ -30,6 +30,7 @@ public class RedirectAdministrator extends HttpServlet {
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		
 		HttpSession session = request.getSession(false);
+		Administrator connected = (Administrator) session.getAttribute("ConnectedStaff");
 		
 		//Account Side
 		//SELECT
@@ -44,25 +45,55 @@ public class RedirectAdministrator extends HttpServlet {
 		
 		//DELETE
 		if (request.getParameter("DeleteAccount") != null) {
-			Object account = request.getParameter("DeleteAccount");
-			if(account instanceof Administrator)
-				((Staff) account).delete((Staff) account);
+			Staff accountToDelete = (Staff)request.getAttribute("account");
 			
-			if(account instanceof Collector)
-				((Staff) account).delete((Staff) account);
+			if(accountToDelete instanceof Administrator) {
+				ArrayList<Administrator> admins = connected.getAdministrators();
+				for(Administrator admin: admins) {
+					if(admin.equals(accountToDelete)) {
+						admin.delete(admin);
+						admins.remove(admin);	
+					}	
+				}
+			}
+				
+			if(accountToDelete instanceof Collector) {
+				ArrayList<Collector> collectors = connected.getCollectors();
+				for(Collector collector: collectors) {
+					if(collector.equals(accountToDelete)) {
+						collector.delete(collector);
+						collectors.remove(collector);	
+					}	
+				}
+			}
+				
+			if(accountToDelete instanceof Administrator) {
+				ArrayList<BrigadeChief> chiefs = connected.getBrigadeChiefs();
+				for(BrigadeChief chief: chiefs) {
+					if(chief.equals(accountToDelete)) {
+						chief.delete(chief);
+						chiefs.remove(chief);	
+					}	
+				}
+			}	
 			
-			if(account instanceof BrigadeChief)	
-				((Staff) account).delete((Staff) account);
-			
-			if(account instanceof Policeman)
-				((Staff) account).delete((Staff) account);
-			
-			request.getRequestDispatcher("/WEB-INF/JSP/HomeAministrator.jsp").forward(request,response);
+			if(accountToDelete instanceof Policeman) {
+				ArrayList<Policeman> policemans = connected.getPolicemans();
+				for(Policeman policeman: policemans) {
+					if(policeman.equals(accountToDelete)) {
+						policeman.delete(policeman);
+						policemans.remove(policeman);	
+					}	
+				}
+			}
+					
+			response.sendRedirect("ListAccount");
 		}
 		//INSERT
 		if (request.getParameter("CreateAccount") != null) {		
 			request.getRequestDispatcher("/WEB-INF/JSP/AddAccount.jsp").forward(request,response);
 		}
+		
 		
 		//Vehicle Side
 		//SELECT
@@ -78,9 +109,15 @@ public class RedirectAdministrator extends HttpServlet {
 		
 		//DELETE	
 		if (request.getParameter("DeleteVehicle") != null) {
-			//Vehicle vehicle = request.getParameter("DeleteVehicle");
-			//vehicle.delete(vehicle);
-			request.getRequestDispatcher("/WEB-INF/JSP/HomeAministrator.jsp").forward(request,response);
+			Vehicle vehicleToDelete = (Vehicle) request.getAttribute("vehicle");
+			ArrayList<Vehicle> vehicles = connected.getVehicles();
+			for(Vehicle vehicle : vehicles) {
+				if(vehicle.equals(vehicleToDelete)) {
+					vehicle.delete(vehicle);
+			    	vehicles.remove(vehicle);	
+				}
+			}
+			response.sendRedirect("ListVehicle");
 		}
 		
 		//INSERT
@@ -103,9 +140,15 @@ public class RedirectAdministrator extends HttpServlet {
 		
 		//DELETE	
 		if (request.getParameter("DeleteViolation") != null) {
-			//Violation violation = request.getParameter("DeleteViolation");
-			//violation.delete(violation);
-			request.getRequestDispatcher("/WEB-INF/JSP/HomeAministrator.jsp").forward(request,response);
+			Violation violationToDelete = (Violation) request.getAttribute("violation");
+			ArrayList<Violation> violations = connected.getViolations();
+			for(Violation violation : violations) {
+				if(violation.equals(violationToDelete)) {
+					violation.delete(violation);
+					violations.remove(violation);	
+				}
+			}
+			response.sendRedirect("ListViolation");
 		}
 		
 		//INSERT

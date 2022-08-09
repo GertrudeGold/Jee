@@ -3,6 +3,7 @@ package Servlets;
 import java.io.IOException;
 
 
+
 import java.util.ArrayList;
 
 import javax.naming.Context;
@@ -19,7 +20,6 @@ import Javabeans.Collector;
 import Javabeans.Policeman;
 import Javabeans.BrigadeChief;
 import Javabeans.Administrator;
-import Javabeans.Staff;
 
 @WebServlet("/ListAccount")
 public class ListAccount extends HttpServlet {
