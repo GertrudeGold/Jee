@@ -7,7 +7,7 @@
 <title>Home page - Administrator</title>
 </head>
 <body>
-<h1>>Bienvenue ${ConnectedStaff.firstname} ${ConnectedStaff.lastname}</h1>
+<h1>Bienvenue ${ConnectedStaff.firstname} ${ConnectedStaff.lastname}</h1>
 <form action="RedirectAdministrator" method="post">
     <input type="submit" name="ManageAccount" value="Manage account" />
     <input type="submit" name="ManageVehicle" value="Manage vehicle" />

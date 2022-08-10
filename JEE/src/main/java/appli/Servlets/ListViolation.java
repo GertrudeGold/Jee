@@ -31,7 +31,7 @@ public class ListViolation extends HttpServlet {
 		
 		request.setAttribute("violations", violations);
 		
-		request.getRequestDispatcher("/WEB-INF/JSP/ListVehicle.jsp").forward(request,response);
+		request.getRequestDispatcher("/WEB-INF/JSP/ListViolation.jsp").forward(request,response);
 	}
 
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
