@@ -11,7 +11,7 @@ import javax.ws.rs.Produces;
 import javax.ws.rs.core.MediaType;
 import javax.ws.rs.core.Response;
 import javax.ws.rs.core.Response.Status;
-
+import javax.ws.rs.core.HttpHeaders;
 import DAO.AdministratorDAO;
 import DAO.ViolationDAO;
 import Model.Administrator;
@@ -32,7 +32,7 @@ public class ViolationAPI extends BaseAPI {
 			@FormParam("violation_type") String type,
 			@FormParam("violation_amount") String amount,
 			
-			@HeaderParam("key") String key) 
+			@HeaderParam(HttpHeaders.AUTHORIZATION) String key) 
 	{
 
 		String apiKey=getApiKey();
@@ -64,7 +64,7 @@ public class ViolationAPI extends BaseAPI {
 	@Path("{id}")
 	public Response delete(
 			@PathParam("id") int id, 
-			@HeaderParam("key") String key)
+			@HeaderParam(HttpHeaders.AUTHORIZATION) String key)
 	{
 		String apiKey=getApiKey();
 		if(key.equals(apiKey)) {
@@ -86,7 +86,7 @@ public class ViolationAPI extends BaseAPI {
 			@FormParam("vehicle_type") String type,
 			@FormParam("vehicle_amount") String amount,
 		
-			@HeaderParam("key") String key) {
+			@HeaderParam(HttpHeaders.AUTHORIZATION) String key) {
 		String apiKey=getApiKey();
 
 		if(key.equals(apiKey)) {

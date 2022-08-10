@@ -16,7 +16,7 @@ import javax.ws.rs.Produces;
 import javax.ws.rs.core.MediaType;
 import javax.ws.rs.core.Response;
 import javax.ws.rs.core.Response.Status;
-
+import javax.ws.rs.core.HttpHeaders;
 import DAO.AdministratorDAO;
 import DAO.CollectorDAO;
 import DAO.FineDAO;
@@ -38,7 +38,7 @@ public class FineAPI extends BaseAPI{
 	@Path("{id}")
 	public Response delete(
 			@PathParam("id") int id, 
-			@HeaderParam("key") String key)
+			@HeaderParam(HttpHeaders.AUTHORIZATION) String key)
 	{
 		String apiKey=getApiKey();
 		if(key.equals(apiKey)) {
@@ -68,7 +68,7 @@ public class FineAPI extends BaseAPI{
 			@FormParam("policeman_id") String policeman_id,
 			@FormParam("violation_ids") String violation_ids,
 			
-			@HeaderParam("key") String key) 
+			@HeaderParam(HttpHeaders.AUTHORIZATION) String key) 
 	{
 
 		String apiKey=getApiKey();
@@ -125,7 +125,7 @@ public class FineAPI extends BaseAPI{
 			
 			
 		
-			@HeaderParam("key") String key) {
+			@HeaderParam(HttpHeaders.AUTHORIZATION) String key) {
 		String apiKey=getApiKey();
 
 		if(key.equals(apiKey)) {

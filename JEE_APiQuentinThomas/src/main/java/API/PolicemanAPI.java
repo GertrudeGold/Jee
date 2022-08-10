@@ -11,7 +11,7 @@ import javax.ws.rs.Produces;
 import javax.ws.rs.core.MediaType;
 import javax.ws.rs.core.Response;
 import javax.ws.rs.core.Response.Status;
-
+import javax.ws.rs.core.HttpHeaders;
 import DAO.AdministratorDAO;
 import DAO.PolicemanDAO;
 import Model.BrigadeChief;
@@ -35,7 +35,7 @@ public class PolicemanAPI extends BaseAPI{
 			@FormParam("staff_matricule") String matricule,
 			@FormParam("staff_password") String password,
 			@FormParam("chef_id") String idchief,
-			@HeaderParam("key") String key) 
+			@HeaderParam(HttpHeaders.AUTHORIZATION) String key) 
 	{
 
 		String apiKey=getApiKey();
@@ -97,7 +97,7 @@ public class PolicemanAPI extends BaseAPI{
 	@Path("{id}")
 	public Response delete(
 			@PathParam("id") int id, 
-			@HeaderParam("key") String key)
+			@HeaderParam(HttpHeaders.AUTHORIZATION) String key)
 	{
 		String apiKey=getApiKey();
 		if(key.equals(apiKey)) {
@@ -122,7 +122,7 @@ public class PolicemanAPI extends BaseAPI{
 			@FormParam("staff_password") String password,
 			@FormParam("chef_id") String idchief,
 		
-			@HeaderParam("key") String key) {
+			@HeaderParam(HttpHeaders.AUTHORIZATION) String key) {
 		String apiKey=getApiKey();
 
 		if(key.equals(apiKey)) {

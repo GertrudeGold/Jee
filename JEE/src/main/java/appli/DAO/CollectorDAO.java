@@ -60,7 +60,7 @@ public class CollectorDAO  implements DAO<Collector>{
 		ClientResponse res= resource
 				.path("collector")
 				.path("create")
-				.header(key, key)
+				.header("AUTHORIZATION", key)
 				.post(ClientResponse.class,parameters);
 		int StatusCode=res.getStatus();
 		if(StatusCode == 201) {
@@ -77,7 +77,7 @@ public class CollectorDAO  implements DAO<Collector>{
 		ClientResponse res= resource
 				.path("collector")
 				.path(String.valueOf(obj.getId()))
-				.header(key, key)
+				.header("AUTHORIZATION", key)
 				.delete(ClientResponse.class);
 		int StatusCode=res.getStatus();
 		
@@ -99,7 +99,7 @@ public class CollectorDAO  implements DAO<Collector>{
 		ClientResponse res= resource
 				.path("collector")
 				.path(String.valueOf(obj.getId()))
-				.header(key, key)
+				.header("AUTHORIZATION", key)
 				.put(ClientResponse.class,parameters);
 		int StatusCode=res.getStatus();
 		if(StatusCode == 204) {

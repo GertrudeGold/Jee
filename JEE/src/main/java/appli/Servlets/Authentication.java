@@ -33,7 +33,7 @@ public class Authentication extends HttpServlet {
     @Override
     public void init() throws ServletException{
     	super.init();
-    	apiKey=getApiKey();
+    	
     }
     
     private String getApiKey() {
@@ -75,6 +75,7 @@ public class Authentication extends HttpServlet {
 				}
 				if(staff instanceof Administrator) {
 					System.out.println("ici7");
+					
 					request.getRequestDispatcher("/WEB-INF/JSP/HomeAdministrator.jsp").forward(request,response);
 					return;
 				}
@@ -96,6 +97,7 @@ public class Authentication extends HttpServlet {
 		pwd=request.getParameter("password");
 		
 		Object staff = Staff.login(matricule, pwd);
+		apiKey=getApiKey();
 		if(staff != null) {
 		if(staff instanceof Policeman) {
 			Policeman policeman = (Policeman) staff;

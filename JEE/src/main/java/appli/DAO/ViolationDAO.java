@@ -55,7 +55,7 @@ public class ViolationDAO implements DAO<Violation> {
 		ClientResponse res= resource
 				.path("violation")
 				.path("create")
-				.header(key, key)
+				.header("AUTHORIZATION", key)
 				.post(ClientResponse.class,parameters);
 		int StatusCode=res.getStatus();
 		if(StatusCode == 201) {
@@ -72,7 +72,7 @@ public class ViolationDAO implements DAO<Violation> {
 		ClientResponse res= resource
 				.path("violation")
 				.path(String.valueOf(obj.getId()))
-				.header(key, key)
+				.header("AUTHORIZATION", key)
 				.delete(ClientResponse.class);
 		int StatusCode=res.getStatus();
 		
@@ -92,7 +92,7 @@ public class ViolationDAO implements DAO<Violation> {
 		ClientResponse res= resource
 				.path("violation")
 				.path(String.valueOf(obj.getId()))
-				.header(key, key)
+				.header("AUTHORIZATION", key)
 				.put(ClientResponse.class,parameters);
 		int StatusCode=res.getStatus();
 		if(StatusCode == 204) {

@@ -65,10 +65,12 @@ public class AdministratorDAO implements DAO<Administrator> {
 			parameters.add("staff_firstname", obj.getFirstname());
 			parameters.add("staff_matricule", obj.getMatricule());
 			parameters.add("staff_password", obj.getPassword());
+		
 			ClientResponse res= resource
 					.path("administrator")
 					.path("create")
-					.header(key, key)
+					.header("AUTHORIZATION", key)
+					
 					.post(ClientResponse.class,parameters);
 			int StatusCode=res.getStatus();
 			if(StatusCode == 201) {
@@ -85,7 +87,7 @@ public class AdministratorDAO implements DAO<Administrator> {
 		ClientResponse res= resource
 				.path("administrator")
 				.path(String.valueOf(obj.getId()))
-				.header(key, key)
+				.header("AUTHORIZATION", key)
 				.delete(ClientResponse.class);
 		int StatusCode=res.getStatus();
 		
@@ -108,7 +110,7 @@ public class AdministratorDAO implements DAO<Administrator> {
 		ClientResponse res= resource
 				.path("administrator")
 				.path(String.valueOf(obj.getId()))
-				.header(key, key)
+				.header("AUTHORIZATION", key)
 				.put(ClientResponse.class,parameters);
 		int StatusCode=res.getStatus();
 		if(StatusCode == 204) {

@@ -61,7 +61,7 @@ public class BrigadeChiefDAO implements DAO<BrigadeChief>{
 		ClientResponse res= resource
 				.path("brigadeChief")
 				.path("create")
-				.header(key, key)
+				.header("AUTHORIZATION", key)
 				.post(ClientResponse.class,parameters);
 		int StatusCode=res.getStatus();
 		if(StatusCode == 201) {
@@ -78,7 +78,7 @@ public class BrigadeChiefDAO implements DAO<BrigadeChief>{
 		ClientResponse res= resource
 				.path("brigadeChief")
 				.path(String.valueOf(obj.getId()))
-				.header(key, key)
+				.header("AUTHORIZATION", key)
 				.delete(ClientResponse.class);
 		int StatusCode=res.getStatus();
 		
@@ -100,7 +100,7 @@ public class BrigadeChiefDAO implements DAO<BrigadeChief>{
 		ClientResponse res= resource
 				.path("brigadeChief")
 				.path(String.valueOf(obj.getId()))
-				.header(key, key)
+				.header("AUTHORIZATION", key)
 				.put(ClientResponse.class,parameters);
 		int StatusCode=res.getStatus();
 		if(StatusCode == 204) {
@@ -166,7 +166,7 @@ public class BrigadeChiefDAO implements DAO<BrigadeChief>{
 		String res=resource
 				.path("BrigadeChief")
 				.path(String.valueOf(id))
-				.header(key, key)
+				.header("AUTHORIZATION", key)
 				.accept(MediaType.APPLICATION_JSON)
 				.get(String.class);
 		

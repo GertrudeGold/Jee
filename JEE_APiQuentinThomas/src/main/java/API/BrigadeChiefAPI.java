@@ -7,7 +7,7 @@ import java.time.LocalTime;
 import java.time.format.DateTimeFormatter;
 import java.util.ArrayList;
 import java.util.Date;
-
+import javax.ws.rs.core.HttpHeaders;
 import javax.ws.rs.DELETE;
 import javax.ws.rs.FormParam;
 import javax.ws.rs.GET;
@@ -43,7 +43,7 @@ public class BrigadeChiefAPI extends BaseAPI{
 			@FormParam("staff_firstname") String firstname,
 			@FormParam("staff_matricule") String matricule,
 			@FormParam("staff_password") String password,
-			@HeaderParam("key") String key) 
+			@HeaderParam(HttpHeaders.AUTHORIZATION) String key) 
 	{
 
 		String apiKey=getApiKey();
@@ -101,7 +101,7 @@ public class BrigadeChiefAPI extends BaseAPI{
 	@Path("{id}")
 	public Response delete(
 			@PathParam("id") int id, 
-			@HeaderParam("key") String key)
+			@HeaderParam(HttpHeaders.AUTHORIZATION) String key)
 	{
 		String apiKey=getApiKey();
 		if(key.equals(apiKey)) {
@@ -122,7 +122,7 @@ public class BrigadeChiefAPI extends BaseAPI{
 	@Produces(MediaType.APPLICATION_JSON)
 	public Response findBrigadeChiefToAPoliceman(
 			@PathParam("id") int id, 
-			@HeaderParam("key") String key)
+			@HeaderParam(HttpHeaders.AUTHORIZATION) String key)
 	{
 		String apiKey=getApiKey();
 		if(key.equals(apiKey)) {
@@ -148,7 +148,7 @@ public class BrigadeChiefAPI extends BaseAPI{
 			@FormParam("staff_matricule") String matricule,
 			@FormParam("staff_password") String password,
 		
-			@HeaderParam("key") String key) {
+			@HeaderParam(HttpHeaders.AUTHORIZATION) String key) {
 		String apiKey=getApiKey();
 
 		if(key.equals(apiKey)) {

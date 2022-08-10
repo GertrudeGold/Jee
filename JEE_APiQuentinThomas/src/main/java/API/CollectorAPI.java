@@ -11,7 +11,7 @@ import javax.ws.rs.Produces;
 import javax.ws.rs.core.MediaType;
 import javax.ws.rs.core.Response;
 import javax.ws.rs.core.Response.Status;
-
+import javax.ws.rs.core.HttpHeaders;
 import DAO.BrigadeChiefDAO;
 import DAO.CollectorDAO;
 import Model.BrigadeChief;
@@ -34,7 +34,7 @@ public class CollectorAPI  extends BaseAPI{
 			@FormParam("staff_firstname") String firstname,
 			@FormParam("staff_matricule") String matricule,
 			@FormParam("staff_password") String password,
-			@HeaderParam("key") String key) 
+			@HeaderParam(HttpHeaders.AUTHORIZATION) String key) 
 	{
 
 		String apiKey=getApiKey();
@@ -91,7 +91,7 @@ public class CollectorAPI  extends BaseAPI{
 	@Path("{id}")
 	public Response delete(
 			@PathParam("id") int id, 
-			@HeaderParam("key") String key)
+			@HeaderParam(HttpHeaders.AUTHORIZATION) String key)
 	{
 		String apiKey=getApiKey();
 		if(key.equals(apiKey)) {
@@ -115,7 +115,7 @@ public class CollectorAPI  extends BaseAPI{
 			@FormParam("staff_matricule") String matricule,
 			@FormParam("staff_password") String password,
 		
-			@HeaderParam("key") String key) {
+			@HeaderParam(HttpHeaders.AUTHORIZATION) String key) {
 		String apiKey=getApiKey();
 
 		if(key.equals(apiKey)) {

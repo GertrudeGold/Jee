@@ -61,7 +61,7 @@ public class PolicemanDAO implements DAO<Policeman>{
 		ClientResponse res= resource
 				.path("policeman")
 				.path("create")
-				.header(key, key)
+				.header("AUTHORIZATION", key)
 				.post(ClientResponse.class,parameters);
 		int StatusCode=res.getStatus();
 		if(StatusCode == 201) {
@@ -78,7 +78,7 @@ public class PolicemanDAO implements DAO<Policeman>{
 		ClientResponse res= resource
 				.path("fine")
 				.path(String.valueOf(obj.getId()))
-				.header(key, key)
+				.header("AUTHORIZATION", key)
 				.delete(ClientResponse.class);
 		int StatusCode=res.getStatus();
 		
@@ -101,7 +101,7 @@ public class PolicemanDAO implements DAO<Policeman>{
 		ClientResponse res= resource
 				.path("policeman")
 				.path(String.valueOf(obj.getId()))
-				.header(key, key)
+				.header("AUTHORIZATION", key)
 				.put(ClientResponse.class,parameters);
 		int StatusCode=res.getStatus();
 		if(StatusCode == 204) {
