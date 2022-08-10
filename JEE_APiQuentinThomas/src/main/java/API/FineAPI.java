@@ -9,6 +9,7 @@ import javax.ws.rs.DELETE;
 import javax.ws.rs.FormParam;
 import javax.ws.rs.HeaderParam;
 import javax.ws.rs.POST;
+import javax.ws.rs.PUT;
 import javax.ws.rs.Path;
 import javax.ws.rs.PathParam;
 import javax.ws.rs.Produces;
@@ -53,6 +54,7 @@ public class FineAPI extends BaseAPI{
 		}
 		
 	}
+	
 	@POST
 	@Path("/create")
 	@Produces(MediaType.APPLICATION_JSON)
@@ -115,6 +117,57 @@ public class FineAPI extends BaseAPI{
 			return Response.status(Status.UNAUTHORIZED).build();
 		}
 				
+	}
+	@PUT
+	@Path("{id}")
+	public Response update(@PathParam("id") int id,
+			@FormParam("fine_gultyFirstName") String fine_gultyFirstName,
+			@FormParam("fine_gultyLastName") String fine_gultyLastName,
+			@FormParam("fine_comment") String fine_comment,
+			@FormParam("vehicle_id") String vehicle_id,
+			@FormParam("plate_id") String plate_id,
+			@FormParam("fine_date") String fine_date,
+			@FormParam("policeman_id") String policeman_id,
+			@FormParam("violation_ids") String violation_ids,
+			
+		
+			@HeaderParam("key") String key) {
+		String apiKey=getApiKey();
+
+		if(key.equals(apiKey)) {
+			Plate plate = new Plate();
+			plate = plate.find(Integer.valueOf(plate_id));
+			Vehicle vehicle = new Vehicle();
+			vehicle = vehicle.find(Integer.valueOf(vehicle_id));
+			Policeman policeman = new Policeman();
+			policeman = policeman.find(Integer.valueOf(policeman_id));
+			ArrayList<Violation> violations = new ArrayList<Violation>();
+			int[] violationIds = new int[violation_ids.split("-").length];
+			for(int idviolation : violationIds) {
+				
+				Violation violation = new Violation();
+				violation = violation.find(idviolation);
+				violations.add(violation);
+			}
+			Date date1=null;
+			try {
+				date1 = new SimpleDateFormat("dd-MM-yyyy HH:mm").parse(fine_date);
+			} catch (ParseException e) {
+				
+				e.printStackTrace();
+			}  
+			Fine fine = new Fine(vehicle,plate,date1,fine_gultyFirstName,fine_gultyLastName,fine_comment,
+					policeman,0,violations);
+		boolean success= fine.update(fine);
+		if(success) {
+			return Response.status(Status.NO_CONTENT).build();
+		}else {
+			return Response.status(Status.SERVICE_UNAVAILABLE).build();
+		}
+		}else {
+			return Response.status(Status.UNAUTHORIZED).build();
+		}
+
 	}
 	
 }

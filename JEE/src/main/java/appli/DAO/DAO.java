@@ -31,7 +31,7 @@ public interface DAO<T> {
 		return api;
 	}
 	
-	 default String getApiKey() {
+	default String getApiKey() {
 		Context ctx;
 		try {
 			ctx = new InitialContext();
