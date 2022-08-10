@@ -126,18 +126,15 @@ public class BrigadeChiefAPI extends BaseAPI{
 	{
 		String apiKey=getApiKey();
 		if(key.equals(apiKey)) {
-		boolean success= brigadeChiefDAO.delete(id);
-		if(success) {
+		
 			BrigadeChief brigadeChief = new BrigadeChief();
 			brigadeChief=brigadeChief.findBrigadeChiefToAPoliceman(id);
 			return Response.status(Status.OK).entity(brigadeChief).build();
 		}else {
 			return Response.status(Status.SERVICE_UNAVAILABLE).build();
 		}
-		}
-		else {
-			return Response.status(Status.UNAUTHORIZED).build();
-		}
+		
+		
 		
 	}
 	@PUT

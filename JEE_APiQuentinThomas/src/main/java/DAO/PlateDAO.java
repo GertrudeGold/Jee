@@ -73,5 +73,33 @@ public class PlateDAO implements DAO<Plate>{
 		// TODO Auto-generated method stub
 		return false;
 	}
-
+	public Plate findIfAPlateExist(String plateinfo) {
+		Plate plate = null;
+		
+		Connection conn=ConnectionDatabase.getConnection();
+		try {
+			PreparedStatement preparedStatement = conn.prepareStatement("SELECT * FROM Plate  WHERE plate_number =?");
+			preparedStatement.setString(1, plateinfo);
+			
+			ResultSet resultSet=preparedStatement.executeQuery();
+			if(resultSet.next()) {
+				int id = resultSet.getInt("plate_id");
+				plate = new Plate(id,plateinfo);				
+			
+				return plate;
+			}
+	
+		} catch (Exception e) {
+			System.out.println(e.getMessage());
+		}
+		finally {
+			try {
+				
+				conn.close();
+			}catch (SQLException e) {
+				System.out.println(e.getMessage());
+			}
+		}
+		return plate;
+	}
 }

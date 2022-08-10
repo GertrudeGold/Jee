@@ -2,6 +2,10 @@ package appli.Javabeans;
 
 import java.io.Serializable;
 
+import appli.DAO.PlateDAO;
+
+
+
 public class Plate implements Serializable{
 /**
 	 * 
@@ -30,5 +34,14 @@ public String getPlateinformation() {
 public void setPlateinformation(String plateinformation) {
 	this.plateinformation = plateinformation;
 }
+public Plate findIfAPlateExist(String plateinfo) {
+	
+	
+	PlateDAO plateDAO=new PlateDAO();
+	Plate plate =  plateDAO.findIfAPlateExist(plateinfo);
 
+
+return plate;
+
+}
 }
