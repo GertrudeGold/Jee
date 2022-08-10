@@ -42,7 +42,9 @@ public Fine() {}
 public int getId() {
 	return id;
 }
-
+public Fine(int validation) {
+	this.validation=validation;
+}
 public int getValidation() {
 	return validation;
 }

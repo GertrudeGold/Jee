@@ -37,7 +37,24 @@ public Fine(int id, Vehicle typeVehicle, Plate plate, Date date, String gultyFir
 	this.validation=validation;
 	this.violations=violations;
 }
+public Fine( Vehicle typeVehicle, Plate plate, Date date, String gultyFirstName, String gultyLastName,
+		String comment, Policeman policeman,int validation,ArrayList<Violation> violations) {
+	super();
+	
+	this.typeVehicle = typeVehicle;
+	this.plate = plate;
+	this.date = date;
+	this.gultyFirstName = gultyFirstName;
+	this.gultyLastName = gultyLastName;
+	this.comment = comment;
+	this.policeman = policeman;
+	this.validation=validation;
+	this.violations=violations;
+}
 public Fine() {}
+public Fine(int validation) {
+	this.validation=validation;
+}
 public int getId() {
 	return id;
 }
