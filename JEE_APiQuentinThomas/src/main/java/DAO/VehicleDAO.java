@@ -126,7 +126,7 @@ public class VehicleDAO implements DAO<Vehicle> {
 			
 			
 			ResultSet resultSet=preparedStatement.executeQuery();
-			if(resultSet.next()) {
+			while(resultSet.next()) {
 				String type = resultSet.getString("vehicle_type");
 				int id = resultSet.getInt("vehicle_id");
 				Vehicle vehicle = new Vehicle(type,id);				
