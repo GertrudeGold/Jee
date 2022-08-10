@@ -102,7 +102,7 @@ public class ViolationDAO implements DAO<Violation>{
 		
 		Connection conn=ConnectionDatabase.getConnection();
 		try {
-			PreparedStatement preparedStatement = conn.prepareStatement("Select * from (violation v inner join finedetail fd on v.violation_id= fd.violation_id)");
+			PreparedStatement preparedStatement = conn.prepareStatement("Select * from violation");
 			
 			ResultSet resultSet=preparedStatement.executeQuery();
 			while(resultSet.next()) {
