@@ -58,7 +58,7 @@ public class FineAPI extends BaseAPI{
 	@POST
 	@Path("/create")
 	@Produces(MediaType.APPLICATION_JSON)
-	public Response createMaintenance(
+	public Response createFine(
 			@FormParam("fine_gultyFirstName") String fine_gultyFirstName,
 			@FormParam("fine_gultyLastName") String fine_gultyLastName,
 			@FormParam("fine_comment") String fine_comment,

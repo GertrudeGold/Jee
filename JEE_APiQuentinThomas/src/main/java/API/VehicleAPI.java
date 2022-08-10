@@ -29,7 +29,7 @@ public class VehicleAPI extends BaseAPI{
 	@POST
 	@Path("/create")
 	@Produces(MediaType.APPLICATION_JSON)
-	public Response createMaintenance(
+	public Response createVehicle(
 			@FormParam("violation_type") String type,
 			
 			@HeaderParam(HttpHeaders.AUTHORIZATION) String key) 

@@ -30,7 +30,7 @@ Administrator administrator = null;
 @POST
 @Path("/create")
 @Produces(MediaType.APPLICATION_JSON)
-public Response createMaintenance(
+public Response createAdministrator(
 		@FormParam("staff_lastname") String lastname,
 		@FormParam("staff_firstname") String firstname,
 		@FormParam("staff_matricule") String matricule,

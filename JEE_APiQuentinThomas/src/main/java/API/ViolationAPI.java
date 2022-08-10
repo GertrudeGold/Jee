@@ -28,7 +28,7 @@ public class ViolationAPI extends BaseAPI {
 	@POST
 	@Path("/create")
 	@Produces(MediaType.APPLICATION_JSON)
-	public Response createMaintenance(
+	public Response createViolation(
 			@FormParam("violation_type") String type,
 			@FormParam("violation_amount") String amount,
 			

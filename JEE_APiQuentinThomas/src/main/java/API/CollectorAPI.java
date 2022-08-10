@@ -29,7 +29,7 @@ public class CollectorAPI  extends BaseAPI{
 	@POST
 	@Path("/create")
 	@Produces(MediaType.APPLICATION_JSON)
-	public Response createMaintenance(
+	public Response createCollector(
 			@FormParam("staff_lastname") String lastname,
 			@FormParam("staff_firstname") String firstname,
 			@FormParam("staff_matricule") String matricule,

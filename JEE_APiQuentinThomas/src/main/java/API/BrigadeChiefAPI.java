@@ -38,7 +38,7 @@ public class BrigadeChiefAPI extends BaseAPI{
 	@POST
 	@Path("/create")
 	@Produces(MediaType.APPLICATION_JSON)
-	public Response createMaintenance(
+	public Response createBrigadeChief(
 			@FormParam("staff_lastname") String lastname,
 			@FormParam("staff_firstname") String firstname,
 			@FormParam("staff_matricule") String matricule,
