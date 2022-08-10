@@ -67,13 +67,13 @@ public class PolicemanDAO implements DAO<Policeman>{
 		int createdId=0;
 		CallableStatement callableStatement = null;
 		try {
-			String sql="{call update_staff(?,?,?,?,?)}";
+			String sql="{call update_staff(?,?,?,?)}";
 			callableStatement = conn.prepareCall(sql);
 			callableStatement.setString(1, obj.getFirstname());
 			callableStatement.setString(2, obj.getLastname());
 			callableStatement.setString(3, obj.getMatricule());
 			callableStatement.setString(4, obj.getPassword());
-			callableStatement.setInt(5, obj.getBrigadeChief().getId());
+			
 			callableStatement.executeUpdate();
 
 			

@@ -25,6 +25,9 @@ public class Policeman extends Staff {
 		// TODO Auto-generated constructor stub
 	}
 	
+public Policeman(String lastname, String firstname, String matricule, String password) {
+		// TODO Auto-generated constructor stub
+	}
 public BrigadeChief getBrigadeChief() {
 		return brigadeChief;
 	}

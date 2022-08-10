@@ -29,7 +29,7 @@ public class PolicemanAPI extends BaseAPI{
 	@POST
 	@Path("/create")
 	@Produces(MediaType.APPLICATION_JSON)
-	public Response createMaintenance(
+	public Response createPoliceman(
 			@FormParam("staff_lastname") String lastname,
 			@FormParam("staff_firstname") String firstname,
 			@FormParam("staff_matricule") String matricule,
@@ -120,16 +120,14 @@ public class PolicemanAPI extends BaseAPI{
 			@FormParam("staff_firstname") String firstname,
 			@FormParam("staff_matricule") String matricule,
 			@FormParam("staff_password") String password,
-			@FormParam("chef_id") String idchief,
+			
 		
 			@HeaderParam(HttpHeaders.AUTHORIZATION) String key) {
 		String apiKey=getApiKey();
 
 		if(key.equals(apiKey)) {
-			int idchiefint = Integer.valueOf(idchief);
-			BrigadeChief brigadeChief = new BrigadeChief();
-			brigadeChief=brigadeChief.find(idchiefint);
-			Policeman policeman = new Policeman(lastname,firstname,matricule,password,brigadeChief);
+			
+			Policeman policeman = new Policeman(lastname,firstname,matricule,password);
 		boolean success= policeman.update(policeman);
 		if(success) {
 			return Response.status(Status.NO_CONTENT).build();

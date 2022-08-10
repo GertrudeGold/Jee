@@ -36,6 +36,7 @@ public class AdministratorDAO implements DAO<Administrator> {
 			callableStatement.setString(4, obj.getPassword());
 //			callableStatement.registerOutParameter(5, java.sql.Types.NUMERIC);
 			callableStatement.executeUpdate();
+			
 			success = true;
 			return success;
 		}

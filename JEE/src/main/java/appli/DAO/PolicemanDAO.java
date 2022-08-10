@@ -97,7 +97,7 @@ public class PolicemanDAO implements DAO<Policeman>{
 		parameters.add("staff_firstname", obj.getFirstname());
 		parameters.add("staff_matricule", obj.getMatricule());
 		parameters.add("staff_password", obj.getPassword());
-		parameters.add("chief_id", String.valueOf(obj.getBrigadeChief().getId()));
+	
 		ClientResponse res= resource
 				.path("policeman")
 				.path(String.valueOf(obj.getId()))
