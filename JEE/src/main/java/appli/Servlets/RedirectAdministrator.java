@@ -38,7 +38,7 @@ public class RedirectAdministrator extends HttpServlet {
 			response.sendRedirect("ListAccount");
 		//UPDATE
 		if (request.getParameter("ModifyAccount") != null) {
-			Staff account = (Staff)request.getAttribute("account");	
+			Staff account = (Staff)request.getAttribute("ModifyAccount");	
 			request.setAttribute("account", account);
 			request.getRequestDispatcher("/WEB-INF/JSP/ModifyAccount.jsp").forward(request,response);
 		}
