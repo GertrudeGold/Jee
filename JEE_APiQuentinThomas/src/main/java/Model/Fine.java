@@ -52,6 +52,9 @@ public Fine( Vehicle typeVehicle, Plate plate, Date date, String gultyFirstName,
 	this.violations=violations;
 }
 public Fine() {}
+public Fine(int validation) {
+	this.validation=validation;
+}
 public int getId() {
 	return id;
 }

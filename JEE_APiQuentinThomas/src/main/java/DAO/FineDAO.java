@@ -79,26 +79,11 @@ public class FineDAO implements DAO<Fine>{
 		boolean success=false;
 		CallableStatement callableStatement = null;
 		try {
-			String sql="{call update_fine(?,?,?,?,?,?,?,?,?,?)}";
+			String sql="{call update_fine(?)}";
 			callableStatement = conn.prepareCall(sql);
-			callableStatement.setInt(1, obj.getTypeVehicle().getId());
-			callableStatement.setInt(2, obj.getPlate().getId());
-			callableStatement.setDate(3, (java.sql.Date) obj.getDate());
-			callableStatement.setString(4, obj.getGultyFirstName());
-			callableStatement.setString(5, obj.getGultyLastName());
-			callableStatement.setString(6, obj.getComment());
-			callableStatement.setInt(7, obj.getPoliceman().getId());
-			callableStatement.setInt(8, 0);
-			String violations ="";
-			int cpt=0;
-			for(Violation violation : obj.getViolations()) {
-				if(cpt!=0) {
-					violations+="-";
-				}
-				cpt++;
-				violations+=String.valueOf(violation.getId());
-			}
-			callableStatement.setString(9,violations);
+			
+			callableStatement.setInt(1, obj.getValidation());
+			
 			
 
 			callableStatement.executeUpdate();
@@ -106,7 +91,7 @@ public class FineDAO implements DAO<Fine>{
 			return success;
 		}
 		catch(SQLException e) {
-			System.out.println("Erreur SQL insert fineDAO " + e.getMessage() + e.toString() );
+			System.out.println("Erreur SQL update fineDAO " + e.getMessage() + e.toString() );
 			return success;
 		}
 		finally {

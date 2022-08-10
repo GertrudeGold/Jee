@@ -121,43 +121,16 @@ public class FineAPI extends BaseAPI{
 	@PUT
 	@Path("{id}")
 	public Response update(@PathParam("id") int id,
-			@FormParam("fine_gultyFirstName") String fine_gultyFirstName,
-			@FormParam("fine_gultyLastName") String fine_gultyLastName,
-			@FormParam("fine_comment") String fine_comment,
-			@FormParam("vehicle_id") String vehicle_id,
-			@FormParam("plate_id") String plate_id,
-			@FormParam("fine_date") String fine_date,
-			@FormParam("policeman_id") String policeman_id,
-			@FormParam("violation_ids") String violation_ids,
+			@FormParam("validation") String validation,
+			
 			
 		
 			@HeaderParam("key") String key) {
 		String apiKey=getApiKey();
 
 		if(key.equals(apiKey)) {
-			Plate plate = new Plate();
-			plate = plate.find(Integer.valueOf(plate_id));
-			Vehicle vehicle = new Vehicle();
-			vehicle = vehicle.find(Integer.valueOf(vehicle_id));
-			Policeman policeman = new Policeman();
-			policeman = policeman.find(Integer.valueOf(policeman_id));
-			ArrayList<Violation> violations = new ArrayList<Violation>();
-			int[] violationIds = new int[violation_ids.split("-").length];
-			for(int idviolation : violationIds) {
-				
-				Violation violation = new Violation();
-				violation = violation.find(idviolation);
-				violations.add(violation);
-			}
-			Date date1=null;
-			try {
-				date1 = new SimpleDateFormat("dd-MM-yyyy HH:mm").parse(fine_date);
-			} catch (ParseException e) {
-				
-				e.printStackTrace();
-			}  
-			Fine fine = new Fine(vehicle,plate,date1,fine_gultyFirstName,fine_gultyLastName,fine_comment,
-					policeman,0,violations);
+			  
+			Fine fine = new Fine(Integer.valueOf(validation));
 		boolean success= fine.update(fine);
 		if(success) {
 			return Response.status(Status.NO_CONTENT).build();

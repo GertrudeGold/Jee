@@ -84,23 +84,8 @@ public class FineDAO implements DAO<Fine>{
 		boolean success = false;
 		String key = getApiKey();
 		MultivaluedMap<String, String> parameters = new MultivaluedMapImpl();
-		String violations ="";
-		int cpt=0;
-		for(Violation violation : obj.getViolations()) {
-			if(cpt!=0) {
-				violations+="-";
-			}
-			cpt++;
-			violations+=String.valueOf(violation.getId());
-		}
-		parameters.add("fine_gultyFirstName", obj.getGultyFirstName());
-		parameters.add("fine_gultyLastName", obj.getGultyLastName());
-		parameters.add("fine_comment", obj.getComment());
-		parameters.add("vehicle_id", String.valueOf(obj.getTypeVehicle().getId()));
-		parameters.add("plate_id", String.valueOf(obj.getPlate().getId()));
-		parameters.add("fine_date", String.valueOf(obj.getDate()));
-		parameters.add("policeman_id", String.valueOf(obj.getPoliceman().getId()));
-		parameters.add("violation_ids", violations);
+		
+		parameters.add("validation", "1");
 		ClientResponse res= resource
 				.path("fine")
 				.path(String.valueOf(obj.getId()))
