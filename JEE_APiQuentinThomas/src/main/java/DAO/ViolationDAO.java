@@ -90,8 +90,39 @@ public class ViolationDAO implements DAO<Violation>{
 
 	@Override
 	public Violation find(int id) {
-		// TODO Auto-generated method stub
-		return null;
+    Violation violation =null;
+		
+		
+		
+		Connection conn=ConnectionDatabase.getConnection();
+		try {
+			PreparedStatement preparedStatement = conn.prepareStatement("Select * from violation where violation_id=?");
+			preparedStatement.setInt(1, id);
+			ResultSet resultSet=preparedStatement.executeQuery();
+			if(resultSet.next()) {
+				int idviolation =  resultSet.getInt("violation_id");
+				String type= resultSet.getString("violation_type");
+				double amount= resultSet.getDouble("violation_amount");
+				
+				
+				 violation  = new Violation(idviolation,type,amount);				
+				 return violation;
+				
+			}
+			
+	
+		} catch (Exception e) {
+			System.out.println(e.getMessage());
+		}
+		finally {
+			try {
+				
+				conn.close();
+			}catch (SQLException e) {
+				System.out.println(e.getMessage());
+			}
+		}
+		return violation;
 	}
 
 	@Override

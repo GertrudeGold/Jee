@@ -63,6 +63,11 @@ public boolean insert(Violation violation) {
 	ViolationDAO violationDAO=new ViolationDAO();
 	return success =  violationDAO.insert(violation);
 }
+public Violation find(int id ) {
+	
+	ViolationDAO violationDAO=new ViolationDAO();
+	return violationDAO.find(id);
+}
 public boolean delete(Violation violation) {
 	boolean success;
 	ViolationDAO violationDAO=new ViolationDAO();
