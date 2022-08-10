@@ -30,11 +30,6 @@ public class Authentication extends HttpServlet {
         super(); 
     }
     
-    @Override
-    public void init() throws ServletException{
-    	super.init();
-    	apiKey=getApiKey();
-    }
     
     private String getApiKey() {
     	Context context;
@@ -55,6 +50,7 @@ public class Authentication extends HttpServlet {
 		HttpSession session = request.getSession(false);
 		if(session!=null){
 			Staff staff = (Staff) session.getAttribute("ConnectedStaff");
+			apiKey = getApiKey();
 			System.out.println("ici6");
 			if(staff !=null && staff.getMatricule() != null) {
 				if(staff instanceof Policeman) {

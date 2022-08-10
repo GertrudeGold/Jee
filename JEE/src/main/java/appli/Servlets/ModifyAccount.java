@@ -15,11 +15,11 @@ import appli.Javabeans.BrigadeChief;
 import appli.Javabeans.Collector;
 import appli.Javabeans.Policeman;
 
-@WebServlet("/MofifyAccount")
-public class MofifyAccount extends HttpServlet {
+@WebServlet("/ModifyAccount")
+public class ModifyAccount extends HttpServlet {
 	private static final long serialVersionUID = 1L;
        
-    public MofifyAccount() {
+    public ModifyAccount() {
         super();
         // TODO Auto-generated constructor stub
     }
@@ -39,7 +39,7 @@ public class MofifyAccount extends HttpServlet {
 		String firstname = request.getParameter("firstname");
 		String password = request.getParameter("password");
 		
-		if (matricule.substring(0, 2) == "ad"){
+		if (matricule.substring(0, 2).equals("ad")){
 			ArrayList<Administrator> admins = connected.getAdministrators();
 			for(Administrator admin: admins) {
 				if(admin.getMatricule().equals(matricule)) {
@@ -51,7 +51,7 @@ public class MofifyAccount extends HttpServlet {
 				
 			}
 		}
-		if (matricule.substring(0, 2) == "co"){
+		if (matricule.substring(0, 2).equals("co")){
 			ArrayList<Collector> collectors = connected.getCollectors();
 			for(Collector collector: collectors) {
 				if(collector.getMatricule().equals(matricule)) {
@@ -62,7 +62,7 @@ public class MofifyAccount extends HttpServlet {
 				
 			}
 		}
-		if (matricule.substring(0, 2) == "bc"){
+		if (matricule.substring(0, 2).equals("bc")){
 			ArrayList<BrigadeChief> chiefs = connected.getBrigadeChiefs();
 			for(BrigadeChief chief: chiefs) {
 				if(chief.getMatricule().equals(matricule)) {
@@ -74,7 +74,7 @@ public class MofifyAccount extends HttpServlet {
 				
 			}
 		}
-		if (matricule.substring(0, 2) == "pm"){
+		if (matricule.substring(0, 2).equals("pm")){
 			ArrayList<Policeman> policemans = connected.getPolicemans();
 			for(Policeman policeman: policemans) {
 				if(policeman.getMatricule().equals(matricule)) {

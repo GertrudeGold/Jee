@@ -13,6 +13,7 @@
 </head>
 <body>
 <% Staff staff = (Staff)request.getAttribute("account"); %>
+
 <h1>Modify account</h1>
 <form action="ModifyAccount" method="POST">
 	<table border="1" cellspacing="0" cellpadding="5">
