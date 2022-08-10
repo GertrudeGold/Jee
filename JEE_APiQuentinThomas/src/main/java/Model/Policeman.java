@@ -25,7 +25,8 @@ public class Policeman extends Staff {
 		// TODO Auto-generated constructor stub
 	}
 	
-public Policeman(String lastname, String firstname, String matricule, String password) {
+public Policeman(String lastname, String firstname, String matricule, String password,int id)
+{	super(firstname,lastname,matricule,password,id);
 		// TODO Auto-generated constructor stub
 	}
 public BrigadeChief getBrigadeChief() {

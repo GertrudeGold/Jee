@@ -35,6 +35,14 @@ public Staff(String firstname, String lastname, String matricule,String password
 	}	
 public Staff() {}
 
+public Staff(String firstname, String lastname, String matricule, String password, int id) {
+	// TODO Auto-generated constructor stub
+	this.firstname = firstname;
+	this.lastname = lastname;
+	this.matricule = matricule;
+	this.password=password;
+	this.id=id;
+}
 public String getPassword() {
 	return password;
 }

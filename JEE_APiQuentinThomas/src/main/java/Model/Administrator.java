@@ -32,6 +32,10 @@ public class Administrator extends Staff {
 		this.vehicles=vehicles;
 		this.violations=violations;
 	}
+	public Administrator(String lastname, String firstname, String matricule, String password,int id)
+	{	super(firstname,lastname,matricule,password,id);
+			// TODO Auto-generated constructor stub
+		}
 	public Administrator(String firstname, String lastname, String matricule,String password) {
 		super(firstname, lastname, matricule,password);
 		// TODO Auto-generated constructor stub

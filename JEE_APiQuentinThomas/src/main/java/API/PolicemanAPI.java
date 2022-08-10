@@ -127,7 +127,7 @@ public class PolicemanAPI extends BaseAPI{
 
 		if(key.equals(apiKey)) {
 			
-			Policeman policeman = new Policeman(lastname,firstname,matricule,password);
+			Policeman policeman = new Policeman(lastname,firstname,matricule,password,id);
 		boolean success= policeman.update(policeman);
 		if(success) {
 			return Response.status(Status.NO_CONTENT).build();

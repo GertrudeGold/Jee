@@ -38,51 +38,78 @@ public class RedirectAdministrator extends HttpServlet {
 			response.sendRedirect("ListAccount");
 		//UPDATE
 		if (request.getParameter("ModifyAccount") != null) {
-			Staff account = (Staff)request.getAttribute("ModifyAccount");	
-			request.setAttribute("account", account);
+			String accountMatricule = request.getParameter("accountMatricule");
+			if(accountMatricule.substring(0,2).equals("ad")) {
+				ArrayList<Administrator> admins = connected.getAdministrators();
+				for(Administrator admin: admins) {
+					if(admin.getMatricule().equals(accountMatricule)) {
+						request.setAttribute("account", admin);
+					}	
+				}
+			}
+			if(accountMatricule.substring(0,2).equals("co")) {
+				ArrayList<Collector> collectors = connected.getCollectors();
+				for(Collector collector: collectors) {
+					if(collector.getMatricule().equals(accountMatricule)) {
+						request.setAttribute("account", collector);
+					}	
+				}
+			}
+			if(accountMatricule.substring(0,2).equals("bc")) {
+				ArrayList<BrigadeChief> chiefs = connected.getBrigadeChiefs();
+				for(BrigadeChief chief: chiefs) {
+					if(chief.getMatricule().equals(accountMatricule)) {
+						request.setAttribute("account", chief);
+					}	
+				}
+			}
+			if(accountMatricule.substring(0,2).equals("pm")) {
+				ArrayList<Policeman> policemans = connected.getPolicemans();
+				for(Policeman policeman : policemans) {
+					if(policeman.getMatricule().equals(accountMatricule)) {
+						request.setAttribute("account", policeman);
+					}	
+				}
+			}
 			request.getRequestDispatcher("/WEB-INF/JSP/ModifyAccount.jsp").forward(request,response);
 		}
 		
 		//DELETE
 		if (request.getParameter("DeleteAccount") != null) {
-			Staff accountToDelete = (Staff)request.getAttribute("account");
-			
-			if(accountToDelete instanceof Administrator) {
+			String accountMatricule = request.getParameter("accountMatricule");
+			if(accountMatricule.substring(0,2).equals("ad")) {
 				ArrayList<Administrator> admins = connected.getAdministrators();
 				for(Administrator admin: admins) {
-					if(admin.equals(accountToDelete)) {
+					if(admin.getMatricule().equals(accountMatricule)) {
 						admin.delete(admin);
-						admins.remove(admin);	
+						admins.remove(admin);
 					}	
 				}
 			}
-				
-			if(accountToDelete instanceof Collector) {
+			if(accountMatricule.substring(0,2).equals("co")) {
 				ArrayList<Collector> collectors = connected.getCollectors();
 				for(Collector collector: collectors) {
-					if(collector.equals(accountToDelete)) {
+					if(collector.getMatricule().equals(accountMatricule)) {
 						collector.delete(collector);
-						collectors.remove(collector);	
+						collectors.remove(collector);
 					}	
 				}
 			}
-				
-			if(accountToDelete instanceof Administrator) {
+			if(accountMatricule.substring(0,2).equals("bc")) {
 				ArrayList<BrigadeChief> chiefs = connected.getBrigadeChiefs();
 				for(BrigadeChief chief: chiefs) {
-					if(chief.equals(accountToDelete)) {
+					if(chief.getMatricule().equals(accountMatricule)) {
 						chief.delete(chief);
-						chiefs.remove(chief);	
+						chiefs.remove(chief);
 					}	
 				}
-			}	
-			
-			if(accountToDelete instanceof Policeman) {
+			}
+			if(accountMatricule.substring(0,2).equals("pm")) {
 				ArrayList<Policeman> policemans = connected.getPolicemans();
-				for(Policeman policeman: policemans) {
-					if(policeman.equals(accountToDelete)) {
+				for(Policeman policeman : policemans) {
+					if(policeman.getMatricule().equals(accountMatricule)) {
 						policeman.delete(policeman);
-						policemans.remove(policeman);	
+						policemans.remove(policeman);
 					}	
 				}
 			}

@@ -22,7 +22,10 @@ ArrayList<Fine> fines;
 		// TODO Auto-generated constructor stub
 		this.fines=fines;
 	}
-
+	public Collector(String lastname, String firstname, String matricule, String password,int id)
+	{	super(firstname,lastname,matricule,password,id);
+			// TODO Auto-generated constructor stub
+		}
 	public Collector() {
 		// TODO Auto-generated constructor stub
 	}

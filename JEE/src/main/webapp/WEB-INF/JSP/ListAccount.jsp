@@ -40,8 +40,9 @@
 			<td><%= account.getFirstname() %></td>
 			<td><%= account.getMatricule() %></td>
 			<form action="RedirectAdministrator" method="post">
-			<td><button type="submit" name="ModifyAccount" value="<%= adAccounts.get(i) %>">Modify</button></td>
-			<td><button type="submit" name="DeleteAccount" value="<%= adAccounts.get(i) %>">Delete</button></td>
+			<input type="hidden" name="accountMatricule" value="<%= account.getMatricule() %>"/>
+			<td><button type="submit" name="ModifyAccount" value="Modify">Modify</button></td>
+			<td><button type="submit" name="DeleteAccount" value="Delete">Delete</button></td>
 			</form>
 		</tr>
 	<%} 
@@ -70,8 +71,9 @@
 			<td><%= account.getFirstname() %></td>
 			<td><%= account.getMatricule() %></td>
 			<form action="RedirectAdministrator" method="post">
-			<td><button type="submit" name="ModifyAccount" value="<%= account %>">Modify</button></td>
-			<td><button type="submit" name="DeleteAccount" value="<%= account %>">Delete</button></td>
+			<input type="hidden" name="accountMatricule" value="<%= account.getMatricule() %>"/>
+			<td><button type="submit" name="ModifyAccount" value="Modify">Modify</button></td>
+			<td><button type="submit" name="DeleteAccount" value="Delete">Delete</button></td>
 			</form>
 		</tr>
 	<%} 
@@ -100,8 +102,9 @@
 			<td><%= account.getFirstname() %></td>
 			<td><%= account.getMatricule() %></td>
 			<form action="RedirectAdministrator" method="post">
-			<td><button type="submit" name="ModifyAccount" value="<%= account %>">Modify</button></td>
-			<td><button type="submit" name="DeleteAccount" value="<%= account %>">Delete</button></td>
+			<input type="hidden" name="accountMatricule" value="<%= account.getMatricule() %>"/>
+			<td><button type="submit" name="ModifyAccount" value="Modify">Modify</button></td>
+			<td><button type="submit" name="DeleteAccount" value="Delete">Delete</button></td>
 			</form>
 		</tr>
 	<%} 
@@ -130,8 +133,9 @@
 			<td><%= account.getFirstname() %></td>
 			<td><%= account.getMatricule() %></td>
 			<form action="RedirectAdministrator" method="post">
-			<td><button type="submit" name="ModifyAccount" value="<%= account %>">Modify</button></td>
-			<td><button type="submit" name="DeleteAccount" value="<%= account %>">Delete</button></td>
+			<input type="hidden" name="accountMatricule" value="<%= account.getMatricule() %>"/>
+			<td><button type="submit" name="ModifyAccount" value="Modify">Modify</button></td>
+			<td><button type="submit" name="DeleteAccount" value="Delete">Delete</button></td>
 			</form>
 		</tr>
 	<%} 

@@ -27,7 +27,10 @@ public BrigadeChief(String firstname, String lastname, String matricule,int id,A
 	this.chiefid=chiefid;
 	// TODO Auto-generated constructor stub
 }
-
+public BrigadeChief(String lastname, String firstname, String matricule, String password,int id)
+{	super(firstname,lastname,matricule,password,id);
+		// TODO Auto-generated constructor stub
+	}
 	public BrigadeChief(int chiefid) {
 		 this.chiefid=chiefid;
 		

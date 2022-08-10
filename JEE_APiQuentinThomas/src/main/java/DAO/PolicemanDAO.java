@@ -64,14 +64,14 @@ public class PolicemanDAO implements DAO<Policeman>{
 	public boolean update(Policeman obj) {
 		Connection conn=ConnectionDatabase.getConnection();
 		boolean success=false;
-		int createdId=0;
+	
 		CallableStatement callableStatement = null;
 		try {
 			String sql="{call update_staff(?,?,?,?)}";
 			callableStatement = conn.prepareCall(sql);
-			callableStatement.setString(1, obj.getFirstname());
-			callableStatement.setString(2, obj.getLastname());
-			callableStatement.setString(3, obj.getMatricule());
+			callableStatement.setInt(1, obj.getId());
+			callableStatement.setString(2, obj.getFirstname());
+			callableStatement.setString(3, obj.getLastname());
 			callableStatement.setString(4, obj.getPassword());
 			
 			callableStatement.executeUpdate();
