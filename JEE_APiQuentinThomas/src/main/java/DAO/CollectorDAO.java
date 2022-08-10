@@ -97,7 +97,7 @@ public class CollectorDAO implements DAO<Collector>{
 		ArrayList<Collector> collectors = new ArrayList<Collector>();
 		Connection conn=ConnectionDatabase.getConnection();
 		try {
-			PreparedStatement preparedStatement = conn.prepareStatement("SELECT * FROM( Staff s inner join BrigadeChief b on s.staff_id=b.staff_id) ");
+			PreparedStatement preparedStatement = conn.prepareStatement("SELECT * FROM( Staff s inner join Collector b on s.staff_id=b.staff_id) ");
 			
 			ResultSet resultSet=preparedStatement.executeQuery();
 			while(resultSet.next()) {

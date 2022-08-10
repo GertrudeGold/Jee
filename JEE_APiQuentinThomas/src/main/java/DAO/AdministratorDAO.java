@@ -109,7 +109,7 @@ public class AdministratorDAO implements DAO<Administrator> {
 			PreparedStatement preparedStatement = conn.prepareStatement("select * from (Staff s inner join Administrator a on s.staff_id = a.staff_id)");
 			
 			ResultSet resultSet=preparedStatement.executeQuery();
-			if(resultSet.next()) {
+			while(resultSet.next()) {
 				String name =  resultSet.getString("staff_lastname");
 				String firstname= resultSet.getString("staff_firstname");
 				String matricule= resultSet.getString("staff_matricule");
