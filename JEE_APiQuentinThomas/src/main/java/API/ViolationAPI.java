@@ -86,8 +86,8 @@ public class ViolationAPI extends BaseAPI {
 	@PUT
 	@Path("{id}")
 	public Response update(@PathParam("id") int id,
-			@FormParam("vehicle_type") String type,
-			@FormParam("vehicle_amount") String amount,
+			@FormParam("violation_type") String type,
+			@FormParam("violation_amount") String amount,
 		
 			@HeaderParam(HttpHeaders.AUTHORIZATION) String key) {
 		String apiKey=getApiKey();

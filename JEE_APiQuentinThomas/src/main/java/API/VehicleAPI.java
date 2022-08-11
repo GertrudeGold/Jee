@@ -34,7 +34,7 @@ public class VehicleAPI extends BaseAPI{
 	@Path("/create")
 	@Produces(MediaType.APPLICATION_JSON)
 	public Response createVehicle(
-			@FormParam("violation_type") String type,
+			@FormParam("vehicle_type") String type,
 			
 			@HeaderParam(HttpHeaders.AUTHORIZATION) String key) 
 	{
