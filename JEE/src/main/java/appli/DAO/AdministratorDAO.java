@@ -11,8 +11,10 @@ import javax.ws.rs.core.MediaType;
 import javax.ws.rs.core.MultivaluedMap;
 import javax.ws.rs.core.UriBuilder;
 
+import org.json.JSONArray;
 import org.json.JSONObject;
 
+import com.fasterxml.jackson.core.type.TypeReference;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.sun.jersey.api.client.Client;
 import com.sun.jersey.api.client.ClientResponse;
@@ -127,9 +129,34 @@ public class AdministratorDAO implements DAO<Administrator> {
 
 	@Override
 	public ArrayList<Administrator> findAll() {
-		// TODO Auto-generated method stub
-		return null;
-	}
+		String key=getApiKey();
+		String res=resource
+				.path("administrator")
+				.path("all")
+				.header("key",key)
+				.header("AUTHORIZATION", key)
+				.get(String.class);
+		ArrayList<Administrator> administrators = new ArrayList<Administrator>();
+		
+//		try{
+//			JSONArray jsonArray= new JSONArray(responseJSON);
+//			for(int i=0; i<jsonArray.length();i++) {
+//				JSONObject admin =(JSONObject) jsonArray.get(i);	
+				ObjectMapper mapper=new ObjectMapper();
+				try {
+					
+				  administrators= mapper.readValue(res, new TypeReference<ArrayList<Administrator>>(){});
+				 return administrators;
+				} catch (Exception e) {
+					System.out.println(e.getMessage());
+					return null;
+				}
+		}
+//		catch (Exception e) {
+//			System.out.println( e.getMessage());
+//			return null;
+//		}
+//	}
 
 
 	public Administrator login(String matricule,String password) {
@@ -139,20 +166,20 @@ public class AdministratorDAO implements DAO<Administrator> {
 		MultivaluedMap<String,String> paramsPost=new MultivaluedMapImpl();
 		paramsPost.add("matricule", matricule);
 		paramsPost.add("password", password);
-		ClientResponse responseJSON=resource
+		ClientResponse res=resource
 				.path("administrator")
 				.path("login")
 				.accept(MediaType.APPLICATION_JSON)
 				.post(ClientResponse.class,paramsPost);
 		
 		Administrator administrator=null;
-		String response=responseJSON.getEntity(String.class);
-		status = responseJSON.getStatus();
+		String response=res.getEntity(String.class);
+		status = res.getStatus();
 		if(status==200) {
 			
 			
 			MultivaluedMap<String, String> headers;
-			headers=responseJSON.getHeaders();
+			headers=res.getHeaders();
 			List<String> apiKey=headers.get("api-key");
 			saveApiKey(apiKey.get(0));
 			
