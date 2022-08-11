@@ -26,9 +26,9 @@ public class ListViolationCollector extends HttpServlet {
 		// TODO Auto-generated method stub
 		HttpSession session = request.getSession(false);
 		Collector connected = (Collector) session.getAttribute("ConnectedStaff");
-		//ArrayList<Violation> violations = connected.getViolations();
+		ArrayList<Violation> violations = connected.getViolations();
 		
-		//request.setAttribute("violations", violations);
+		request.setAttribute("violations", violations);
 		
 		request.getRequestDispatcher("/WEB-INF/JSP/ListViolationCollector.jsp").forward(request,response);
 	}

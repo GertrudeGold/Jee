@@ -30,7 +30,7 @@ public class RedirectBrigadeChief extends HttpServlet {
 		
 		//Will validate Fine
 		if (request.getParameter("Validate") != null) {
-			int id = (int) request.getAttribute("idFine");
+			int id = Integer.valueOf(request.getParameter("idFine"));
 			ArrayList<Fine> fines = connected.getFines();
 			for(Fine fine:fines) {
 				if(fine.getId() == id) {
@@ -43,7 +43,7 @@ public class RedirectBrigadeChief extends HttpServlet {
         }
 		//Will unvalidate Fine
 		if (request.getParameter("Unvalidate") != null) {
-			int id = (int) request.getAttribute("idFine");
+			int id = Integer.valueOf(request.getParameter("idFine"));
 			ArrayList<Fine> fines = connected.getFines();
 			for(Fine fine:fines) {
 				if(fine.getId() == id) {

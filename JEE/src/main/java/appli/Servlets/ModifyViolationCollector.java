@@ -36,13 +36,13 @@ public class ModifyViolationCollector extends HttpServlet {
 		String oldViolation = request.getParameter("oldType");
 		double amount = Double.valueOf(request.getParameter("amount"));
 		
-		//ArrayList<Violation> violations = connected.getViolations();
-		//for(Violation violation : violations) {
-			//if(violation.getType().equals(oldViolation)) {
-				//violation.setPrice(amount);
-		    	//violation.update(violation);	
-			//}
-		//}
+		ArrayList<Violation> violations = connected.getViolations();
+		for(Violation violation : violations) {
+			if(violation.getType().equals(oldViolation)) {
+				violation.setPrice(amount);
+		    	violation.update(violation);	
+			}
+		}
 		doGet(request, response);
 	}
 
