@@ -147,7 +147,7 @@ public class CollectorDAO  implements DAO<Collector>{
 		paramsPost.add("matricule", matricule);
 		paramsPost.add("password", password);
 		ClientResponse responseJSON=resource
-				.path("BrigadeChief")
+				.path("collector")
 				.path("login")
 				.accept(MediaType.APPLICATION_JSON)
 				.post(ClientResponse.class,paramsPost);

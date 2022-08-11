@@ -210,7 +210,7 @@ ArrayList<Policeman> policemans = new ArrayList();
 		Policeman policeman = null;
 		Connection conn=ConnectionDatabase.getConnection();
 		try {
-			PreparedStatement preparedStatement = conn.prepareStatement("select * from (Staff s inner join Administrator a on s.staff_id = a.staff_id) where s.staff_matricule=? and s.staff_password= ?");
+			PreparedStatement preparedStatement = conn.prepareStatement("select * from (Staff s inner join Policeman a on s.staff_id = a.staff_id) where s.staff_matricule=? and s.staff_password= ?");
 			preparedStatement.setString(1, matricule);
 			preparedStatement.setString(2, password);
 			ResultSet resultSet=preparedStatement.executeQuery();

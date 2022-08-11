@@ -72,8 +72,7 @@ public class CollectorAPI  extends BaseAPI{
 	public Response login(
 			@FormParam("matricule") String matricule, 
 			@FormParam("password") String password) {
-		System.out.println(matricule);
-		System.out.println(password);
+		
 		
 		collector= (Collector) Staff.login(matricule, password);
 		if(collector != null) {

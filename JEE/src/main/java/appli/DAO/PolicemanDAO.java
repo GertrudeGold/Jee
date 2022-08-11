@@ -148,7 +148,7 @@ public class PolicemanDAO implements DAO<Policeman>{
 		paramsPost.add("matricule", matricule);
 		paramsPost.add("password", password);
 		ClientResponse responseJSON=resource
-				.path("BrigadeChief")
+				.path("policeman")
 				.path("login")
 				.accept(MediaType.APPLICATION_JSON)
 				.post(ClientResponse.class,paramsPost);

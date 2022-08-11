@@ -129,7 +129,7 @@ public class CollectorDAO implements DAO<Collector>{
 		Collector collector = null;
 		Connection conn=ConnectionDatabase.getConnection();
 		try {
-			PreparedStatement preparedStatement = conn.prepareStatement("SELECT * FROM( Staff s inner join BrigadeChief b on s.staff_id=b.staff_id)  where staff_matricule =? and staff_password=?");
+			PreparedStatement preparedStatement = conn.prepareStatement("SELECT * FROM( Staff s inner join Collector b on s.staff_id=b.staff_id)  where staff_matricule =? and staff_password=?");
 			preparedStatement.setString(1, matricule);
 			preparedStatement.setString(2, password);
 			ResultSet resultSet=preparedStatement.executeQuery();
