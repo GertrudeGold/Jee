@@ -10,6 +10,7 @@ import java.util.ArrayList;
 import Model.BrigadeChief;
 import Model.Collector;
 import Model.Fine;
+import Model.Violation;
 
 public class CollectorDAO implements DAO<Collector>{
 
@@ -105,9 +106,10 @@ public class CollectorDAO implements DAO<Collector>{
 				String firstname= resultSet.getString("staff_firstname");
 				String matricule= resultSet.getString("staff_matricule");
 				int id= resultSet.getInt("staff_id");	
+				ArrayList<Violation> violations = Violation.findAll();
 				ArrayList<Fine> fines = new ArrayList<Fine>();
 				fines=Fine.Findall();
-				Collector collector = new Collector(name,firstname,matricule,id,fines);			
+				Collector collector = new Collector(name,firstname,matricule,id,fines,violations);			
 				collectors.add(collector);
 				
 			}
@@ -137,9 +139,10 @@ public class CollectorDAO implements DAO<Collector>{
 				String name =  resultSet.getString("staff_lastname");
 				String firstname= resultSet.getString("staff_firstname");
 				int id= resultSet.getInt("staff_id");	
+				ArrayList<Violation> violations = Violation.findAll();
 				ArrayList<Fine> fines = new ArrayList<Fine>();
 				fines=Fine.Findall();
-				collector = new Collector(name,firstname,matricule,id,fines);			
+				collector = new Collector(name,firstname,matricule,id,fines,violations);			
 				
 				return collector;
 			}

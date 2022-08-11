@@ -9,6 +9,7 @@ import DAO.PolicemanDAO;
 
 public class Collector extends Staff {
 ArrayList<Fine> fines;
+ArrayList<Violation> violations;
 	public Collector(String firstname, String lastname, String matricule,int id) {
 		super(firstname, lastname, matricule,id);
 		// TODO Auto-generated constructor stub
@@ -17,10 +18,11 @@ ArrayList<Fine> fines;
 		super(firstname, lastname, matricule,password);
 		// TODO Auto-generated constructor stub
 	}
-	public Collector(String firstname, String lastname, String matricule,int id,ArrayList<Fine> fines) {
+	public Collector(String firstname, String lastname, String matricule,int id,ArrayList<Fine> fines,ArrayList<Violation> violations) {
 		super(firstname, lastname, matricule,id);
 		// TODO Auto-generated constructor stub
 		this.fines=fines;
+		this.violations=violations;
 	}
 	public Collector(String lastname, String firstname, String matricule, String password,int id)
 	{	super(firstname,lastname,matricule,password,id);
@@ -44,4 +46,17 @@ ArrayList<Fine> fines;
 		ArrayList<Collector> collector =  collectorDAO.findAll();
 		return collector;
 	}
+	public ArrayList<Fine> getFines() {
+		return fines;
+	}
+	public void setFines(ArrayList<Fine> fines) {
+		this.fines = fines;
+	}
+	public ArrayList<Violation> getViolations() {
+		return violations;
+	}
+	public void setViolations(ArrayList<Violation> violations) {
+		this.violations = violations;
+	}
+	
 }
