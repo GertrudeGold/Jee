@@ -259,7 +259,7 @@ public class BrigadeChiefDAO implements DAO<BrigadeChief> {
 		boolean success=false;
 		CallableStatement callableStatement = null;
 		try {
-			String sql="{call delete_staff(?)}";
+			String sql="{call delete_BrigadeChief(?)}";
 			callableStatement = conn.prepareCall(sql);
 			callableStatement.setInt(1, id);
 			callableStatement.executeUpdate();

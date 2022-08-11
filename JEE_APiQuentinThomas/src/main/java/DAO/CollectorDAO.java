@@ -164,7 +164,7 @@ public class CollectorDAO implements DAO<Collector>{
 		boolean success=false;
 		CallableStatement callableStatement = null;
 		try {
-			String sql="{call delete_staff(?)}";
+			String sql="{call delete_Collector(?)}";
 			callableStatement = conn.prepareCall(sql);
 			callableStatement.setInt(1, id);
 			callableStatement.executeUpdate();
