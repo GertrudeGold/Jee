@@ -129,4 +129,13 @@ public  boolean insert(Fine fine ) {
 return success;
 
 }
+public static ArrayList<Fine> findAll() {
+	
+	FineDAO fineDAO=new FineDAO();
+	return fineDAO.findAll();
+
+
+
+
+}
 }

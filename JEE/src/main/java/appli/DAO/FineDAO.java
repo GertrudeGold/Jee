@@ -9,11 +9,14 @@ import javax.naming.NamingException;
 import javax.ws.rs.core.MultivaluedMap;
 import javax.ws.rs.core.UriBuilder;
 
+import com.fasterxml.jackson.core.type.TypeReference;
+import com.fasterxml.jackson.databind.ObjectMapper;
 import com.sun.jersey.api.client.Client;
 import com.sun.jersey.api.client.ClientResponse;
 import com.sun.jersey.api.client.WebResource;
 import com.sun.jersey.core.util.MultivaluedMapImpl;
 
+import appli.Javabeans.Administrator;
 import appli.Javabeans.Fine;
 import appli.Javabeans.Violation;
 
@@ -106,8 +109,25 @@ public class FineDAO implements DAO<Fine>{
 
 	@Override
 	public ArrayList<Fine> findAll() {
-		// TODO Auto-generated method stub
-		return null;
+		String key=getApiKey();
+		String res=resource
+				.path("fine")
+				.path("all")
+				.header("key",key)
+				.header("AUTHORIZATION", key)
+				.get(String.class);
+		ArrayList<Fine> fines = new ArrayList<Fine>();
+		
+
+				ObjectMapper mapper=new ObjectMapper();
+				try {
+					
+					fines= mapper.readValue(res, new TypeReference<ArrayList<Fine>>(){});
+				 return fines;
+				} catch (Exception e) {
+					System.out.println(e.getMessage());
+					return null;
+				}
 	}
 
 }

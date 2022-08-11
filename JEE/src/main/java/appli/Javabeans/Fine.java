@@ -87,5 +87,10 @@ public boolean update(Fine fine) {
 	FineDAO fineDAO=new FineDAO();
 	return success =  fineDAO.update(fine);
 }
+public static ArrayList<Fine> findAll() {
+
+	FineDAO fineDAO=new FineDAO();
+	 return fineDAO.findAll();
+}
 
 }
