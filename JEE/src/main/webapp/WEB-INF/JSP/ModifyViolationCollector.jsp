@@ -10,7 +10,7 @@
 <% Violation violation = (Violation)request.getAttribute("violation"); %>
 
 <h1>Modify Violation</h1>
-<form action="ModifyViolation" method="POST">
+<form action="ModifyViolationCollector" method="POST">
 	<table border="1" cellspacing="0" cellpadding="5">
 	<tr>
 		<td>Violation type : </td>
