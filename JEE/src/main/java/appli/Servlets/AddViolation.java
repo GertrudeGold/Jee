@@ -32,13 +32,14 @@ public class AddViolation extends HttpServlet {
 		// TODO Auto-generated method stub
 		HttpSession session = request.getSession(false);
 		Administrator connected = (Administrator) session.getAttribute("ConnectedStaff");
-		ArrayList<Violation> violations = connected.getViolations();
+		//ArrayList<Violation> violations = connected.getViolations();
 		
 		String type = request.getParameter("type");
 		double amount = Double.valueOf(request.getParameter("amount"));
 		Violation violation = new Violation(type, amount);
 		violation.insert(violation);
-		violations.add(violation);
+		//violations.add(violation);
+		connected.setViolations(Violation.findAll());
 		
 		doGet(request, response);
 	}

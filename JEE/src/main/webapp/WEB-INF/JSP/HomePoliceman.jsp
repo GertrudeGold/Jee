@@ -1,5 +1,4 @@
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1" pageEncoding="ISO-8859-1"%>
-<jsp:useBean id="connectedUser" class="appli.Javabeans.Policeman" scope="session"></jsp:useBean>
 <!DOCTYPE html>
 <html>
 <head>

@@ -10,6 +10,7 @@
 <body>
 <% ArrayList<Vehicle> vehicles=(ArrayList<Vehicle>) request.getAttribute("vehicles");%>
 
+
 <table cellspacing="1" cellpadding="4" border="3">
 	<thead>
 		<tr>
