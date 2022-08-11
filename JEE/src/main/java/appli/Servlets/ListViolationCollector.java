@@ -10,15 +10,14 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
-import appli.Javabeans.Administrator;
-import appli.Javabeans.BrigadeChief;
-import appli.Javabeans.Fine;
+import appli.Javabeans.Collector;
+import appli.Javabeans.Violation;
 
-@WebServlet("/ListFineByBrigade")
-public class ListFineByBrigade extends HttpServlet {
+@WebServlet("/ListViolationCollector")
+public class ListViolationCollector extends HttpServlet {
 	private static final long serialVersionUID = 1L;
 
-    public ListFineByBrigade() {
+    public ListViolationCollector() {
         super();
         // TODO Auto-generated constructor stub
     }
@@ -26,18 +25,16 @@ public class ListFineByBrigade extends HttpServlet {
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		// TODO Auto-generated method stub
 		HttpSession session = request.getSession(false);
+		Collector connected = (Collector) session.getAttribute("ConnectedStaff");
+		//ArrayList<Violation> violations = connected.getViolations();
 		
-		BrigadeChief connected = (BrigadeChief) session.getAttribute("ConnectedStaff");
-		ArrayList<Fine> fines = connected.getFines();
+		//request.setAttribute("violations", violations);
 		
-		request.setAttribute("fines", fines);
-		
-		request.getRequestDispatcher("/WEB-INF/JSP/ListFineByBrigade.jsp").forward(request,response);
+		request.getRequestDispatcher("/WEB-INF/JSP/ListViolationCollector.jsp").forward(request,response);
 	}
 
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		// TODO Auto-generated method stub
-		
 		doGet(request, response);
 	}
 

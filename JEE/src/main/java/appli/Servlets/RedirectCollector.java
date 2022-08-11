@@ -18,7 +18,20 @@ public class RedirectCollector extends HttpServlet {
 
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		// TODO Auto-generated method stub
-		response.getWriter().append("Served at: ").append(request.getContextPath());
+		//See Violation
+		if (request.getParameter("ManageViolationAmount") != null) {
+			response.sendRedirect("ListViolationCollector");
+        }
+		//See validated Fine
+		if (request.getParameter("SeeValidatedFine") != null) {
+			response.sendRedirect("ListValidatedFine");
+        }
+		//Modify amount
+		if (request.getParameter("ModifyViolation") != null) {
+			
+			
+			request.getRequestDispatcher("/WEB-INF/JSP/ModifyViolationCollector.jsp").forward(request,response);
+        }
 	}
 
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {

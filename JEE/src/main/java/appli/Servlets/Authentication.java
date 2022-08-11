@@ -63,7 +63,7 @@ public class Authentication extends HttpServlet {
 				if(staff instanceof BrigadeChief) {
 					System.out.println("BrigadeChief");
 					
-					response.sendRedirect("ListByBrigadeChief");
+					request.getRequestDispatcher("/WEB-INF/JSP/HomeBrigadeChief.jsp").forward(request,response);
 					return;
 				}
 				if(staff instanceof Collector) {
