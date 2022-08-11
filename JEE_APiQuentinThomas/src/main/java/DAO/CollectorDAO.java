@@ -109,7 +109,13 @@ public class CollectorDAO implements DAO<Collector>{
 				ArrayList<Violation> violations = Violation.findAll();
 				ArrayList<Fine> fines = new ArrayList<Fine>();
 				fines=Fine.Findall();
-				Collector collector = new Collector(name,firstname,matricule,id,fines,violations);			
+				ArrayList<Fine> finesToAdd = new ArrayList<Fine>();
+				for(Fine fine : fines) {
+                    if(fine.getValidation()==1){
+                    	finesToAdd.add(fine);
+                    }
+                }
+				Collector collector = new Collector(name,firstname,matricule,id,finesToAdd,violations);			
 				collectors.add(collector);
 				
 			}
@@ -142,7 +148,13 @@ public class CollectorDAO implements DAO<Collector>{
 				ArrayList<Violation> violations = Violation.findAll();
 				ArrayList<Fine> fines = new ArrayList<Fine>();
 				fines=Fine.Findall();
-				collector = new Collector(name,firstname,matricule,id,fines,violations);			
+				ArrayList<Fine> finesToAdd = new ArrayList<Fine>();
+				for(Fine fine : fines) {
+                    if(fine.getValidation()==1){
+                    	finesToAdd.add(fine);
+                    }
+                }
+				collector = new Collector(name,firstname,matricule,id,finesToAdd,violations);			
 				
 				return collector;
 			}

@@ -112,7 +112,7 @@ public class BrigadeChiefDAO implements DAO<BrigadeChief> {
                     	finesToAdd.add(fine);
                     }
                 }
-				brigadeChief = new BrigadeChief(name,firstname,matricule,id,fines,policemans,chefid);
+				brigadeChief = new BrigadeChief(name,firstname,matricule,id,finesToAdd,policemans,chefid);
 				
 				
 				return brigadeChief;
@@ -234,7 +234,7 @@ public class BrigadeChiefDAO implements DAO<BrigadeChief> {
                     }
                 }
 				
-				brigadeChief = new BrigadeChief(name,firstname,matricule,id,fines,policemans,chefid);
+				brigadeChief = new BrigadeChief(name,firstname,matricule,id,finesToAdd,policemans,chefid);
 				return brigadeChief;
 			}
 		 
