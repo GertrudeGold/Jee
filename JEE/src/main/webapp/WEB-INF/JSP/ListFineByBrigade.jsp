@@ -38,8 +38,9 @@
 			<td><%= fine.getGultyFirstName() %></td>
 			<td><%= fine.getComment() %></td>		
 			<form action="RedirectBrigadeChief" method="post">
-			<td><button type="submit" name="Validate" value="<% request.setAttribute("fine", fine); %>"></button></td>
-			<td><input type="submit" name="Unvalidate" value="<% request.setAttribute("fine", fine); %>"></button></td>
+			<input type="hidden" name="idFine" value="<%= fine.getId() %>"/>
+			<td><button type="submit" name="Validate" value="Validate">Validate</button></td>
+			<td><button type="submit" name="Unvalidate" value="Unvalidate">Unvalidate</button></td>
 			</form>
 		</tr>
 	<%} 

@@ -9,7 +9,7 @@
 <h1>Bienvenue ${ConnectedStaff.firstname} ${ConnectedStaff.lastname}</h1>
 
 <form action="RedirectPoliceman" method="post">
-    <input type="submit" name="button1" value="Create a new fine" />
+    <input type="submit" name="CreateFine" value="Create a new fine" />
 </form>
 
 </body>

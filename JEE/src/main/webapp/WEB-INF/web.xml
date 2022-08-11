@@ -165,7 +165,50 @@
 	  <url-pattern>/Modify-Violation</url-pattern>
   </servlet-mapping>
   
+  <servlet>
+      <servlet-name>CreateFine</servlet-name>
+      <servlet-class>appli.Servlets.CreateFine</servlet-class>
+  </servlet>
+  <servlet-mapping>
+	  <servlet-name>CreateFine</servlet-name>
+	  <url-pattern>/Create-Fine</url-pattern>
+  </servlet-mapping>
   
+  <servlet>
+      <servlet-name>ListViolationCollector</servlet-name>
+      <servlet-class>appli.Servlets.ListViolationCollector</servlet-class>
+  </servlet>
+  <servlet-mapping>
+	  <servlet-name>ListViolationCollector</servlet-name>
+	  <url-pattern>/List-Violation-Collector</url-pattern>
+  </servlet-mapping>
+  
+  <servlet>
+      <servlet-name>ListValidatedFine</servlet-name>
+      <servlet-class>appli.Servlets.ListValidatedFine</servlet-class>
+  </servlet>
+  <servlet-mapping>
+	  <servlet-name>ListValidatedFine</servlet-name>
+	  <url-pattern>/List-Validated-Fine</url-pattern>
+  </servlet-mapping>
+  
+  <servlet>
+      <servlet-name>ModifyViolationCollector</servlet-name>
+      <servlet-class>appli.Servlets.ModifyViolationCollector</servlet-class>
+  </servlet>
+  <servlet-mapping>
+	  <servlet-name>ModifyViolationCollector</servlet-name>
+	  <url-pattern>/Modify-Violation-Collector</url-pattern>
+  </servlet-mapping>
+  
+  <servlet>
+      <servlet-name>AddFine</servlet-name>
+      <servlet-class>appli.Servlets.AddFine</servlet-class>
+  </servlet>
+  <servlet-mapping>
+	  <servlet-name>AddFine</servlet-name>
+	  <url-pattern>/Add-Fine</url-pattern>
+  </servlet-mapping>
   
   <error-page>
 		<exception-type>java.lang.Exception</exception-type>

@@ -11,33 +11,38 @@ import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
 import appli.Javabeans.Administrator;
-import appli.Javabeans.BrigadeChief;
-import appli.Javabeans.Fine;
+import appli.Javabeans.Collector;
+import appli.Javabeans.Violation;
 
-@WebServlet("/ListFineByBrigade")
-public class ListFineByBrigade extends HttpServlet {
+@WebServlet("/ModifyViolationCollector")
+public class ModifyViolationCollector extends HttpServlet {
 	private static final long serialVersionUID = 1L;
 
-    public ListFineByBrigade() {
+    public ModifyViolationCollector() {
         super();
         // TODO Auto-generated constructor stub
     }
 
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		// TODO Auto-generated method stub
-		HttpSession session = request.getSession(false);
-		
-		BrigadeChief connected = (BrigadeChief) session.getAttribute("ConnectedStaff");
-		ArrayList<Fine> fines = connected.getFines();
-		
-		request.setAttribute("fines", fines);
-		
-		request.getRequestDispatcher("/WEB-INF/JSP/ListFineByBrigade.jsp").forward(request,response);
+		response.sendRedirect("ListViolationCollector");
 	}
 
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		// TODO Auto-generated method stub
+		HttpSession session = request.getSession(false);
+		Collector connected = (Collector) session.getAttribute("ConnectedStaff");
 		
+		String oldViolation = request.getParameter("oldType");
+		double amount = Double.valueOf(request.getParameter("amount"));
+		
+		//ArrayList<Violation> violations = connected.getViolations();
+		//for(Violation violation : violations) {
+			//if(violation.getType().equals(oldViolation)) {
+				//violation.setPrice(amount);
+		    	//violation.update(violation);	
+			//}
+		//}
 		doGet(request, response);
 	}
 

@@ -25,23 +25,38 @@ public class RedirectBrigadeChief extends HttpServlet {
 
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {	
 		HttpSession session = request.getSession(false);
-		BrigadeChief chief = (BrigadeChief) session.getAttribute("ConnectedStaff");
+		BrigadeChief connected = (BrigadeChief) session.getAttribute("ConnectedStaff");
+		
+		
 		//Will validate Fine
 		if (request.getParameter("Validate") != null) {
-			Fine fine = (Fine) request.getAttribute("fine");
+			int id = (int) request.getAttribute("idFine");
+			ArrayList<Fine> fines = connected.getFines();
+			for(Fine fine:fines) {
+				if(fine.getId() == id) {
+					fine.update(fine);
+					fines.remove(fine);
+					response.sendRedirect("ListFineByBrigade");
+				}
+			}
 			
         }
 		//Will unvalidate Fine
 		if (request.getParameter("Unvalidate") != null) {
-			Fine fineToDelete = (Fine) request.getAttribute("fine");
-			ArrayList<Fine> fines = chief.getFines();
+			int id = (int) request.getAttribute("idFine");
+			ArrayList<Fine> fines = connected.getFines();
 			for(Fine fine:fines) {
-				if(fine.equals(fineToDelete)) {
+				if(fine.getId() == id) {
 					fine.delete(fine);
-					fines.remove(fineToDelete);
+					fines.remove(fine);
+					response.sendRedirect("ListFineByBrigade");
 				}
 			}	
-        } 
+        }
+		
+		if (request.getParameter("brigadeFine") != null) {
+			response.sendRedirect("ListFineByBrigade");
+        }
 		
 	}
 
