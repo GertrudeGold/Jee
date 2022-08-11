@@ -11,6 +11,7 @@ import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
 import appli.Javabeans.Administrator;
+import appli.Javabeans.Policeman;
 import appli.Javabeans.Vehicle;
 
 @WebServlet("/AddVehicle")
@@ -32,13 +33,13 @@ public class AddVehicle extends HttpServlet {
 		// TODO Auto-generated method stub
 		HttpSession session = request.getSession(false);
 		Administrator connected = (Administrator) session.getAttribute("ConnectedStaff");
-		ArrayList<Vehicle> vehicles = connected.getVehicles();
+		//ArrayList<Vehicle> vehicles = connected.getVehicles();
 		
 		String type = request.getParameter("type");
 		Vehicle vehicle = new Vehicle(type);
 		vehicle.insert(vehicle);
-		vehicles.add(vehicle);
-		
+		//vehicles.add(vehicle);
+		connected.setVehicles(Vehicle.findAll());
 		
 		doGet(request, response);
 	}

@@ -65,9 +65,9 @@ public class BrigadeChief extends Staff {
 	public void setPolicemans(ArrayList<Policeman> policemans) {
 		this.policemans = policemans;
 	}
-	public static ArrayList<Policeman> findAll(){
-		PolicemanDAO policemanDAO=new PolicemanDAO();
+	public static ArrayList<BrigadeChief> findAll(){
+		BrigadeChiefDAO brigadeChiefDAO=new BrigadeChiefDAO();
 		
-		 return  policemanDAO.findAll();
+		 return  brigadeChiefDAO.findAll();
 	}
 }

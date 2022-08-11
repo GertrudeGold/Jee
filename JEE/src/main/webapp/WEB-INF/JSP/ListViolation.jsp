@@ -10,6 +10,7 @@
 <body>
 <% ArrayList<Violation> violations=(ArrayList<Violation>) request.getAttribute("violations");%>
 
+
 <table cellspacing="1" cellpadding="4" border="3">
 	<thead>
 		<tr>

@@ -62,27 +62,30 @@ public class AddAccount extends HttpServlet {
 			
 		    break;
 		case 2:
-			ArrayList<Collector> collectors = connected.getCollectors();
+			//ArrayList<Collector> collectors = connected.getCollectors();
 			String co_matricule = "co" + randNumber;
 			Staff collector = new Collector(firstname, lastname, co_matricule, password);
 			collector.insert(collector);
-			collectors.add((Collector) collector);
+			//collectors.add((Collector) collector);
+			connected.setCollectors(Collector.findAll());
 			break;
 		case 3:
-			ArrayList<BrigadeChief> chiefs = connected.getBrigadeChiefs();
+			//ArrayList<BrigadeChief> chiefs = connected.getBrigadeChiefs();
 			String bc_matricule = "bc" + randNumber;
 			Staff chief = new BrigadeChief(firstname, lastname, bc_matricule, password);	
 			chief.insert(chief);
-			chiefs.add((BrigadeChief) chief);
+			//chiefs.add((BrigadeChief) chief);
+			connected.setBrigadeChiefs(BrigadeChief.findAll());
 			break;
 		case 4:
-			ArrayList<Policeman> policemans = connected.getPolicemans();
+			//ArrayList<Policeman> policemans = connected.getPolicemans();
 			String pm_matricule = "pm" + randNumber;
 			BrigadeChief bc = new BrigadeChief();
 			bc = bc.findBrigadeChiefToAPoliceman(idChief);
 			Staff policeman = new Policeman(firstname, lastname, pm_matricule, bc, password);	
 			policeman.insert(policeman);
-			policemans.add((Policeman) policeman);
+			//policemans.add((Policeman) policeman);
+			connected.setPolicemans(Policeman.findAll());
 			break;
 		}
 		doGet(request, response);

@@ -58,6 +58,7 @@ public class ModifyAccount extends HttpServlet {
 					collector.setFirstname(firstname);
 					collector.setLastname(lastname);
 					collector.setPassword(password);
+					collector.update(collector);
 				}
 				
 			}
