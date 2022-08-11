@@ -78,7 +78,7 @@ public class PolicemanDAO implements DAO<Policeman>{
 		String key = getApiKey();
 				
 		ClientResponse res= resource
-				.path("fine")
+				.path("policeman")
 				.path(String.valueOf(obj.getId()))
 				.header("AUTHORIZATION", key)
 				.delete(ClientResponse.class);
