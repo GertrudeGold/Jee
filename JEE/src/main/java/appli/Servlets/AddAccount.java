@@ -38,6 +38,7 @@ public class AddAccount extends HttpServlet {
 		// TODO Auto-generated method stub
 		HttpSession session = request.getSession(false);
 		Administrator connected = (Administrator) session.getAttribute("ConnectedStaff");
+
 		
 		Random random = new Random();
 		int randNumber = random.nextInt(99999999 - 10000001) + 10000001;
@@ -51,11 +52,14 @@ public class AddAccount extends HttpServlet {
 		int accountType = Integer.valueOf(request.getParameter("SelectedType"));	
 		switch (accountType) {
 		case 1:
-			ArrayList<Administrator> admins = connected.getAdministrators();
+			
 			String ad_matricule = "ad" + randNumber;
 			Staff administrator = new Administrator(firstname, lastname, ad_matricule, password);
 			administrator.insert(administrator);
-			admins.add((Administrator) administrator);
+			
+//			ArrayList<Administrator> admins = connected.getAdministrators();
+			connected.setAdministrators(Administrator.findAll());
+			
 		    break;
 		case 2:
 			ArrayList<Collector> collectors = connected.getCollectors();

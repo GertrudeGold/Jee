@@ -1,5 +1,7 @@
 package API;
 
+import java.util.ArrayList;
+
 import javax.ws.rs.DELETE;
 import javax.ws.rs.FormParam;
 import javax.ws.rs.GET;
@@ -129,7 +131,7 @@ public Response update(@PathParam("id") int id,
 	String apiKey=getApiKey();
 
 	if(key.equals(apiKey)) {
-	Administrator administrator = new Administrator(lastname,firstname,matricule,password);
+	Administrator administrator = new Administrator(lastname,firstname,matricule,password,id);
 	boolean success= administrator.update(administrator);
 	if(success) {
 		return Response.status(Status.NO_CONTENT).build();
@@ -141,4 +143,23 @@ public Response update(@PathParam("id") int id,
 	}
 
 }
+@GET
+@Path("/all")
+@Produces(MediaType.APPLICATION_JSON)
+public Response GetAll(
+		@HeaderParam(HttpHeaders.AUTHORIZATION) String key)
+		 {
+	
+	String apiKey=getApiKey();
+	if(key.equals(apiKey)) {
+	ArrayList<Administrator>administrators = new ArrayList<Administrator>();
+	administrators=Administrator.findAll();
+	
+		return Response.status(Status.OK).entity(administrators).build();
+		
+	}else {
+		return Response.status(Status.UNAUTHORIZED).build();
+	}
+	
+	}
 }

@@ -149,7 +149,7 @@ public class BrigadeChiefAPI extends BaseAPI{
 		String apiKey=getApiKey();
 
 		if(key.equals(apiKey)) {
-		BrigadeChief brigadeChief = new BrigadeChief(lastname,firstname,matricule,password);
+		BrigadeChief brigadeChief = new BrigadeChief(lastname,firstname,matricule,password,id);
 		boolean success= brigadeChief.update(brigadeChief);
 		if(success) {
 			return Response.status(Status.NO_CONTENT).build();

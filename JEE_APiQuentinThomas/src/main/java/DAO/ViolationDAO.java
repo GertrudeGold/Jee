@@ -62,10 +62,11 @@ public class ViolationDAO implements DAO<Violation>{
 		boolean success=false;
 		CallableStatement callableStatement = null;
 		try {
-			String sql="{call update_violation(?,?)}";
+			String sql="{call update_violation(?,?,?)}";
 			callableStatement = conn.prepareCall(sql);
-			callableStatement.setString(1, obj.getType());
-			callableStatement.setDouble(2, obj.getPrice());
+			callableStatement.setInt(1, obj.getId());
+			callableStatement.setString(2, obj.getType());
+			callableStatement.setDouble(3, obj.getPrice());
 			
 
 			callableStatement.executeUpdate();

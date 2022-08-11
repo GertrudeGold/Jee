@@ -119,7 +119,7 @@ public class CollectorAPI  extends BaseAPI{
 		String apiKey=getApiKey();
 
 		if(key.equals(apiKey)) {
-		Collector collector = new Collector(lastname,firstname,matricule,password);
+		Collector collector = new Collector(lastname,firstname,matricule,password,id);
 		boolean success= collector.update(collector);
 		if(success) {
 			return Response.status(Status.NO_CONTENT).build();

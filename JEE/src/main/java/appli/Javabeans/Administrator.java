@@ -2,6 +2,8 @@ package appli.Javabeans;
 
 import java.util.ArrayList;
 
+import appli.DAO.AdministratorDAO;
+
 
 
 public class Administrator extends Staff {
@@ -54,4 +56,28 @@ public class Administrator extends Staff {
 	public ArrayList<Violation> getViolations() {
 		return violations;
 	}
+	public static ArrayList<Administrator> findAll(){
+		AdministratorDAO administratorDAO=new AdministratorDAO();
+		
+		 return  administratorDAO.findAll();
+	}
+	public void setPolicemans(ArrayList<Policeman> policemans) {
+		this.policemans = policemans;
+	}
+	public void setCollectors(ArrayList<Collector> collectors) {
+		this.collectors = collectors;
+	}
+	public void setBrigadeChiefs(ArrayList<BrigadeChief> brigadeChiefs) {
+		this.brigadeChiefs = brigadeChiefs;
+	}
+	public void setAdministrators(ArrayList<Administrator> administrators) {
+		this.administrators = administrators;
+	}
+	public void setVehicles(ArrayList<Vehicle> vehicles) {
+		this.vehicles = vehicles;
+	}
+	public void setViolations(ArrayList<Violation> violations) {
+		this.violations = violations;
+	}
+	
 }

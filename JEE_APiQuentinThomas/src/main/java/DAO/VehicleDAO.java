@@ -19,8 +19,9 @@ public class VehicleDAO implements DAO<Vehicle> {
 		boolean success=false;
 		CallableStatement callableStatement = null;
 		try {
-			String sql="{call insert_vehicle(?,?)}";
+			String sql="{call insert_vehicle(?)}";
 			callableStatement = conn.prepareCall(sql);
+			
 			callableStatement.setString(1, obj.getType());
 			
 			
@@ -61,7 +62,8 @@ public class VehicleDAO implements DAO<Vehicle> {
 		try {
 			String sql="{call update_vehicle(?,?)}";
 			callableStatement = conn.prepareCall(sql);
-			callableStatement.setString(1, obj.getType());
+			callableStatement.setInt(1, obj.getId());
+			callableStatement.setString(2, obj.getType());
 			
 			
 

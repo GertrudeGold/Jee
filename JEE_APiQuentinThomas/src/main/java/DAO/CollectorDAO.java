@@ -62,9 +62,9 @@ public class CollectorDAO implements DAO<Collector>{
 		try {
 			String sql="{call update_staff(?,?,?,?)}";
 			callableStatement = conn.prepareCall(sql);
-			callableStatement.setString(1, obj.getFirstname());
-			callableStatement.setString(2, obj.getLastname());
-			callableStatement.setString(3, obj.getMatricule());
+			callableStatement.setInt(1, obj.getId());
+			callableStatement.setString(2, obj.getFirstname());
+			callableStatement.setString(3, obj.getLastname());
 			callableStatement.setString(4, obj.getPassword());
 
 			callableStatement.executeUpdate();
