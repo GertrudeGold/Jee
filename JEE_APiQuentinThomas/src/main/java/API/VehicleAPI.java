@@ -90,7 +90,7 @@ public class VehicleAPI extends BaseAPI{
 		String apiKey=getApiKey();
 
 		if(key.equals(apiKey)) {
-		Vehicle vehicle = new Vehicle(type);
+		Vehicle vehicle = new Vehicle(type,id);
 		boolean success= vehicle.update(vehicle);
 		if(success) {
 			return Response.status(Status.NO_CONTENT).build();

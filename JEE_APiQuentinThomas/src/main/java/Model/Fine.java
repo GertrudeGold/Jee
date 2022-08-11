@@ -55,6 +55,10 @@ public Fine() {}
 public Fine(int validation) {
 	this.validation=validation;
 }
+public Fine(int validation, int id) {
+	this.validation = validation;
+	this.id=id;
+}
 public int getId() {
 	return id;
 }

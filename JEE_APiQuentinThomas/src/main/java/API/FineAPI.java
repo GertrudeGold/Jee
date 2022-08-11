@@ -130,7 +130,7 @@ public class FineAPI extends BaseAPI{
 
 		if(key.equals(apiKey)) {
 			  
-			Fine fine = new Fine(Integer.valueOf(validation));
+			Fine fine = new Fine(Integer.valueOf(validation),id);
 		boolean success= fine.update(fine);
 		if(success) {
 			return Response.status(Status.NO_CONTENT).build();

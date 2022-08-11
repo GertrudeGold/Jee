@@ -90,7 +90,7 @@ public class ViolationAPI extends BaseAPI {
 		String apiKey=getApiKey();
 
 		if(key.equals(apiKey)) {
-		Violation violation = new Violation(type,Double.valueOf(amount));
+		Violation violation = new Violation(id,type,Double.valueOf(amount));
 		boolean success= violation.update(violation);
 		if(success) {
 			return Response.status(Status.NO_CONTENT).build();

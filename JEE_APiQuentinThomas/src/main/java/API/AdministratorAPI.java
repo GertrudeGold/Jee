@@ -129,7 +129,7 @@ public Response update(@PathParam("id") int id,
 	String apiKey=getApiKey();
 
 	if(key.equals(apiKey)) {
-	Administrator administrator = new Administrator(lastname,firstname,matricule,password);
+	Administrator administrator = new Administrator(lastname,firstname,matricule,password,id);
 	boolean success= administrator.update(administrator);
 	if(success) {
 		return Response.status(Status.NO_CONTENT).build();

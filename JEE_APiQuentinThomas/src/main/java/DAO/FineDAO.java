@@ -79,10 +79,10 @@ public class FineDAO implements DAO<Fine>{
 		boolean success=false;
 		CallableStatement callableStatement = null;
 		try {
-			String sql="{call update_fine(?)}";
+			String sql="{call update_fine(?,?)}";
 			callableStatement = conn.prepareCall(sql);
-			
-			callableStatement.setInt(1, obj.getValidation());
+			callableStatement.setInt(1, obj.getId());
+			callableStatement.setInt(2, obj.getValidation());
 			
 			
 
