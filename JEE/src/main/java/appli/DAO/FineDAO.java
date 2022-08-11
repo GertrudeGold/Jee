@@ -14,6 +14,8 @@ import com.fasterxml.jackson.databind.ObjectMapper;
 import com.sun.jersey.api.client.Client;
 import com.sun.jersey.api.client.ClientResponse;
 import com.sun.jersey.api.client.WebResource;
+import com.sun.jersey.api.client.config.ClientConfig;
+import com.sun.jersey.api.client.config.DefaultClientConfig;
 import com.sun.jersey.core.util.MultivaluedMapImpl;
 
 import appli.Javabeans.Administrator;
@@ -28,7 +30,13 @@ public class FineDAO implements DAO<Fine>{
 		return UriBuilder.fromUri(apiUrl).build();
 	}
 	
-	
+public FineDAO() {
+		
+		ClientConfig config=new DefaultClientConfig();
+		client=Client.create(config);
+		apiUrl=getApiUrl();
+		resource=client.resource(getBaseUri());
+	}
 	
 	@Override
 	public boolean insert(Fine obj) {
