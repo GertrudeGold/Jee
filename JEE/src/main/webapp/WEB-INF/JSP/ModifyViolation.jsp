@@ -7,8 +7,7 @@
 <title>Modify violation</title>
 </head>
 <body>
-<% Violation violation = (Violation)request.getAttribute("vehicle"); %>
-<% request.setAttribute("violation", violation); %>
+<% Violation violation = (Violation)request.getAttribute("violation"); %>
 
 <h1>Modify Violation</h1>
 <form action="ModifyViolation" method="POST">
@@ -22,6 +21,7 @@
 		<td><input type="text" name="amount" value="<%= violation.getPrice() %>" size="20" required></td>
 	</tr>	
 	<tr>
+		<input style ="display : none "type="text" name="oldType" value="<%= violation.getType() %>" size="20">
 		<td colspan="2" align="center"><input type="submit" name="submit" value="Modify"></td>
 	</tr>
 	</table>

@@ -26,8 +26,9 @@
 			<td><%= vehicle.getId() %></td>
 			<td><%= vehicle.getType() %></td>
 			<form action="RedirectAdministrator" method="post">
-			<td><button type="submit" name="ModifyVehicle" value="<%=  %>">Modify</button></td>
-			<td><button type="submit" name="DeleteVehicle" value="<%=  %>">Delete</button></td>
+			<input type="hidden" name="typeVehicle" value="<%= vehicle.getType() %>"/>
+			<td><button type="submit" name="ModifyVehicle" value="Modify">Modify</button></td>
+			<td><button type="submit" name="DeleteVehicle" value="Delete">Delete</button></td>
 			</form>
 		</tr>
 	<%} 

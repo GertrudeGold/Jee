@@ -83,6 +83,7 @@ public class RedirectAdministrator extends HttpServlet {
 					if(admin.getMatricule().equals(accountMatricule)) {
 						admin.delete(admin);
 						admins.remove(admin);
+						break;
 					}	
 				}
 			}
@@ -92,6 +93,7 @@ public class RedirectAdministrator extends HttpServlet {
 					if(collector.getMatricule().equals(accountMatricule)) {
 						collector.delete(collector);
 						collectors.remove(collector);
+						break;
 					}	
 				}
 			}
@@ -101,6 +103,7 @@ public class RedirectAdministrator extends HttpServlet {
 					if(chief.getMatricule().equals(accountMatricule)) {
 						chief.delete(chief);
 						chiefs.remove(chief);
+						break;
 					}	
 				}
 			}
@@ -110,10 +113,10 @@ public class RedirectAdministrator extends HttpServlet {
 					if(policeman.getMatricule().equals(accountMatricule)) {
 						policeman.delete(policeman);
 						policemans.remove(policeman);
+						break;
 					}	
 				}
 			}
-					
 			response.sendRedirect("ListAccount");
 		}
 		//INSERT
@@ -129,19 +132,26 @@ public class RedirectAdministrator extends HttpServlet {
 		
 		//UPDATE
 		if (request.getParameter("ModifyVehicle") != null) {
-			Vehicle vehicle = (Vehicle)request.getAttribute("vehicle");
-			request.setAttribute("vehicle", vehicle);
+			String typeVehicle = request.getParameter("typeVehicle");
+				ArrayList<Vehicle> vehicles = connected.getVehicles();
+				for(Vehicle vehicle: vehicles) {
+					if(vehicle.getType().equals(typeVehicle)) {
+						request.setAttribute("vehicle", vehicle);
+					}	
+				}
+			
 			request.getRequestDispatcher("/WEB-INF/JSP/ModifyVehicle.jsp").forward(request,response);
 		}
 		
 		//DELETE	
 		if (request.getParameter("DeleteVehicle") != null) {
-			Vehicle vehicleToDelete = (Vehicle) request.getAttribute("vehicle");
+			String typeVehicle = request.getParameter("typeVehicle");
 			ArrayList<Vehicle> vehicles = connected.getVehicles();
 			for(Vehicle vehicle : vehicles) {
-				if(vehicle.equals(vehicleToDelete)) {
+				if(vehicle.getType().equals(typeVehicle)) {
 					vehicle.delete(vehicle);
-			    	vehicles.remove(vehicle);	
+			    	vehicles.remove(vehicle);
+			    	break;
 				}
 			}
 			response.sendRedirect("ListVehicle");
@@ -160,19 +170,25 @@ public class RedirectAdministrator extends HttpServlet {
 		
 		//UPDATE
 		if (request.getParameter("ModifyViolation") != null) {
-			Violation violation = (Violation)request.getAttribute("violation");
-			request.setAttribute("violation", violation);
+			String typeViolation = request.getParameter("typeViolation");
+			ArrayList<Violation> violations = connected.getViolations();
+			for(Violation violation : violations) {
+				if(violation.getType().equals(typeViolation)) {
+					request.setAttribute("violation", violation);
+				}	
+			}
 			request.getRequestDispatcher("/WEB-INF/JSP/ModifyViolation.jsp").forward(request,response);
 		}
 		
 		//DELETE	
 		if (request.getParameter("DeleteViolation") != null) {
-			Violation violationToDelete = (Violation) request.getAttribute("violation");
+			String typeViolation = request.getParameter("typeViolation");
 			ArrayList<Violation> violations = connected.getViolations();
 			for(Violation violation : violations) {
-				if(violation.equals(violationToDelete)) {
+				if(violation.getType().equals(typeViolation)) {
 					violation.delete(violation);
-					violations.remove(violation);	
+					violations.remove(violation);
+			    	break;
 				}
 			}
 			response.sendRedirect("ListViolation");

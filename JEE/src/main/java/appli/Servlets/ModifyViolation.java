@@ -25,7 +25,7 @@ public class ModifyViolation extends HttpServlet {
 
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		// TODO Auto-generated method stub
-		response.sendRedirect("ListVehicle");
+		response.sendRedirect("ListViolation");
 	}
 
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
@@ -33,14 +33,14 @@ public class ModifyViolation extends HttpServlet {
 		
 		HttpSession session = request.getSession(false);
 		Administrator connected = (Administrator) session.getAttribute("ConnectedStaff");
-		Violation oldViolation = (Violation)request.getAttribute("vehicle");
 		
+		String oldViolation = request.getParameter("oldType");
 		String type = request.getParameter("type");
 		double amount = Double.valueOf(request.getParameter("amount"));
 		
 		ArrayList<Violation> violations = connected.getViolations();
 		for(Violation violation : violations) {
-			if(violation.getType().equals(oldViolation.getType())) {
+			if(violation.getType().equals(oldViolation)) {
 				violation.setType(type);
 				violation.setPrice(amount);
 		    	violation.update(violation);	

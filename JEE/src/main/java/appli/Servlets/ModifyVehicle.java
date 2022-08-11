@@ -33,13 +33,13 @@ public class ModifyVehicle extends HttpServlet {
 		
 		HttpSession session = request.getSession(false);
 		Administrator connected = (Administrator) session.getAttribute("ConnectedStaff");
-		Vehicle oldVehicle = (Vehicle)request.getAttribute("vehicle");
 		
 		String type = request.getParameter("type");
+		String oldType = request.getParameter("oldType");
 		
 		ArrayList<Vehicle> vehicles = connected.getVehicles();
 		for(Vehicle vehicle : vehicles) {
-			if(vehicle.getType().equals(oldVehicle.getType())) {
+			if(vehicle.getType().equals(oldType)) {
 				vehicle.setType(type);
 		    	vehicle.update(vehicle);	
 			}

@@ -28,8 +28,9 @@
 			<td><%= violation.getType() %></td>
 			<td><%= violation.getPrice() %></td>
 			<form action="RedirectAdministrator" method="post">
-			<td><button type="submit" name="ModifyViolation" value="<%=  %>">Modify</button></td>
-			<td><button type="submit" name="DeleteViolation" value="<%=  %>">Delete</button></td>
+			<input type="hidden" name="typeViolation" value="<%= violation.getType() %>"/>
+			<td><button type="submit" name="ModifyViolation" value="Modify">Modify</button></td>
+			<td><button type="submit" name="DeleteViolation" value="Delete">Delete</button></td>
 			</form>
 		</tr>
 	<%} 

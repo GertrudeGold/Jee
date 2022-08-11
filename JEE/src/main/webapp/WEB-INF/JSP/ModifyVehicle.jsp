@@ -8,16 +8,16 @@
 </head>
 <body>
 <% Vehicle vehicle = (Vehicle)request.getAttribute("vehicle"); %>
-<% request.setAttribute("vehicle", vehicle); %>
 
 <h1>Modify vehicle</h1>
 <form action="ModifyVehicle" method="POST">
 	<table border="1" cellspacing="0" cellpadding="5">
 	<tr>
 		<td> Vehicle type </td>
-		<td><input type="text" name="type" value="<%= vehicle.getType() %>>" size="20" required></td>
+		<td><input type="text" name="type" value="<%= vehicle.getType() %>" size="20" required></td>
 	</tr>
 	<tr>
+		<input style ="display : none "type="text" name="oldType" value="<%= vehicle.getType() %>" size="20">
 		<td colspan="2" align="center"><input type="submit" name="submit" value="Modify"></td>
 	</tr>
 	</table>
