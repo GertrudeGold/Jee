@@ -32,7 +32,7 @@ public class ListValidatedFine extends HttpServlet {
 		
 		request.setAttribute("fines", fines);
 		
-		request.getRequestDispatcher("/WEB-INF/JSP/ListFineByBrigade.jsp").forward(request,response);
+		request.getRequestDispatcher("/WEB-INF/JSP/ListValidatedFine.jsp").forward(request,response);
 	}
 
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {

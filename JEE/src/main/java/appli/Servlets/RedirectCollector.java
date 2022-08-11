@@ -26,14 +26,17 @@ public class RedirectCollector extends HttpServlet {
 		// TODO Auto-generated method stub
 		HttpSession session = request.getSession(false);
 		Collector connected = (Collector) session.getAttribute("ConnectedStaff");
+		
 		//See Violation
 		if (request.getParameter("ManageViolationAmount") != null) {
 			response.sendRedirect("ListViolationCollector");
         }
+		
 		//See validated Fine
 		if (request.getParameter("SeeValidatedFine") != null) {
 			response.sendRedirect("ListValidatedFine");
         }
+		
 		//Modify amount
 		if (request.getParameter("ModifyViolation") != null) {
 			String typeViolation = request.getParameter("typeViolation");
@@ -44,6 +47,10 @@ public class RedirectCollector extends HttpServlet {
 				}	
 			}
 			request.getRequestDispatcher("/WEB-INF/JSP/ModifyViolationCollector.jsp").forward(request,response);
+        }
+		
+		if (request.getParameter("sendMail") != null) {
+			response.sendRedirect("ListValidatedFine");
         }
 	}
 

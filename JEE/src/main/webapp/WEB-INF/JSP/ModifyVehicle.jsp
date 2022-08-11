@@ -4,7 +4,7 @@
 <html>
 <head>
 <meta charset="ISO-8859-1">
-<title>Add Account</title>
+<title>Modify Vehicle</title>
 </head>
 <body>
 <% Vehicle vehicle = (Vehicle)request.getAttribute("vehicle"); %>
