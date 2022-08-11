@@ -27,7 +27,7 @@
 			<td><%= violation.getId() %></td>
 			<td><%= violation.getType() %></td>
 			<td><%= violation.getPrice() %></td>
-			<form action="RedirectAdministrator" method="post">
+			<form action="RedirectCollector" method="post">
 			<input type="hidden" name="typeViolation" value="<%= violation.getType() %>"/>
 			<td><button type="submit" name="ModifyViolation" value="Modify">Modify</button></td>
 			</form>

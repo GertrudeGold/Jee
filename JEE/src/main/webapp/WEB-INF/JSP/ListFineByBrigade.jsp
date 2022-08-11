@@ -14,7 +14,7 @@
 	<thead>
 		<tr>
 			<th>Id</<th>
-			<th>Policeman id</<th>
+			<th>Policeman</<th>
 			<th>Vehicle</<th>
 			<th>Plate</<th>
 			<th>Date</<th>
@@ -30,7 +30,7 @@
 		Fine fine=fines.get(i);%>
 		<tr>
 			<td><%= fine.getId() %></td>
-			<td><%= fine.getPoliceman().getId() %></td>
+			<td><%= fine.getPoliceman().getLastname() %></td>
 			<td><%= fine.getTypeVehicle().getType() %></td>
 			<td><%= fine.getPlate().getPlateinformation() %></td>
 			<td><%= fine.getDate() %></td>

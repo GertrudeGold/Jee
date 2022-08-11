@@ -28,9 +28,9 @@ public class ListValidatedFine extends HttpServlet {
 		HttpSession session = request.getSession(false);
 		
 		Collector connected = (Collector) session.getAttribute("ConnectedStaff");
-		//ArrayList<Fine> fines = connected.getFines();
+		ArrayList<Fine> fines = connected.getFines();
 		
-		//request.setAttribute("fines", fines);
+		request.setAttribute("fines", fines);
 		
 		request.getRequestDispatcher("/WEB-INF/JSP/ListFineByBrigade.jsp").forward(request,response);
 	}

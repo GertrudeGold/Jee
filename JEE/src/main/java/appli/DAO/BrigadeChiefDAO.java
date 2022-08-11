@@ -146,7 +146,7 @@ public class BrigadeChiefDAO implements DAO<BrigadeChief>{
 		paramsPost.add("matricule", matricule);
 		paramsPost.add("password", password);
 		ClientResponse responseJSON=resource
-				.path("BrigadeChief")
+				.path("brigadeChief")
 				.path("login")
 				.accept(MediaType.APPLICATION_JSON)
 				.post(ClientResponse.class,paramsPost);
@@ -182,7 +182,7 @@ public class BrigadeChiefDAO implements DAO<BrigadeChief>{
 		int status;
 		
 		String res=resource
-				.path("BrigadeChief")
+				.path("brigadeChief")
 				.path(String.valueOf(id))
 				.header("AUTHORIZATION", key)
 				.accept(MediaType.APPLICATION_JSON)
