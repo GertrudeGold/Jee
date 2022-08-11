@@ -137,6 +137,25 @@ public class BrigadeChiefAPI extends BaseAPI{
 		
 		
 	}
+	@GET
+	@Path("/all")
+	@Produces(MediaType.APPLICATION_JSON)
+	public Response GetAll(
+			@HeaderParam(HttpHeaders.AUTHORIZATION) String key)
+			 {
+		
+		String apiKey=getApiKey();
+		if(key.equals(apiKey)) {
+		ArrayList<BrigadeChief> brigadeChiefs = new ArrayList<BrigadeChief>();
+		brigadeChiefs=BrigadeChief.findAll();
+		
+			return Response.status(Status.OK).entity(brigadeChiefs).build();
+			
+		}else {
+			return Response.status(Status.UNAUTHORIZED).build();
+		}
+		
+		}
 	@PUT
 	@Path("{id}")
 	public Response update(@PathParam("id") int id,

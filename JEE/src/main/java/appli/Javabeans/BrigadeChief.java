@@ -4,7 +4,9 @@ import java.util.ArrayList;
 
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 
+import appli.DAO.AdministratorDAO;
 import appli.DAO.BrigadeChiefDAO;
+import appli.DAO.PolicemanDAO;
 
 
 public class BrigadeChief extends Staff {
@@ -63,5 +65,9 @@ public class BrigadeChief extends Staff {
 	public void setPolicemans(ArrayList<Policeman> policemans) {
 		this.policemans = policemans;
 	}
-	
+	public static ArrayList<Policeman> findAll(){
+		PolicemanDAO policemanDAO=new PolicemanDAO();
+		
+		 return  policemanDAO.findAll();
+	}
 }

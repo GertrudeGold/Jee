@@ -2,6 +2,9 @@ package appli.Javabeans;
 
 import java.util.ArrayList;
 
+import appli.DAO.CollectorDAO;
+import appli.DAO.PolicemanDAO;
+
 
 public class Collector extends Staff {
 
@@ -27,5 +30,9 @@ public class Collector extends Staff {
 	public Collector() {
 		// TODO Auto-generated constructor stub
 	}
-
+	public static ArrayList<Collector> findAll(){
+		CollectorDAO collectorDAO=new CollectorDAO();
+		
+		 return  collectorDAO.findAll();
+	}
 }

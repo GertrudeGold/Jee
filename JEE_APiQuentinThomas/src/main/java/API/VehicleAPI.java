@@ -1,7 +1,10 @@
 package API;
 
+import java.util.ArrayList;
+
 import javax.ws.rs.DELETE;
 import javax.ws.rs.FormParam;
+import javax.ws.rs.GET;
 import javax.ws.rs.HeaderParam;
 import javax.ws.rs.POST;
 import javax.ws.rs.PUT;
@@ -16,6 +19,7 @@ import DAO.VehicleDAO;
 import DAO.ViolationDAO;
 import Model.Administrator;
 import Model.Collector;
+import Model.Policeman;
 import Model.Vehicle;
 import Model.Violation;
 import Other.Error;
@@ -102,4 +106,23 @@ public class VehicleAPI extends BaseAPI{
 		}
 
 	}
+	@GET
+	@Path("/all")
+	@Produces(MediaType.APPLICATION_JSON)
+	public Response GetAll(
+			@HeaderParam(HttpHeaders.AUTHORIZATION) String key)
+			 {
+		
+		String apiKey=getApiKey();
+		if(key.equals(apiKey)) {
+		ArrayList<Vehicle> vehicles = new ArrayList<Vehicle>();
+		vehicles=Vehicle.findAll();
+		
+			return Response.status(Status.OK).entity(vehicles).build();
+			
+		}else {
+			return Response.status(Status.UNAUTHORIZED).build();
+		}
+		
+		}
 }

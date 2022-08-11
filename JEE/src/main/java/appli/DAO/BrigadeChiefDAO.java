@@ -11,6 +11,7 @@ import javax.ws.rs.core.MediaType;
 import javax.ws.rs.core.MultivaluedMap;
 import javax.ws.rs.core.UriBuilder;
 
+import com.fasterxml.jackson.core.type.TypeReference;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.sun.jersey.api.client.Client;
 import com.sun.jersey.api.client.ClientResponse;
@@ -117,8 +118,25 @@ public class BrigadeChiefDAO implements DAO<BrigadeChief>{
 
 	@Override
 	public ArrayList<BrigadeChief> findAll() {
-		// TODO Auto-generated method stub
-		return null;
+		String key=getApiKey();
+		String res=resource
+				.path("brigadeChief")
+				.path("all")
+				.header("key",key)
+				.header("AUTHORIZATION", key)
+				.get(String.class);
+		ArrayList<BrigadeChief> brigadeChiefs = new ArrayList<BrigadeChief>();
+		
+
+				ObjectMapper mapper=new ObjectMapper();
+				try {
+					
+					brigadeChiefs= mapper.readValue(res, new TypeReference<ArrayList<BrigadeChief>>(){});
+				 return brigadeChiefs;
+				} catch (Exception e) {
+					System.out.println(e.getMessage());
+					return null;
+				}
 	}
 	public BrigadeChief login(String matricule,String password) {
 		System.out.println("ici10");
@@ -184,4 +202,5 @@ public class BrigadeChiefDAO implements DAO<BrigadeChief>{
 		
 	
 	}
+	
 }

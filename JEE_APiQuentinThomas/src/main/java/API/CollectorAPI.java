@@ -1,7 +1,10 @@
 package API;
 
+import java.util.ArrayList;
+
 import javax.ws.rs.DELETE;
 import javax.ws.rs.FormParam;
+import javax.ws.rs.GET;
 import javax.ws.rs.HeaderParam;
 import javax.ws.rs.POST;
 import javax.ws.rs.PUT;
@@ -131,4 +134,23 @@ public class CollectorAPI  extends BaseAPI{
 		}
 
 	}
+	@GET
+	@Path("/all")
+	@Produces(MediaType.APPLICATION_JSON)
+	public Response GetAll(
+			@HeaderParam(HttpHeaders.AUTHORIZATION) String key)
+			 {
+		
+		String apiKey=getApiKey();
+		if(key.equals(apiKey)) {
+		ArrayList<Collector> collectors = new ArrayList<Collector>();
+		collectors=Collector.findAll();
+		
+			return Response.status(Status.OK).entity(collectors).build();
+			
+		}else {
+			return Response.status(Status.UNAUTHORIZED).build();
+		}
+		
+		}
 }

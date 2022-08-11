@@ -1,6 +1,9 @@
 package appli.Javabeans;
 
+import java.util.ArrayList;
 
+import appli.DAO.CollectorDAO;
+import appli.DAO.PolicemanDAO;
 
 public class Policeman extends Staff {
 
@@ -29,5 +32,9 @@ public class Policeman extends Staff {
 	public BrigadeChief getBrigadeChief() {
 		return brigadeChief;
 	}
-
+	public static ArrayList<Policeman> findAll(){
+		PolicemanDAO policemanDAO=new PolicemanDAO();
+		
+		 return policemanDAO.findAll();
+	}
 }

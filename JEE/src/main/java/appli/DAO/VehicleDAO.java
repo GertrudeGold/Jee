@@ -9,6 +9,8 @@ import javax.naming.NamingException;
 import javax.ws.rs.core.MultivaluedMap;
 import javax.ws.rs.core.UriBuilder;
 
+import com.fasterxml.jackson.core.type.TypeReference;
+import com.fasterxml.jackson.databind.ObjectMapper;
 import com.sun.jersey.api.client.Client;
 import com.sun.jersey.api.client.ClientResponse;
 import com.sun.jersey.api.client.WebResource;
@@ -16,6 +18,7 @@ import com.sun.jersey.api.client.config.ClientConfig;
 import com.sun.jersey.api.client.config.DefaultClientConfig;
 import com.sun.jersey.core.util.MultivaluedMapImpl;
 
+import appli.Javabeans.Policeman;
 import appli.Javabeans.Vehicle;
 
 public class VehicleDAO implements DAO<Vehicle>{
@@ -97,8 +100,25 @@ public class VehicleDAO implements DAO<Vehicle>{
 
 	@Override
 	public ArrayList<Vehicle> findAll() {
-		// TODO Auto-generated method stub
-		return null;
+		String key=getApiKey();
+		String res=resource
+				.path("vehicle")
+				.path("all")
+				.header("key",key)
+				.header("AUTHORIZATION", key)
+				.get(String.class);
+		ArrayList<Vehicle> vehicles = new ArrayList<Vehicle>();
+		
+
+				ObjectMapper mapper=new ObjectMapper();
+				try {
+					
+					vehicles= mapper.readValue(res, new TypeReference<ArrayList<Vehicle>>(){});
+				 return vehicles;
+				} catch (Exception e) {
+					System.out.println(e.getMessage());
+					return null;
+				}
 	}
 
 }

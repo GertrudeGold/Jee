@@ -1,7 +1,9 @@
 package appli.Javabeans;
 
 import java.io.Serializable;
+import java.util.ArrayList;
 
+import appli.DAO.CollectorDAO;
 import appli.DAO.VehicleDAO;
 
 
@@ -53,5 +55,10 @@ public boolean update(Vehicle vehicle) {
 	boolean success;
 	VehicleDAO vehicleDAO=new VehicleDAO();
 	return success =  vehicleDAO.update(vehicle);
+}
+public static ArrayList<Vehicle> findAll(){
+	VehicleDAO vehicleDAO=new VehicleDAO();
+	
+	 return  vehicleDAO.findAll();
 }
 }

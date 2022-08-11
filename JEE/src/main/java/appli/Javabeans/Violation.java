@@ -1,7 +1,9 @@
 package appli.Javabeans;
 
 import java.io.Serializable;
+import java.util.ArrayList;
 
+import appli.DAO.VehicleDAO;
 import appli.DAO.ViolationDAO;
 
 
@@ -60,6 +62,12 @@ public class Violation implements Serializable{
 	}
 	public void setPrice(double price) {
 		this.price = price;
+	}
+	
+	public static ArrayList<Violation> findAll(){
+		ViolationDAO violationDAO=new ViolationDAO();
+		
+		 return  violationDAO.findAll();
 	}
 	
 }

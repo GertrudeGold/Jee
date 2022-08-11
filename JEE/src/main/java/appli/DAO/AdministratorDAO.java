@@ -138,10 +138,7 @@ public class AdministratorDAO implements DAO<Administrator> {
 				.get(String.class);
 		ArrayList<Administrator> administrators = new ArrayList<Administrator>();
 		
-//		try{
-//			JSONArray jsonArray= new JSONArray(responseJSON);
-//			for(int i=0; i<jsonArray.length();i++) {
-//				JSONObject admin =(JSONObject) jsonArray.get(i);	
+
 				ObjectMapper mapper=new ObjectMapper();
 				try {
 					
@@ -152,11 +149,7 @@ public class AdministratorDAO implements DAO<Administrator> {
 					return null;
 				}
 		}
-//		catch (Exception e) {
-//			System.out.println( e.getMessage());
-//			return null;
-//		}
-//	}
+
 
 
 	public Administrator login(String matricule,String password) {
