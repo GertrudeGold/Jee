@@ -2,8 +2,11 @@ package API;
 
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
+import java.time.LocalDateTime;
+import java.time.format.DateTimeFormatter;
 import java.util.ArrayList;
 import java.util.Date;
+import java.util.Locale;
 
 import javax.ws.rs.DELETE;
 import javax.ws.rs.FormParam;
@@ -81,7 +84,11 @@ public class FineAPI extends BaseAPI{
 			Policeman policeman = new Policeman();
 			policeman = policeman.find(Integer.valueOf(policeman_id));
 			ArrayList<Violation> violations = new ArrayList<Violation>();
-			int[] violationIds = new int[violation_ids.split("-").length];
+			String[] violationSplit = violation_ids.split("-");
+			int[] violationIds = new int[violationSplit.length];
+			for(int i =0;i<violationSplit.length;i++) {
+				violationIds[i]= Integer.valueOf(violationSplit[i]);
+			}
 			for(int idviolation : violationIds) {
 				
 				Violation violation = new Violation();
@@ -89,12 +96,17 @@ public class FineAPI extends BaseAPI{
 				violations.add(violation);
 			}
 			Date date1=null;
+		
 			try {
-				date1 = new SimpleDateFormat("dd-MM-yyyy HH:mm").parse(fine_date);
+				
+				 
+				 date1 = new SimpleDateFormat("EE MMM dd HH:mm:ss z yyyy",Locale.ENGLISH).parse(fine_date);
+				
 			} catch (ParseException e) {
 				
 				e.printStackTrace();
 			}  
+			
 			Fine fine = new Fine(vehicle,plate,date1,fine_gultyFirstName,fine_gultyLastName,fine_comment,
 					policeman,0,violations);
 				

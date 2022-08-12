@@ -22,7 +22,7 @@ public class PlateDAO implements DAO<Plate> {
 	private static URI getBaseUri() {
 		return UriBuilder.fromUri(apiUrl).build();
 	}
-public PlateDAO() {
+	public PlateDAO() {
 		
 		ClientConfig config=new DefaultClientConfig();
 		client=Client.create(config);

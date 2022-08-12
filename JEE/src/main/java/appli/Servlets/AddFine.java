@@ -13,7 +13,6 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
-import appli.Javabeans.Administrator;
 import appli.Javabeans.Fine;
 import appli.Javabeans.Plate;
 import appli.Javabeans.Policeman;
@@ -31,7 +30,7 @@ public class AddFine extends HttpServlet {
 
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		// TODO Auto-generated method stub
-		response.getWriter().append("Served at: ").append(request.getContextPath());
+		request.getRequestDispatcher("/WEB-INF/JSP/HomePoliceman.jsp").forward(request,response);
 	}
 
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
@@ -49,7 +48,8 @@ public class AddFine extends HttpServlet {
 		//Manage date
 		Date date = null;
 		String inputDate = request.getParameter("date");
-		SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
+		
+		SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd'T'hh:mm");
 		try { 
 			date = sdf.parse(inputDate);
 		} 
@@ -67,15 +67,16 @@ public class AddFine extends HttpServlet {
 		}
 		
 		//Manage violation
-		ArrayList<Violation> violationFine = null;
+		ArrayList<Violation> violationFine = new ArrayList<Violation>();
 		ArrayList<Violation> violations = Violation.findAll();
 		for(Violation violation : violations) {
 			if(violation.getId() == idViolation){
 				violationFine.add(violation);
 			}
 		}
-
-		Plate plateFine = new Plate(plate);
+		
+		
+		Plate plateFine = Plate.findIfAPlateExist(plate);
 		
 		
 		Fine fine = new Fine(vehicleFine, plateFine, date, firstname, lastname, commentary, connected, 0, violationFine);

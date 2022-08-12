@@ -7,6 +7,7 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.Date;
+import java.time.Instant;
 
 
 import Model.Fine;
@@ -17,17 +18,20 @@ import Model.Violation;
 
 public class FineDAO implements DAO<Fine>{
 
+	public java.sql.Date convertJavaDateToSqlDate(java.util.Date date) {
+	    return new java.sql.Date(date.getTime());
+	}
 	@Override
 	public boolean insert(Fine obj) {
 		Connection conn=ConnectionDatabase.getConnection();
 		boolean success=false;
 		CallableStatement callableStatement = null;
 		try {
-			String sql="{call insert_fine(?,?,?,?,?,?,?,?,?,?)}";
+			String sql="{call insert_fine(?,?,?,?,?,?,?,?,?)}";
 			callableStatement = conn.prepareCall(sql);
 			callableStatement.setInt(1, obj.getTypeVehicle().getId());
 			callableStatement.setInt(2, obj.getPlate().getId());
-			callableStatement.setDate(3, (java.sql.Date) obj.getDate());
+			callableStatement.setDate(3, convertJavaDateToSqlDate(obj.getDate()));
 			callableStatement.setString(4, obj.getGultyFirstName());
 			callableStatement.setString(5, obj.getGultyLastName());
 			callableStatement.setString(6, obj.getComment());
