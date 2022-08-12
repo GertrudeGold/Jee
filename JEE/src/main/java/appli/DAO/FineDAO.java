@@ -74,7 +74,7 @@ public FineDAO() {
 
 	@Override
 	public boolean delete(Fine obj) {
-		boolean success = false;
+ 		boolean success = false;
 		String key = getApiKey();
 				
 		ClientResponse res= resource

@@ -49,9 +49,10 @@ public class RedirectBrigadeChief extends HttpServlet {
 				if(fine.getId() == id) {
 					fine.delete(fine);
 					fines.remove(fine);
-					response.sendRedirect("ListFineByBrigade");
+					break;
 				}
 			}	
+			response.sendRedirect("ListFineByBrigade");
         }
 		
 		if (request.getParameter("brigadeFine") != null) {
