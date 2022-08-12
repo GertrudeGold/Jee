@@ -40,7 +40,7 @@ public String getPlateinformation() {
 public void setPlateinformation(String plateinformation) {
 	this.plateinformation = plateinformation;
 }
-public Plate findIfAPlateExist(String plateinfo) {
+public static Plate findIfAPlateExist(String plateinfo) {
 	
 	
 	PlateDAO plateDAO=new PlateDAO();
@@ -50,4 +50,5 @@ public Plate findIfAPlateExist(String plateinfo) {
 return plate;
 
 }
+
 }

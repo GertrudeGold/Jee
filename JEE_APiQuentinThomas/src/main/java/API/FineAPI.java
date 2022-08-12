@@ -81,7 +81,11 @@ public class FineAPI extends BaseAPI{
 			Policeman policeman = new Policeman();
 			policeman = policeman.find(Integer.valueOf(policeman_id));
 			ArrayList<Violation> violations = new ArrayList<Violation>();
-			int[] violationIds = new int[violation_ids.split("-").length];
+			String[] violationSplit = violation_ids.split("-");
+			int[] violationIds = new int[violationSplit.length];
+			for(int i =0;i<violationSplit.length;i++) {
+				violationIds[i]= Integer.valueOf(violationSplit[i]);
+			}
 			for(int idviolation : violationIds) {
 				
 				Violation violation = new Violation();

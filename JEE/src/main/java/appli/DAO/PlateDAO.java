@@ -9,6 +9,8 @@ import javax.ws.rs.core.UriBuilder;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.sun.jersey.api.client.Client;
 import com.sun.jersey.api.client.WebResource;
+import com.sun.jersey.api.client.config.ClientConfig;
+import com.sun.jersey.api.client.config.DefaultClientConfig;
 
 import appli.Javabeans.BrigadeChief;
 import appli.Javabeans.Plate;
@@ -19,6 +21,13 @@ public class PlateDAO implements DAO<Plate> {
 	private Client client;
 	private static URI getBaseUri() {
 		return UriBuilder.fromUri(apiUrl).build();
+	}
+	public PlateDAO() {
+		
+		ClientConfig config=new DefaultClientConfig();
+		client=Client.create(config);
+		apiUrl=getApiUrl();
+		resource=client.resource(getBaseUri());
 	}
 	@Override
 	public boolean insert(Plate obj) {
