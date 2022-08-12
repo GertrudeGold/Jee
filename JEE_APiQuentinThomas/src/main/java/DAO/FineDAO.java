@@ -23,7 +23,7 @@ public class FineDAO implements DAO<Fine>{
 		boolean success=false;
 		CallableStatement callableStatement = null;
 		try {
-			String sql="{call insert_fine(?,?,?,?,?,?,?,?,?,?)}";
+			String sql="{call insert_fine(?,?,?,?,?,?,?,?,?)}";
 			callableStatement = conn.prepareCall(sql);
 			callableStatement.setInt(1, obj.getTypeVehicle().getId());
 			callableStatement.setInt(2, obj.getPlate().getId());

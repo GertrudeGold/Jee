@@ -25,7 +25,7 @@ public class CreateFine extends HttpServlet {
 
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		// TODO Auto-generated method stub
-HttpSession session = request.getSession(false);
+		HttpSession session = request.getSession(false);
 		
 		Policeman policeman = (Policeman) session.getAttribute("ConnectedStaff");
 		
