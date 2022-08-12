@@ -18,6 +18,12 @@ public Plate(int id, String plateinformation) {
 	this.id = id;
 	this.plateinformation = plateinformation;
 }
+
+public Plate(String plateinformation) {
+	super();
+	this.plateinformation = plateinformation;
+}
+
 public Plate() {
 	super();
 	
@@ -34,7 +40,7 @@ public String getPlateinformation() {
 public void setPlateinformation(String plateinformation) {
 	this.plateinformation = plateinformation;
 }
-public Plate findIfAPlateExist(String plateinfo) {
+public static Plate findIfAPlateExist(String plateinfo) {
 	
 	
 	PlateDAO plateDAO=new PlateDAO();

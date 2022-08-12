@@ -15,7 +15,7 @@ import DAO.PlateDAO;
 import Model.BrigadeChief;
 import Model.Plate;
 import Other.Error;
-
+@Path("/plate")
 public class PlateAPI extends BaseAPI{
 	private Error error = null;
 	boolean success = false;
@@ -33,7 +33,7 @@ public class PlateAPI extends BaseAPI{
 		if(key.equals(apiKey)) {
 		
 			Plate plate = new Plate();
-			plate=plate.findIfAPlateExist(plateinfo);
+			plate=Plate.findIfAPlateExist(plateinfo);
 			return Response.status(Status.OK).entity(plate).build();
 		}else {
 			return Response.status(Status.SERVICE_UNAVAILABLE).build();

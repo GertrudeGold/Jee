@@ -42,7 +42,7 @@ public Plate find(int id) {
 return plate;
 
 }
-public Plate findIfAPlateExist(String plateinfo) {
+public static  Plate findIfAPlateExist(String plateinfo) {
 	
 	
 	PlateDAO plateDAO=new PlateDAO();

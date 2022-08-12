@@ -37,8 +37,5 @@
 	</tbody>
 </table>
 <br>
-<form action="RedirectAdministrator" method="post">
-	<td><input type="submit" name="CreateViolation" value="Create"></td>
-</form>
 </body>
 </html>
