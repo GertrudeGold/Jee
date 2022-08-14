@@ -8,6 +8,7 @@
 <body>
 <h1> <%= request.getAttribute("lastname") %> <%= request.getAttribute("firstname") %> have to pay <%= request.getAttribute("Total") %> euros</h1>
 <br>
+<h1> <%= request.getAttribute("lackInsurance") %></h1>
 <form action="RedirectPoliceman" method="post">
 	<td><button type="submit" name="Home" value="Home">Home</button></td>
 </form>

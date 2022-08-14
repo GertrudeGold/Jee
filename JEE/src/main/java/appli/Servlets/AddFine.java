@@ -38,12 +38,14 @@ public class AddFine extends HttpServlet {
 		HttpSession session = request.getSession(false);
 		Policeman connected = (Policeman) session.getAttribute("ConnectedStaff");
 		
+		//Get all parameter
 		String[] idViolations = request.getParameterValues("idViolations"); 
 		int idVehicle = Integer.valueOf(request.getParameter("vehicleType"));
 		String plate = request.getParameter("plateNumber");
 		String lastname = request.getParameter("lastname");
 		String firstname = request.getParameter("firstname");
 		String commentary = request.getParameter("commentary");
+		boolean flag = false;
 		
 		//Manage date
 		Date date = null;
@@ -73,37 +75,78 @@ public class AddFine extends HttpServlet {
 			{
 				if(violation.getType().equals(idViolations[i]))
 				{
+					if(violation.getId() == 1) {
+						flag = true;
+					}
 					violationFine.add(violation);
 				}
 			}
 		}
-		for(Violation violation : violationFine) {
-			if(violation.getId() == 3) 
-			{
-				Plate plateFine = Plate.findIfAPlateExist(plate);
-				if(plateFine == null) {
 		
+		//verify if lack of insurance has been checked
+		if(flag == false){
+			//not check
+			Plate plateFine = Plate.findIfAPlateExist(plate);
+			if(plateFine == null) 
+			{
+				//if not set by default on undefined
 				Plate plateFineUndefined = new Plate(1, "undefined");
+				//Add Lack of insurance in the fine violation
+				for(Violation violation_ : violations) 
+				{
+					if(violation_.getId() == 1)
+						violationFine.add(violation_);
+				}
+				
 				Fine fine = new Fine(vehicleFine, plateFineUndefined, date, firstname, lastname, commentary, connected, 0, violationFine);
 				fine.insert(fine);
+				
+				//Total Amount
+				double totalAmount = 0;
+				for(Violation violation : violationFine) {
+					totalAmount += violation.getPrice();
 				}
-				else {
-			
-					Fine fine = new Fine(vehicleFine, plateFine, date, firstname, lastname, commentary, connected, 0, violationFine);
-					fine.insert(fine);
+				request.setAttribute("Total", totalAmount);
+				request.setAttribute("lastname", lastname);
+				request.setAttribute("firstname", firstname);
+				String message = "This person is in lake of insurance, the violation has been had to the total and to the fine.";
+				request.setAttribute("lackInsurance", message);
+				
+			}
+			else{
+				Fine fine = new Fine(vehicleFine, plateFine, date, firstname, lastname, commentary, connected, 0, violationFine);
+				fine.insert(fine);
+				
+				//Total Amount
+				double totalAmount = 0;
+				for(Violation violation : violationFine) {
+					totalAmount += violation.getPrice();
+				}
+				request.setAttribute("Total", totalAmount);
+				request.setAttribute("lastname", lastname);
+				request.setAttribute("firstname", firstname);
+				String message = "This person is in order of insurance";
+				request.setAttribute("lackInsurance", message);
+				
 				}
 			}
+		else {
+			//check
+			Plate plateFineUndefined = new Plate(1, "undefined");
+			Fine fine = new Fine(vehicleFine, plateFineUndefined, date, firstname, lastname, commentary, connected, 0, violationFine);
+			fine.insert(fine);
+			
+			//Total Amount
+			double totalAmount = 0;
+			for(Violation violation : violationFine) {
+				totalAmount += violation.getPrice();
+			}
+			request.setAttribute("Total", totalAmount);
+			request.setAttribute("lastname", lastname);
+			request.setAttribute("firstname", firstname);
+			String message = "This person is in lake of insurance.";
+			request.setAttribute("lackInsurance", message);
 		}
-		
-		//Total Amount
-		double totalAmount = 0;
-		for(Violation violation : violationFine) 
-		{
-			totalAmount += violation.getPrice();
-		}
-		request.setAttribute("Total", totalAmount);
-		request.setAttribute("lastname", lastname);
-		request.setAttribute("firstname", firstname);	
 
 		doGet(request, response);
 	}
