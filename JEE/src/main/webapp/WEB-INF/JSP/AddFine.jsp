@@ -17,13 +17,12 @@
 	<tr>
 		<td>Violation type</td>
 		<td>
-		<select name="violationType">
 		<% for(int i=0;i<violations.size();i++){
 		Violation violation =violations.get(i);%>
-		<option value="<%= violation.getId() %>"><%= violation.getType() %></option>
+		<input type="checkbox" name="idViolations" value="<%= violation.getType() %>"><%= violation.getType() %><br>
 	<%} 
 	%>
-		</select>
+	</td>	
 	</tr>
 	<tr>
 		<td>Vehicle type</td>

@@ -6,7 +6,7 @@
 <title>Home page - Policeman</title>
 </head>
 <body>
-<h1>Bienvenue ${ConnectedStaff.firstname} ${ConnectedStaff.lastname}</h1>
+<h1>Welcome ${ConnectedStaff.firstname} ${ConnectedStaff.lastname}</h1>
 
 <form action="RedirectPoliceman" method="post">
     <input type="submit" name="CreateFine" value="Create a new fine" />

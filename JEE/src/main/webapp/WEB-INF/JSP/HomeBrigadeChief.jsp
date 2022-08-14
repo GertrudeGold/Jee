@@ -7,7 +7,7 @@
 <title>Home page - Brigade chief</title>
 </head>
 <body>
-<h1>Bienvenue ${ConnectedStaff.firstname} ${ConnectedStaff.lastname}</h1>
+<h1>Welcome ${ConnectedStaff.firstname} ${ConnectedStaff.lastname}</h1>
 
 <form action="RedirectBrigadeChief" method="post">
     <input type="submit" name="brigadeFine" value="Manage brigade's fine" />

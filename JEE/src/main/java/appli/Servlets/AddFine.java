@@ -30,7 +30,7 @@ public class AddFine extends HttpServlet {
 
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		// TODO Auto-generated method stub
-		request.getRequestDispatcher("/WEB-INF/JSP/HomePoliceman.jsp").forward(request,response);
+		request.getRequestDispatcher("/WEB-INF/JSP/FineAmount.jsp").forward(request,response);
 	}
 
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
@@ -38,7 +38,7 @@ public class AddFine extends HttpServlet {
 		HttpSession session = request.getSession(false);
 		Policeman connected = (Policeman) session.getAttribute("ConnectedStaff");
 		
-		int  idViolation = Integer.valueOf(request.getParameter("violationType"));
+		String[] idViolations = request.getParameterValues("idViolations"); 
 		int idVehicle = Integer.valueOf(request.getParameter("vehicleType"));
 		String plate = request.getParameter("plateNumber");
 		String lastname = request.getParameter("lastname");
@@ -48,7 +48,6 @@ public class AddFine extends HttpServlet {
 		//Manage date
 		Date date = null;
 		String inputDate = request.getParameter("date");
-		
 		SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd'T'hh:mm");
 		try { 
 			date = sdf.parse(inputDate);
@@ -70,29 +69,42 @@ public class AddFine extends HttpServlet {
 		ArrayList<Violation> violationFine = new ArrayList<Violation>();
 		ArrayList<Violation> violations = Violation.findAll();
 		for(Violation violation : violations) {
-			if(violation.getId() == idViolation){
-				violationFine.add(violation);
+			for(int i = 0; i<idViolations.length;i++) 
+			{
+				if(violation.getType().equals(idViolations[i]))
+				{
+					violationFine.add(violation);
+				}
+			}
+		}
+		for(Violation violation : violationFine) {
+			if(violation.getId() == 3) 
+			{
+				Plate plateFine = Plate.findIfAPlateExist(plate);
+				if(plateFine == null) {
+		
+				Plate plateFineUndefined = new Plate(1, "undefined");
+				Fine fine = new Fine(vehicleFine, plateFineUndefined, date, firstname, lastname, commentary, connected, 0, violationFine);
+				fine.insert(fine);
+				}
+				else {
+			
+					Fine fine = new Fine(vehicleFine, plateFine, date, firstname, lastname, commentary, connected, 0, violationFine);
+					fine.insert(fine);
+				}
 			}
 		}
 		
-		
-		Plate plateFine = Plate.findIfAPlateExist(plate);
-		
-		
-		Fine fine = new Fine(vehicleFine, plateFine, date, firstname, lastname, commentary, connected, 0, violationFine);
-		fine.insert(fine);
-		
-		
-		
-		
-		
-		
-		
-		
-		
-		
-		
-		
+		//Total Amount
+		double totalAmount = 0;
+		for(Violation violation : violationFine) 
+		{
+			totalAmount += violation.getPrice();
+		}
+		request.setAttribute("Total", totalAmount);
+		request.setAttribute("lastname", lastname);
+		request.setAttribute("firstname", firstname);	
+
 		doGet(request, response);
 	}
 
