@@ -32,6 +32,10 @@ public class RedirectAdministrator extends HttpServlet {
 		HttpSession session = request.getSession(false);
 		Administrator connected = (Administrator) session.getAttribute("ConnectedStaff");
 		
+		//HOME
+		if (request.getParameter("Home") != null)
+			request.getRequestDispatcher("/WEB-INF/JSP/HomeAdministrator.jsp").forward(request,response);
+		
 		//Account Side
 		//SELECT
 		if (request.getParameter("ManageAccount") != null)

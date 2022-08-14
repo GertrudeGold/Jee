@@ -10,6 +10,11 @@
 <body>
 <% ArrayList<Fine> fines=(ArrayList<Fine>) request.getAttribute("fines");%>
 
+<form action="RedirectCollector" method="post">
+	<td><button type="submit" name="Home" value="Home">Home</button></td>
+</form>
+<br>
+
 <table cellspacing="1" cellpadding="4" border="3">
 	<thead>
 		<tr>

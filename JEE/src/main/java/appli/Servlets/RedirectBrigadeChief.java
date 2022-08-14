@@ -27,6 +27,9 @@ public class RedirectBrigadeChief extends HttpServlet {
 		HttpSession session = request.getSession(false);
 		BrigadeChief connected = (BrigadeChief) session.getAttribute("ConnectedStaff");
 		
+		//HOME
+			if (request.getParameter("Home") != null)
+				request.getRequestDispatcher("/WEB-INF/JSP/HomeBrigadeChief.jsp").forward(request,response);
 		
 		//Will validate Fine
 		if (request.getParameter("Validate") != null) {
@@ -36,9 +39,11 @@ public class RedirectBrigadeChief extends HttpServlet {
 				if(fine.getId() == id) {
 					fine.update(fine);
 					fines.remove(fine);
-					response.sendRedirect("ListFineByBrigade");
+					break;
 				}
+				
 			}
+			response.sendRedirect("ListFineByBrigade");
 			
         }
 		//Will unvalidate Fine
@@ -51,7 +56,7 @@ public class RedirectBrigadeChief extends HttpServlet {
 					fines.remove(fine);
 					break;
 				}
-			}	
+			}
 			response.sendRedirect("ListFineByBrigade");
         }
 		

@@ -27,6 +27,10 @@ public class RedirectCollector extends HttpServlet {
 		HttpSession session = request.getSession(false);
 		Collector connected = (Collector) session.getAttribute("ConnectedStaff");
 		
+		//HOME
+		if (request.getParameter("Home") != null)
+			request.getRequestDispatcher("/WEB-INF/JSP/HomeCollector.jsp").forward(request,response);
+		
 		//See Violation
 		if (request.getParameter("ManageViolationAmount") != null) {
 			response.sendRedirect("ListViolationCollector");

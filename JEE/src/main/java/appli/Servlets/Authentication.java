@@ -95,7 +95,7 @@ public class Authentication extends HttpServlet {
 		matricule=request.getParameter("matricule");
 		pwd=request.getParameter("password");
 		
-		Object staff = Staff.login(matricule, pwd);
+		Object staff = Staff.login(matricule.trim(), pwd);
 		if(staff != null) {
 		if(staff instanceof Policeman) {
 			Policeman policeman = (Policeman) staff;

@@ -18,6 +18,11 @@ public class RedirectPoliceman extends HttpServlet {
 
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		// TODO Auto-generated method stub
+		
+		//HOME
+		if (request.getParameter("Home") != null)
+			request.getRequestDispatcher("/WEB-INF/JSP/HomePoliceman.jsp").forward(request,response);
+		
 		if (request.getParameter("CreateFine") != null) {
 			response.sendRedirect("CreateFine");
         }
