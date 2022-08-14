@@ -95,7 +95,7 @@ public Response login(
 		
 		error=Error.USER_AUTHENTICATION_FAILED;
 		error.setDescription("Invalid data for the login, verify your matricule and password");
-		return Response.status(Status.OK).entity(error.getJSON()).build();
+		return Response.status(Status.NO_CONTENT).entity(error.getJSON()).build();
 	}
 	
 }

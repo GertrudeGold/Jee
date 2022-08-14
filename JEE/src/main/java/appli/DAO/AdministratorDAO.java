@@ -154,7 +154,7 @@ public class AdministratorDAO implements DAO<Administrator> {
 
 	public Administrator login(String matricule,String password) {
 		
-		//String key=getApiKey();
+		
 		int status;
 		MultivaluedMap<String,String> paramsPost=new MultivaluedMapImpl();
 		paramsPost.add("matricule", matricule);
