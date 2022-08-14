@@ -27,8 +27,8 @@ public class FineDAO implements DAO<Fine>{
 		boolean success=false;
 		CallableStatement callableStatement = null;
 		try {
-			String sql="{call insert_fine(?,?,?,?,?,?,?,?,?)}";
-			callableStatement = conn.prepareCall(sql);
+			String query="{call insert_fine(?,?,?,?,?,?,?,?,?)}";
+			callableStatement = conn.prepareCall(query);
 			callableStatement.setInt(1, obj.getTypeVehicle().getId());
 			callableStatement.setInt(2, obj.getPlate().getId());
 			callableStatement.setDate(3, convertJavaDateToSqlDate(obj.getDate()));
@@ -37,19 +37,24 @@ public class FineDAO implements DAO<Fine>{
 			callableStatement.setString(6, obj.getComment());
 			callableStatement.setInt(7, obj.getPoliceman().getId());
 			callableStatement.setInt(8, 0);
-			String violations ="";
-			int cpt=0;
+			callableStatement.registerOutParameter(9,java.sql.Types.NUMERIC);
+			callableStatement.executeUpdate();			
+			int idfinecreate = callableStatement.getInt(9);
+			callableStatement.close();
+			
+			CallableStatement callableStatement2 = null;
 			for(Violation violation : obj.getViolations()) {
-				if(cpt!=0) {
-					violations+="-";
-				}
-				cpt++;
-				violations+=String.valueOf(violation.getId());
+				String query2="{call insert_fineDetail(?,?)}";
+				callableStatement2 = conn.prepareCall(query2);
+				callableStatement2.setInt(1,idfinecreate);
+				callableStatement2.setInt(2, violation.getId());
+				callableStatement2.executeUpdate();
+				callableStatement2.close();
 			}
-			callableStatement.setString(9,violations);
+			
 			
 
-			callableStatement.executeUpdate();
+			
 			success = true;
 			return success;
 		}

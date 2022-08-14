@@ -1,5 +1,6 @@
 package API;
 
+import java.text.DateFormat;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.time.LocalDateTime;
@@ -96,11 +97,16 @@ public class FineAPI extends BaseAPI{
 				violations.add(violation);
 			}
 			Date date1=null;
-		
+			Date date2=null;
 			try {
-				
+				//procède de cette façon pour éviter une erreur de parse, simpledateformat est relou
+				 SimpleDateFormat format1=new SimpleDateFormat("EE MMM dd HH:mm:ss z yyyy",Locale.ENGLISH);
+//				 SimpleDateFormat format2=new SimpleDateFormat("dd-MM-yyyy hh:mm");
+				 date1 = format1.parse(fine_date);
+//				 String fordate2=String.valueOf(date1.getDay())+"-"+String.valueOf(date1.getMonth())+"-"+String.valueOf(date1.getYear())+" "+String.valueOf(date1.getHours())+":"+String.valueOf(date1.getMinutes());
+//				 date2 = format2.parse(fordate2);
 				 
-				 date1 = new SimpleDateFormat("EE MMM dd HH:mm:ss z yyyy",Locale.ENGLISH).parse(fine_date);
+				 
 				
 			} catch (ParseException e) {
 				
