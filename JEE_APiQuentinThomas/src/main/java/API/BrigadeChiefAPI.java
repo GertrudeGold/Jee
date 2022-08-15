@@ -90,7 +90,6 @@ public class BrigadeChiefAPI extends BaseAPI{
 					.header("api-key", apiKey)
 					.entity(brigadeChief).build();
 		}else {
-			System.out.println("ici4");
 			error=Error.USER_AUTHENTICATION_FAILED;
 			error.setDescription("Invalid data for the login, verify your login and password");
 			return Response.status(Status.NO_CONTENT).entity(error.getJSON()).build();

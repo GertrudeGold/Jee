@@ -51,29 +51,24 @@ public class Authentication extends HttpServlet {
 		if(session!=null){
 			Staff staff = (Staff) session.getAttribute("ConnectedStaff");
 			apiKey = getApiKey();
-			System.out.println("ici6");
 			
 			if(staff !=null && staff.getMatricule() != null) {
 				if(staff instanceof Policeman) {
-					System.out.println("Policeman");
 					
 					request.getRequestDispatcher("/WEB-INF/JSP/HomePoliceman.jsp").forward(request,response);
 					return;
 				}
 				if(staff instanceof BrigadeChief) {
-					System.out.println("BrigadeChief");
 					
 					request.getRequestDispatcher("/WEB-INF/JSP/HomeBrigadeChief.jsp").forward(request,response);
 					return;
 				}
 				if(staff instanceof Collector) {
-					System.out.println("collector");
 					
 					request.getRequestDispatcher("/WEB-INF/JSP/HomeCollector.jsp").forward(request,response);
 					return;
 				}
 				if(staff instanceof Administrator) {
-					System.out.println("admin");
 					
 					request.getRequestDispatcher("/WEB-INF/JSP/HomeAdministrator.jsp").forward(request,response);
 					return;
