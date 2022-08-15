@@ -16,6 +16,10 @@
 <% ArrayList<Policeman> pmAccounts=(ArrayList<Policeman>) request.getAttribute("pmAccounts");%>
 <% ArrayList<BrigadeChief> bcAccounts=(ArrayList<BrigadeChief>) request.getAttribute("bcAccounts");%>
 
+<form action="RedirectAdministrator" method="post">
+	<td><button type="submit" name="Home" value="Home">Home</button></td>
+</form>
+<br>
 
 <form action="RedirectAdministrator" method="post">
 	<td><input type="submit" name="CreateAccount" value="Create"></td>

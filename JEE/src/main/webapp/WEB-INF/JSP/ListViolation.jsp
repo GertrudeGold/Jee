@@ -10,6 +10,10 @@
 <body>
 <% ArrayList<Violation> violations=(ArrayList<Violation>) request.getAttribute("violations");%>
 
+<form action="RedirectAdministrator" method="post">
+	<td><button type="submit" name="Home" value="Home">Home</button></td>
+</form>
+<br>
 
 <table cellspacing="1" cellpadding="4" border="3">
 	<thead>
